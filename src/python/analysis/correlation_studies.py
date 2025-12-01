@@ -80,11 +80,13 @@ ALGORITHM_METRICS = {
     },
     'HITS (Hub)': {
         'dir': 'results/hits',
+        'file_suffix': '_hub',
         'metric': 'Hub',
         'display': 'HITS (Hub)'
     },
     'HITS (Authority)': {
         'dir': 'results/hits',
+        'file_suffix': '_authority',
         'metric': 'Authority',
         'display': 'HITS (Auth)'
     }
@@ -95,7 +97,11 @@ def load_algorithm_data(dataset_name):
     data = {}
     
     for algo_name, algo_info in ALGORITHM_METRICS.items():
-        csv_file = Path(algo_info['dir']) / f"{dataset_name}.csv"
+        # Handle file_suffix for algorithms with separate files (like HITS)
+        if 'file_suffix' in algo_info:
+            csv_file = Path(algo_info['dir']) / f"{dataset_name}{algo_info['file_suffix']}.csv"
+        else:
+            csv_file = Path(algo_info['dir']) / f"{dataset_name}.csv"
         
         if csv_file.exists():
             try:

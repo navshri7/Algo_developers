@@ -1,0 +1,202 @@
+====================================================================================================
+COMPREHENSIVE CORRELATION STUDIES: ALL ALGORITHM PAIRS
+====================================================================================================
+
+OBJECTIVE:
+----------------------------------------------------------------------------------------------------
+Investigate relationships between different centrality measures to determine whether
+they capture similar or complementary notions of importance in citation networks.
+
+ALGORITHMS ANALYZED:
+----------------------------------------------------------------------------------------------------
+1. K-Core Decomposition - Structural hierarchy
+2. Betweenness Centrality - Path bottlenecks
+3. Degree Centrality (In/Out/Total) - Direct connections
+4. Bridging Centrality - Cross-community bridges
+5. Katz Centrality - Influence propagation
+6. Eigenvector Centrality - Hub importance
+7. HITS - Hub and authority scores
+
+CORRELATION METRICS USED:
+----------------------------------------------------------------------------------------------------
+• Pearson Correlation: Linear relationship (parametric)
+• Spearman Correlation: Rank-based relationship (non-parametric, robust to outliers)
+• Kendall Tau: Concordance between rankings
+
+DATASET-SPECIFIC CORRELATION ANALYSIS:
+----------------------------------------------------------------------------------------------------
+
+
+CORA
+====================================================================================================
+
+STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> HITS (Auth)               : ρ =  0.8296
+
+MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Total)            : ρ =  0.5737
+  Degree (In)               <-> Bridging Centrality       : ρ =  0.5146
+  Degree (Out)              <-> Degree (Total)            : ρ =  0.4558
+  Degree (Out)              <-> Bridging Coeff            : ρ =  0.4721
+  Degree (Out)              <-> HITS (Hub)                : ρ =  0.6315
+  Degree (Total)            <-> Bridging Centrality       : ρ =  0.4932
+  Degree (Total)            <-> HITS (Auth)               : ρ =  0.4965
+  Bridging Centrality       <-> HITS (Auth)               : ρ =  0.4882
+
+WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Out)              : ρ = -0.3655
+  Degree (In)               <-> Bridging Coeff            : ρ = -0.2355
+  Degree (In)               <-> HITS (Hub)                : ρ = -0.1730
+  Degree (Out)              <-> Bridging Centrality       : ρ =  0.2443
+  Degree (Out)              <-> HITS (Auth)               : ρ = -0.2409
+  Degree (Total)            <-> Bridging Coeff            : ρ =  0.1308
+  Degree (Total)            <-> HITS (Hub)                : ρ =  0.3221
+  Bridging Centrality       <-> Bridging Coeff            : ρ =  0.3651
+  Bridging Centrality       <-> HITS (Hub)                : ρ =  0.2411
+  Bridging Coeff            <-> HITS (Hub)                : ρ =  0.2738
+  Bridging Coeff            <-> HITS (Auth)               : ρ = -0.1707
+  HITS (Hub)                <-> HITS (Auth)               : ρ =  0.0253
+
+
+CITESEER
+====================================================================================================
+
+STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
+----------------------------------------------------------------------------------------------------
+  (None found)
+
+MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Total)            : ρ =  0.5379
+  Degree (In)               <-> HITS (Auth)               : ρ =  0.5808
+  Degree (Out)              <-> Degree (Total)            : ρ =  0.5460
+  Degree (Out)              <-> Bridging Centrality       : ρ =  0.4493
+  Degree (Out)              <-> Bridging Coeff            : ρ =  0.6366
+  Degree (Out)              <-> HITS (Hub)                : ρ =  0.5844
+  Degree (Total)            <-> Bridging Centrality       : ρ =  0.5054
+  Degree (Total)            <-> HITS (Hub)                : ρ =  0.4615
+  Degree (Total)            <-> HITS (Auth)               : ρ =  0.4343
+  Bridging Centrality       <-> Bridging Coeff            : ρ =  0.5330
+  Bridging Centrality       <-> HITS (Hub)                : ρ =  0.4511
+  Bridging Coeff            <-> HITS (Hub)                : ρ =  0.4670
+
+WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Out)              : ρ = -0.2993
+  Degree (In)               <-> Bridging Centrality       : ρ =  0.3656
+  Degree (In)               <-> Bridging Coeff            : ρ = -0.2124
+  Degree (In)               <-> HITS (Hub)                : ρ =  0.0300
+  Degree (Out)              <-> HITS (Auth)               : ρ =  0.0083
+  Degree (Total)            <-> Bridging Coeff            : ρ =  0.3385
+  Bridging Centrality       <-> HITS (Auth)               : ρ =  0.3773
+  Bridging Coeff            <-> HITS (Auth)               : ρ =  0.0028
+  HITS (Hub)                <-> HITS (Auth)               : ρ =  0.3152
+
+
+CIT-HEPTH
+====================================================================================================
+
+STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Total)            : ρ =  0.7607
+  Degree (In)               <-> HITS (Auth)               : ρ =  0.8383
+  Degree (Out)              <-> Degree (Total)            : ρ =  0.7748
+  Degree (Out)              <-> HITS (Hub)                : ρ =  0.8501
+  Degree (Total)            <-> HITS (Hub)                : ρ =  0.7566
+  Degree (Total)            <-> HITS (Auth)               : ρ =  0.7520
+
+MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Bridging Centrality       : ρ =  0.6386
+  Degree (Out)              <-> Bridging Centrality       : ρ =  0.5939
+  Degree (Out)              <-> HITS (Auth)               : ρ =  0.4145
+  Degree (Total)            <-> Bridging Centrality       : ρ =  0.6721
+  Bridging Centrality       <-> HITS (Hub)                : ρ =  0.5477
+  Bridging Centrality       <-> HITS (Auth)               : ρ =  0.6036
+  HITS (Hub)                <-> HITS (Auth)               : ρ =  0.5901
+
+WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Out)              : ρ =  0.2788
+  Degree (In)               <-> Bridging Coeff            : ρ =  0.0335
+  Degree (In)               <-> HITS (Hub)                : ρ =  0.3751
+  Degree (Out)              <-> Bridging Coeff            : ρ =  0.1247
+  Degree (Total)            <-> Bridging Coeff            : ρ =  0.0440
+  Bridging Centrality       <-> Bridging Coeff            : ρ =  0.3889
+  Bridging Coeff            <-> HITS (Hub)                : ρ =  0.0346
+  Bridging Coeff            <-> HITS (Auth)               : ρ = -0.0256
+
+
+CIT-DBLP
+====================================================================================================
+
+STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Total)            : ρ =  0.9043
+  Degree (In)               <-> Bridging Centrality       : ρ =  0.9015
+  Degree (In)               <-> HITS (Auth)               : ρ =  0.9037
+  Degree (Out)              <-> Degree (Total)            : ρ =  0.8522
+  Degree (Out)              <-> Bridging Centrality       : ρ =  0.7212
+  Degree (Out)              <-> HITS (Hub)                : ρ =  0.7896
+  Degree (Total)            <-> Bridging Centrality       : ρ =  0.8668
+  Degree (Total)            <-> HITS (Hub)                : ρ =  0.7245
+  Degree (Total)            <-> HITS (Auth)               : ρ =  0.7957
+  Bridging Centrality       <-> HITS (Auth)               : ρ =  0.7862
+
+MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Degree (Out)              : ρ =  0.6271
+  Degree (In)               <-> HITS (Hub)                : ρ =  0.5652
+  Degree (Out)              <-> Bridging Coeff            : ρ =  0.4392
+  Degree (Out)              <-> HITS (Auth)               : ρ =  0.5124
+  Degree (Total)            <-> Bridging Coeff            : ρ =  0.4424
+  Bridging Centrality       <-> Bridging Coeff            : ρ =  0.4684
+  Bridging Centrality       <-> HITS (Hub)                : ρ =  0.5849
+  HITS (Hub)                <-> HITS (Auth)               : ρ =  0.5197
+
+WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
+----------------------------------------------------------------------------------------------------
+  Degree (In)               <-> Bridging Coeff            : ρ =  0.3809
+  Bridging Coeff            <-> HITS (Hub)                : ρ =  0.2737
+  Bridging Coeff            <-> HITS (Auth)               : ρ =  0.2530
+
+
+
+CROSS-DATASET CONSISTENCY:
+====================================================================================================
+Analyzing whether correlation patterns are consistent across datasets...
+
+CONSISTENTLY STRONG CORRELATIONS (across all datasets):
+----------------------------------------------------------------------------------------------------
+  (None found - correlations vary by dataset)
+
+
+INTERPRETATION & RECOMMENDATIONS:
+====================================================================================================
+
+SIMILAR IMPORTANCE NOTIONS (High Correlation):
+----------------------------------------------------------------------------------------------------
+• In-Degree and Authority Score: Both measure citation impact
+• Betweenness and Bridging Centrality: Both identify bridge nodes
+• Katz and Eigenvector: Both measure influence through connections
+
+COMPLEMENTARY MEASURES (Low Correlation):
+----------------------------------------------------------------------------------------------------
+• K-Core vs Betweenness: Structure vs. flow importance
+• Degree vs Bridging Coefficient: Direct connections vs. bridge role
+• Hub vs Authority: Different aspects of HITS algorithm
+
+RECOMMENDATIONS FOR CITATION NETWORK ANALYSIS:
+----------------------------------------------------------------------------------------------------
+1. Use complementary measures together for comprehensive analysis
+2. High-cited papers: Focus on In-Degree, Authority, Eigenvector
+3. Frontier/Bridging papers: Focus on Bridging Centrality, Betweenness, Hub
+4. Structural analysis: Use K-Core for community detection
+5. Multi-perspective ranking: Combine multiple measures for robustness
+
+====================================================================================================
+END OF REPORT
+====================================================================================================

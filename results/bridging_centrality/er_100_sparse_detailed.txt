@@ -1,0 +1,46 @@
+Bridging Centrality Analysis Results
+====================================
+
+Graph Statistics:
+  Nodes: 101
+  Edges: 232
+  Runtime: 0.005 seconds
+  Peak Memory: 3.18 MB
+  Runtime per Node: 0.000046 ms
+  Runtime per Edge: 0.000020 ms
+
+Top 10 by Bridging Centrality:
+  1. Node 18: 0.0079629630
+  2. Node 32: 0.0059806397
+  3. Node 49: 0.0051964085
+  4. Node 14: 0.0050000000
+  5. Node 68: 0.0043883277
+  6. Node 60: 0.0043333333
+  7. Node 12: 0.0033375421
+  8. Node 39: 0.0033333333
+  9. Node 41: 0.0032070707
+  10. Node 55: 0.0027104377
+
+Top 10 by Betweenness:
+  1. Node 68: 0.0092929293
+  2. Node 35: 0.0083501684
+  3. Node 18: 0.0079629630
+  4. Node 49: 0.0077946128
+  5. Node 32: 0.0068350168
+  6. Node 12: 0.0066750842
+  7. Node 41: 0.0064141414
+  8. Node 60: 0.0059090909
+  9. Node 52: 0.0058417508
+  10. Node 14: 0.0050000000
+
+Top 10 by Bridging Coefficient:
+  1. Node 98: 1.0000000000
+  2. Node 70: 1.0000000000
+  3. Node 55: 1.0000000000
+  4. Node 53: 1.0000000000
+  5. Node 39: 1.0000000000
+  6. Node 37: 1.0000000000
+  7. Node 34: 1.0000000000
+  8. Node 27: 1.0000000000
+  9. Node 25: 1.0000000000
+  10. Node 19: 1.0000000000

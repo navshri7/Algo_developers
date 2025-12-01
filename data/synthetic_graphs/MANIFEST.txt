@@ -1,0 +1,171 @@
+Synthetic Graph Manifest
+============================================================
+
+path_5
+  Nodes: 5
+  Edges: 4
+  Avg Degree: 1.60
+  Density: 0.400000
+
+cycle_6
+  Nodes: 6
+  Edges: 6
+  Avg Degree: 2.00
+  Density: 0.400000
+
+complete_7
+  Nodes: 7
+  Edges: 21
+  Avg Degree: 6.00
+  Density: 1.000000
+
+star_9
+  Nodes: 9
+  Edges: 8
+  Avg Degree: 1.78
+  Density: 0.222222
+
+known_structure
+  Nodes: 20
+  Edges: 35
+  Avg Degree: 3.50
+  Density: 0.184211
+
+er_100_sparse
+  Nodes: 100
+  Edges: 231
+  Avg Degree: 4.62
+  Density: 0.046667
+
+er_100_dense
+  Nodes: 100
+  Edges: 982
+  Avg Degree: 19.64
+  Density: 0.198384
+
+er_500_sparse
+  Nodes: 500
+  Edges: 1292
+  Avg Degree: 5.17
+  Density: 0.010357
+
+er_500_dense
+  Nodes: 500
+  Edges: 6289
+  Avg Degree: 25.16
+  Density: 0.050413
+
+er_1000_sparse
+  Nodes: 1000
+  Edges: 2378
+  Avg Degree: 4.76
+  Density: 0.004761
+
+er_1000_dense
+  Nodes: 1000
+  Edges: 10049
+  Avg Degree: 20.10
+  Density: 0.020118
+
+er_5k_sparse
+  Nodes: 5000
+  Edges: 12713
+  Avg Degree: 5.09
+  Density: 0.001017
+
+er_5k_dense
+  Nodes: 5000
+  Edges: 37590
+  Avg Degree: 15.04
+  Density: 0.003008
+
+er_10k_sparse
+  Nodes: 10000
+  Edges: 24802
+  Avg Degree: 4.96
+  Density: 0.000496
+
+er_10k_dense
+  Nodes: 10000
+  Edges: 49834
+  Avg Degree: 9.97
+  Density: 0.000997
+
+ba_1k_m3
+  Nodes: 1000
+  Edges: 2991
+  Avg Degree: 5.98
+  Density: 0.005988
+
+ba_1k_m5
+  Nodes: 1000
+  Edges: 4975
+  Avg Degree: 9.95
+  Density: 0.009960
+
+ba_5k_m3
+  Nodes: 5000
+  Edges: 14991
+  Avg Degree: 6.00
+  Density: 0.001200
+
+ba_5k_m5
+  Nodes: 5000
+  Edges: 24975
+  Avg Degree: 9.99
+  Density: 0.001998
+
+ba_10k_m3
+  Nodes: 10000
+  Edges: 29991
+  Avg Degree: 6.00
+  Density: 0.000600
+
+ws_1k_k6_p01
+  Nodes: 1000
+  Edges: 3000
+  Avg Degree: 6.00
+  Density: 0.006006
+
+ws_1k_k10_p03
+  Nodes: 1000
+  Edges: 5000
+  Avg Degree: 10.00
+  Density: 0.010010
+
+ws_5k_k6_p01
+  Nodes: 5000
+  Edges: 15000
+  Avg Degree: 6.00
+  Density: 0.001200
+
+cliques_5x20
+  Nodes: 100
+  Edges: 960
+  Avg Degree: 19.20
+  Density: 0.193939
+
+cliques_10x15
+  Nodes: 150
+  Edges: 1070
+  Avg Degree: 14.27
+  Density: 0.095749
+
+cliques_20x10
+  Nodes: 200
+  Edges: 950
+  Avg Degree: 9.50
+  Density: 0.047739
+
+plc_1k_m3_p01
+  Nodes: 1000
+  Edges: 2990
+  Avg Degree: 5.98
+  Density: 0.005986
+
+plc_5k_m4_p02
+  Nodes: 5000
+  Edges: 19979
+  Avg Degree: 7.99
+  Density: 0.001599
+

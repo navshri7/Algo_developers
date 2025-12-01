@@ -1,0 +1,16 @@
+Dataset: verify_cycle_6
+Vertices: 6
+Edges: 6
+Max Katz Centrality: 1.000000
+Alpha Parameter: 0.425000
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by Katz Centrality ===
+Rank	Vertex_ID	Katz_Centrality
+1	1	1.000000
+2	2	1.000000
+3	3	1.000000
+4	4	1.000000
+5	5	1.000000
+6	6	1.000000

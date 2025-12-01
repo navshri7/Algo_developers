@@ -1,0 +1,19 @@
+Dataset: verify_star_9
+Vertices: 9
+Edges: 8
+Max Katz Centrality: -nan
+Alpha Parameter: 0.478125
+Runtime (seconds): 0.001000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by Katz Centrality ===
+Rank	Vertex_ID	Katz_Centrality
+1	1	-nan
+2	2	-nan
+3	3	-nan
+4	4	-nan
+5	5	-nan
+6	6	-nan
+7	7	-nan
+8	8	-nan
+9	9	-nan

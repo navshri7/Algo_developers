@@ -1,0 +1,36 @@
+Dataset: verify_known_structure
+Vertices: 20
+Edges: 35
+Max K-Core: 5
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Core Distribution ===
+Core	Count	Percentage
+1	5	25.00%
+2	5	25.00%
+3	4	20.00%
+5	6	30.00%
+
+=== Top 100 Vertices by Coreness ===
+Rank	Vertex_ID	Coreness
+1	1	5
+2	2	5
+3	3	5
+4	4	5
+5	5	5
+6	6	5
+7	7	3
+8	8	3
+9	9	3
+10	10	3
+11	11	2
+12	12	2
+13	13	2
+14	14	2
+15	15	2
+16	16	1
+17	17	1
+18	18	1
+19	19	1
+20	20	1

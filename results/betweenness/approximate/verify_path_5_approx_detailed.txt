@@ -1,0 +1,15 @@
+Dataset: verify_path_5 (APPROXIMATE)
+Vertices: 5
+Edges: 4
+Samples Used: 5 (100.00%)
+Max Betweenness: 4.000000
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by Betweenness Centrality ===
+Rank	Vertex_ID	Betweenness
+1	3	4.000000
+2	2	3.000000
+3	4	3.000000
+4	1	0.000000
+5	5	0.000000

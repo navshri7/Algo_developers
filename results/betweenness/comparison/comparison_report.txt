@@ -1,0 +1,100 @@
+================================================================================
+BETWEENNESS CENTRALITY: EXACT vs APPROXIMATE COMPARISON
+================================================================================
+
+1. OVERALL STATISTICS
+--------------------------------------------------------------------------------
+Total experiments: 310
+  - Exact: 155
+  - Approximate: 155
+
+2. RUNTIME COMPARISON
+--------------------------------------------------------------------------------
+
+Exact Algorithm:
+  Runtime range: 0.000000s to 298.931000s
+  Average runtime: 10.724845s
+  Median runtime: 0.344000s
+  Std deviation: 40.623146s
+
+Approximate Algorithm:
+  Runtime range: 0.000000s to 29.440000s
+  Average runtime: 1.090090s
+  Median runtime: 0.120000s
+  Std deviation: 3.892104s
+
+Speedup Analysis (Exact / Approximate):
+  Average speedup: 5.29x
+  Min speedup: 0.88x
+  Max speedup: 10.43x
+
+  Speedup by dataset:
+    ba_10k_m3: 8.99x
+    ba_1k_m3: 1.79x
+    ba_1k_m5: 1.90x
+    ba_5k_m3: 8.08x
+    ba_5k_m5: 6.94x
+    cit-DBLP: 10.43x
+    cit-HepTh: 10.40x
+    citeseer: 5.88x
+    cora: 5.73x
+    er_1000_dense: 2.18x
+    er_1000_sparse: 1.69x
+    er_100_dense: 0.88x
+    er_100_sparse: 1.11x
+    er_10k_dense: 9.79x
+    er_10k_sparse: 9.47x
+    er_500_dense: 1.36x
+    er_500_sparse: 1.12x
+    er_5k_dense: 8.14x
+    er_5k_sparse: 8.57x
+    verify_complete_7: nanx
+    verify_cycle_6: nanx
+    verify_known_structure: nanx
+    verify_path_5: nanx
+    verify_star_9: nanx
+    ws_1k_k10_p03: 2.13x
+    ws_1k_k6_p01: 1.90x
+    ws_5k_k6_p01: 7.98x
+
+3. MEMORY USAGE COMPARISON
+--------------------------------------------------------------------------------
+
+Exact Algorithm:
+  Memory range: 0.00 MB to 3.54 MB
+  Average memory: 0.33 MB
+  Median memory: 0.12 MB
+
+Approximate Algorithm:
+  Memory range: 0.00 MB to 3.54 MB
+  Average memory: 0.33 MB
+  Median memory: 0.12 MB
+
+4. BETWEENNESS CENTRALITY STATISTICS
+--------------------------------------------------------------------------------
+
+Exact Algorithm:
+  Max BC range: 0.000000 to 31528431.196295
+  Average max BC: 1795728.695657
+  Median max BC: 54951.515531
+
+Approximate Algorithm:
+  Max BC range: 0.000000 to 31834191.675042
+  Average max BC: 1811221.223234
+  Median max BC: 50154.486968
+
+5. SAMPLING INFORMATION (Approximate Only)
+--------------------------------------------------------------------------------
+Sample size range: 5.0 to 2776.0
+Average samples: 572
+Sample percentage range: 10.00% to 100.00%
+
+6. CORRELATION ANALYSIS
+--------------------------------------------------------------------------------
+Vertices vs Runtime: 0.6089
+Edges vs Runtime: 0.7290
+Density vs Runtime: -0.0841
+
+================================================================================
+END OF REPORT
+================================================================================

@@ -1,0 +1,18 @@
+Dataset: verify_star_9
+Vertices: 9
+Edges: 8
+Max Betweenness: 28.000000
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by Betweenness Centrality ===
+Rank	Vertex_ID	Betweenness
+1	1	28.000000
+2	2	0.000000
+3	3	0.000000
+4	4	0.000000
+5	5	0.000000
+6	6	0.000000
+7	7	0.000000
+8	8	0.000000
+9	9	0.000000

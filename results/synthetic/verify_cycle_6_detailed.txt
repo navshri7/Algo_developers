@@ -1,0 +1,19 @@
+Dataset: verify_cycle_6
+Vertices: 6
+Edges: 6
+Max K-Core: 2
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Core Distribution ===
+Core	Count	Percentage
+2	6	100.00%
+
+=== Top 100 Vertices by Coreness ===
+Rank	Vertex_ID	Coreness
+1	1	2
+2	2	2
+3	3	2
+4	4	2
+5	5	2
+6	6	2

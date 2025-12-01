@@ -1,0 +1,46 @@
+Degree Centrality Analysis Results
+==================================
+
+Graph Statistics:
+  Nodes: 5001
+  Edges: 37325
+  Runtime: 0.009 seconds
+  Peak Memory: 3.53 MB
+  Runtime per Node: 0.000002 ms
+  Runtime per Edge: 0.000000 ms
+
+Top 10 by Total Degree:
+  1. Node 4611: 29
+  2. Node 4551: 29
+  3. Node 3408: 28
+  4. Node 2717: 28
+  5. Node 1268: 28
+  6. Node 661: 28
+  7. Node 512: 28
+  8. Node 4033: 27
+  9. Node 3860: 27
+  10. Node 3810: 27
+
+Top 10 by In-Degree (Citations Received):
+  1. Node 98: 27
+  2. Node 661: 26
+  3. Node 109: 26
+  4. Node 107: 26
+  5. Node 512: 25
+  6. Node 648: 24
+  7. Node 280: 24
+  8. Node 210: 24
+  9. Node 834: 23
+  10. Node 789: 23
+
+Top 10 by Out-Degree (Citations Made):
+  1. Node 4611: 27
+  2. Node 4551: 26
+  3. Node 4930: 25
+  4. Node 4850: 25
+  5. Node 4814: 25
+  6. Node 4603: 25
+  7. Node 4957: 24
+  8. Node 4903: 24
+  9. Node 4895: 24
+  10. Node 4578: 24

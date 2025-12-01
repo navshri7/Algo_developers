@@ -1,0 +1,39 @@
+HITS Algorithm Analysis Results
+===============================
+
+Graph Statistics:
+  Nodes: 1001
+  Edges: 5001
+  Runtime: 0.005 seconds
+  Peak Memory: 3.32 MB
+  Runtime per Node: 0.000005 ms
+  Runtime per Edge: 0.000001 ms
+
+Convergence Parameters:
+  Epsilon: 0.0000010000
+  Max Iterations: 1000
+  Iterations Taken: 58
+
+Top 10 by Hub Score:
+  1. Node 999: 0.1206510678
+  2. Node 998: 0.1184863584
+  3. Node 996: 0.1129025757
+  4. Node 1000: 0.1059053293
+  5. Node 850: 0.1038749997
+  6. Node 885: 0.0935550413
+  7. Node 997: 0.0881518514
+  8. Node 506: 0.0815788394
+  9. Node 965: 0.0798955055
+  10. Node 893: 0.0792133264
+
+Top 10 by Authority Score:
+  1. Node 2: 0.1231813555
+  2. Node 3: 0.1078784481
+  3. Node 995: 0.0970640426
+  4. Node 4: 0.0931625434
+  5. Node 99: 0.0805615775
+  6. Node 994: 0.0782402896
+  7. Node 98: 0.0745581631
+  8. Node 452: 0.0727821009
+  9. Node 215: 0.0714568420
+  10. Node 846: 0.0702756422

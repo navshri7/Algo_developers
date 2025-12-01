@@ -46,7 +46,7 @@ def extract_stats_from_detailed(filepath):
     
     return stats
 
-def generate_summary_for_algorithm(result_dir, algorithm_name):
+def generate_summary_for_algorithm(result_dir, algorithm_name, suffix=None):
     """Generate summary CSV for an algorithm from its detailed results"""
     
     result_path = Path(result_dir)
@@ -55,7 +55,11 @@ def generate_summary_for_algorithm(result_dir, algorithm_name):
         return
     
     # Find all detailed files
-    detailed_files = list(result_path.glob('*_detailed.txt'))
+    if suffix:
+        # For HITS hub/authority, look for files with specific suffix
+        detailed_files = list(result_path.glob(f'*{suffix}_detailed.txt'))
+    else:
+        detailed_files = list(result_path.glob('*_detailed.txt'))
     
     if not detailed_files:
         print(f"  ⚠ No detailed files found in {result_dir}")
@@ -64,7 +68,7 @@ def generate_summary_for_algorithm(result_dir, algorithm_name):
     # Extract stats from each file
     summaries = []
     for detailed_file in detailed_files:
-        dataset_name = detailed_file.stem.replace('_detailed', '')
+        dataset_name = detailed_file.stem.replace(f'{suffix}_detailed', '').replace('_detailed', '')
         stats = extract_stats_from_detailed(str(detailed_file))
         stats['Dataset'] = dataset_name
         stats['Density'] = stats['Edges'] / (stats['Nodes'] * (stats['Nodes'] - 1)) if stats['Nodes'] > 1 else 0
@@ -73,7 +77,10 @@ def generate_summary_for_algorithm(result_dir, algorithm_name):
     
     if summaries:
         df = pd.DataFrame(summaries)
-        summary_csv = result_path / 'summary.csv'
+        if suffix:
+            summary_csv = result_path / f'summary{suffix}.csv'
+        else:
+            summary_csv = result_path / 'summary.csv'
         df.to_csv(summary_csv, index=False)
         print(f"  ✓ Generated: {summary_csv} ({len(df)} entries)")
     else:
@@ -86,14 +93,15 @@ def main():
     print()
     
     algorithms = [
-        ('Bridging Centrality', 'results/bridging_centrality'),
-        ('Degree Centrality', 'results/degree_centrality'),
-        ('HITS', 'results/hits'),
+        ('Bridging Centrality', 'results/bridging_centrality', None),
+        ('Degree Centrality', 'results/degree_centrality', None),
+        ('HITS (Hub)', 'results/hits', '_hub'),
+        ('HITS (Authority)', 'results/hits', '_authority'),
     ]
     
-    for algo_name, result_dir in algorithms:
+    for algo_name, result_dir, suffix in algorithms:
         print(f"Processing {algo_name}...")
-        generate_summary_for_algorithm(result_dir, algo_name)
+        generate_summary_for_algorithm(result_dir, algo_name, suffix)
     
     print()
     print("=" * 80)

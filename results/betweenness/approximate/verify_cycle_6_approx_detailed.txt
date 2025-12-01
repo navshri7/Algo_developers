@@ -1,0 +1,16 @@
+Dataset: verify_cycle_6 (APPROXIMATE)
+Vertices: 6
+Edges: 6
+Samples Used: 6 (100.00%)
+Max Betweenness: 2.000000
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by Betweenness Centrality ===
+Rank	Vertex_ID	Betweenness
+1	1	2.000000
+2	2	2.000000
+3	3	2.000000
+4	4	2.000000
+5	5	2.000000
+6	6	2.000000

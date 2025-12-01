@@ -1,0 +1,377 @@
+================================================================================
+K-CORE DECOMPOSITION: STATISTICAL ANALYSIS REPORT
+================================================================================
+
+1. OVERALL STATISTICS
+--------------------------------------------------------------------------------
+Total graphs analyzed: 360
+  - Synthetic: 320
+  - Real datasets: 40
+
+Graph size range:
+  - Vertices: 5 to 27,769
+  - Edges: 4 to 352,285
+
+2. RUNTIME ANALYSIS
+--------------------------------------------------------------------------------
+Runtime range: 0.000000s to 0.02s
+Average runtime: 0.000542s
+Median runtime: 0.000000s
+Std deviation: 0.001680s
+
+Empirical time complexity: O(n^nan)
+  (Expected: O(V + E) ≈ O(n^1.0) for sparse graphs)
+
+3. MEMORY USAGE ANALYSIS
+--------------------------------------------------------------------------------
+Memory range: 0.00 MB to 3.76 MB
+Average memory: 0.33 MB
+Median memory: 0.10 MB
+Std deviation: 0.63 MB
+
+Empirical space complexity: O(n^nan)
+  (Expected: O(V + E) ≈ O(n^1.0) for sparse graphs)
+
+4. K-CORE STATISTICS
+--------------------------------------------------------------------------------
+Max k-core range: 1 to 37
+Average max k-core: 7.22
+Median max k-core: 4
+
+5. GRAPH DENSITY ANALYSIS
+--------------------------------------------------------------------------------
+Density range: 4.939494e-04 to 1.000000e+00
+Average degree range: 1.60 to 25.46
+
+6. CORRELATION ANALYSIS
+--------------------------------------------------------------------------------
+Density vs Max K-Core: -0.0603
+Avg Degree vs Max K-Core: 0.8743
+Graph Size vs Runtime: 0.7905
+
+7. REAL DATASET HIGHLIGHTS
+--------------------------------------------------------------------------------
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.005000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.007000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.022000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.006000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.009000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.007000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.007000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.009000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.006000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-HepTh:
+  - Vertices: 27,769
+  - Edges: 352,285
+  - Max K-Core: 37
+  - Runtime: 0.007000s
+  - Memory: 3.76 MB
+  - Avg Degree: 25.37
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.002000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.000000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.003000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.002000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.002000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.003000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.002000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.003000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.002000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+cit-DBLP:
+  - Vertices: 12,592
+  - Edges: 49,621
+  - Max K-Core: 12
+  - Runtime: 0.002000s
+  - Memory: 0.86 MB
+  - Avg Degree: 7.88
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+citeseer:
+  - Vertices: 3,264
+  - Edges: 4,536
+  - Max K-Core: 7
+  - Runtime: 0.000000s
+  - Memory: 0.16 MB
+  - Avg Degree: 2.78
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+cora:
+  - Vertices: 2,708
+  - Edges: 5,278
+  - Max K-Core: 4
+  - Runtime: 0.000000s
+  - Memory: 0.14 MB
+  - Avg Degree: 3.90
+
+================================================================================
+END OF REPORT
+================================================================================

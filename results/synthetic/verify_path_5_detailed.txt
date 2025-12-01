@@ -1,0 +1,18 @@
+Dataset: verify_path_5
+Vertices: 5
+Edges: 4
+Max K-Core: 1
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Core Distribution ===
+Core	Count	Percentage
+1	5	100.00%
+
+=== Top 100 Vertices by Coreness ===
+Rank	Vertex_ID	Coreness
+1	1	1
+2	2	1
+3	3	1
+4	4	1
+5	5	1

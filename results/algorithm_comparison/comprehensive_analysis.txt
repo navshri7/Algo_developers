@@ -1,0 +1,537 @@
+====================================================================================================
+COMPREHENSIVE ALGORITHM COMPARISON: FOUNDATIONAL vs FRONTIER RESEARCH
+====================================================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------------------------------------
+This report compares four centrality algorithms across synthetic and real-world datasets:
+
+FOUNDATIONAL ALGORITHMS (Classical Graph Theory):
+  1. K-Core Decomposition - Identifies nested core-periphery structure
+     - Time: O(V + E), Space: O(V + E)
+     - Detects: Structural cohesion, network hierarchy
+
+  2. Betweenness Centrality (Exact) - Measures node importance in shortest paths
+     - Time: O(V·E), Space: O(V + E)
+     - Detects: Bridge nodes, network bottlenecks
+
+FRONTIER ALGORITHMS (Modern Network Science):
+  3. Katz Centrality - Iterative measure with attenuation factor
+     - Time: O(V·E·iterations), Space: O(V + E)
+     - Detects: Influence propagation, weighted connections
+
+  4. Eigenvector Centrality - Importance based on connections to important nodes
+     - Time: O(V·E·iterations), Space: O(V + E)
+     - Detects: Hub nodes, network prestige
+
+
+1. PERFORMANCE ANALYSIS
+----------------------------------------------------------------------------------------------------
+
+K-Core:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.003000s
+    - Mean: 0.000278s
+    - Median: 0.000000s
+  Memory:
+    - Min: 0.00 MB
+    - Max: 0.77 MB
+    - Mean: 0.21 MB
+
+Betweenness (Exact):
+  Runtime:
+    - Min: 0.000000s
+    - Max: 298.931000s
+    - Mean: 10.724845s
+    - Median: 0.344000s
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.33 MB
+
+Katz:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.488000s
+    - Mean: 0.030000s
+    - Median: 0.009500s
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.33 MB
+
+Eigenvector:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.172000s
+    - Mean: 0.010411s
+    - Median: 0.003000s
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.33 MB
+
+
+2. WHAT EACH ALGORITHM DETECTS
+----------------------------------------------------------------------------------------------------
+
+K-CORE DECOMPOSITION:
+  Detects:
+    • Core-periphery structure
+    • Network hierarchy and layers
+    • Structural cohesion groups
+    • Robustness and resilience
+  Best for:
+    • Social network analysis
+    • Identifying influential communities
+    • Network stability analysis
+  Limitations:
+    • Doesn't consider path importance
+    • Treats all edges equally
+    • Undirected perspective
+
+BETWEENNESS CENTRALITY (EXACT):
+  Detects:
+    • Bridge nodes and bottlenecks
+    • Information flow control points
+    • Network vulnerability points
+    • Shortest path dependencies
+  Best for:
+    • Communication networks
+    • Transportation networks
+    • Finding critical infrastructure
+  Limitations:
+    • Computationally expensive O(V·E)
+    • Assumes shortest path routing
+    • Sensitive to network structure
+
+KATZ CENTRALITY:
+  Detects:
+    • Influence and reachability
+    • Weighted path importance
+    • Attenuation-based importance
+    • Connection quality and distance
+  Best for:
+    • Citation networks
+    • Recommendation systems
+    • Influence propagation models
+  Advantages over Betweenness:
+    • Considers all paths, not just shortest
+    • Faster convergence
+    • More stable for sparse networks
+
+EIGENVECTOR CENTRALITY:
+  Detects:
+    • Hub nodes and prestige
+    • Recursive importance
+    • Network influence propagation
+    • Spectral properties
+  Best for:
+    • Web page ranking (PageRank basis)
+    • Scientific collaboration networks
+    • Identifying key opinion leaders
+  Advantages over Katz:
+    • No attenuation parameter needed
+    • Theoretically grounded in spectral analysis
+    • Better for recursive importance
+
+
+3. COMPARATIVE ANALYSIS
+----------------------------------------------------------------------------------------------------
+
+FOUNDATIONAL vs FRONTIER:
+  Foundational (K-Core, Betweenness):
+    • Established mathematical foundations
+    • Well-understood properties
+    • Deterministic results
+    • Limited parameters
+    • Slower for large graphs
+
+  Frontier (Katz, Eigenvector):
+    • Modern network science approach
+    • Parameter-dependent
+    • Iterative computation
+    • Better scalability
+    • More flexible modeling
+
+
+4. RECOMMENDATIONS BY USE CASE
+----------------------------------------------------------------------------------------------------
+
+Small Networks (< 1000 nodes):
+  • Use: Betweenness Centrality (exact)
+  • Reason: Accurate, deterministic, manageable computation
+  • Also try: K-Core for structure, Eigenvector for hubs
+
+Medium Networks (1000-100k nodes):
+  • Use: Katz or Eigenvector Centrality
+  • Reason: Good balance of accuracy and speed
+  • Also try: K-Core for fast structural analysis
+
+Large Networks (> 100k nodes):
+  • Use: K-Core Decomposition
+  • Reason: Linear time complexity
+  • Alternative: Approximate Betweenness
+
+Citation Networks:
+  • Primary: Eigenvector or Katz Centrality
+  • Secondary: Betweenness for bottlenecks
+  • Tertiary: K-Core for community structure
+
+Social Networks:
+  • Primary: K-Core for communities
+  • Secondary: Eigenvector for influencers
+  • Tertiary: Betweenness for bridges
+
+Infrastructure Networks:
+  • Primary: Betweenness for critical nodes
+  • Secondary: K-Core for robustness
+  • Tertiary: Katz for redundancy
+
+
+5. CORRELATION ANALYSIS
+----------------------------------------------------------------------------------------------------
+Analyzing how different algorithms rank the same nodes...
+
+
+
+6. DATASET-SPECIFIC INSIGHTS
+----------------------------------------------------------------------------------------------------
+
+verify_complete_7:
+  Vertices: 7
+  Edges: 21
+  Density: 1.000000e+00
+  Avg Degree: 6.00
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.00 MB
+    Betweenness (Exact): 0.000000s, 0.00 MB
+    Katz: 0.000000s, 0.00 MB
+    Eigenvector: 0.000000s, 0.00 MB
+
+verify_cycle_6:
+  Vertices: 6
+  Edges: 6
+  Density: 4.000000e-01
+  Avg Degree: 2.00
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.00 MB
+    Betweenness (Exact): 0.000000s, 0.00 MB
+    Katz: 0.000000s, 0.00 MB
+    Eigenvector: 0.000000s, 0.00 MB
+
+verify_known_structure:
+  Vertices: 20
+  Edges: 35
+  Density: 1.842105e-01
+  Avg Degree: 3.50
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.00 MB
+    Betweenness (Exact): 0.000000s, 0.00 MB
+    Katz: 0.000000s, 0.00 MB
+    Eigenvector: 0.000000s, 0.00 MB
+
+verify_path_5:
+  Vertices: 5
+  Edges: 4
+  Density: 4.000000e-01
+  Avg Degree: 1.60
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.00 MB
+    Betweenness (Exact): 0.000000s, 0.00 MB
+    Katz: 0.000000s, 0.00 MB
+    Eigenvector: 0.000000s, 0.00 MB
+
+verify_star_9:
+  Vertices: 9
+  Edges: 8
+  Density: 2.222222e-01
+  Avg Degree: 1.78
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.00 MB
+    Betweenness (Exact): 0.000000s, 0.00 MB
+    Katz: 0.001000s, 0.00 MB
+    Eigenvector: 0.000000s, 0.00 MB
+
+er_1000_dense:
+  Vertices: 1,000
+  Edges: 9,910
+  Density: 1.983984e-02
+  Avg Degree: 19.82
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.11 MB
+    Betweenness (Exact): 0.237000s, 0.11 MB
+    Katz: 0.006000s, 0.11 MB
+    Eigenvector: 0.001000s, 0.11 MB
+
+er_1000_sparse:
+  Vertices: 1,000
+  Edges: 2,542
+  Density: 5.089089e-03
+  Avg Degree: 5.08
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.06 MB
+    Betweenness (Exact): 0.168000s, 0.05 MB
+    Katz: 0.004000s, 0.05 MB
+    Eigenvector: 0.001000s, 0.05 MB
+
+er_100_dense:
+  Vertices: 100
+  Edges: 980
+  Density: 1.979798e-01
+  Avg Degree: 19.60
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.01 MB
+    Betweenness (Exact): 0.003000s, 0.01 MB
+    Katz: 0.000000s, 0.01 MB
+    Eigenvector: 0.000000s, 0.01 MB
+
+er_100_sparse:
+  Vertices: 100
+  Edges: 259
+  Density: 5.232323e-02
+  Avg Degree: 5.18
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.01 MB
+    Betweenness (Exact): 0.002000s, 0.00 MB
+    Katz: 0.000000s, 0.00 MB
+    Eigenvector: 0.000000s, 0.00 MB
+
+er_10k_dense:
+  Vertices: 10,000
+  Edges: 49,956
+  Density: 9.992199e-04
+  Avg Degree: 9.99
+  Algorithm Performance:
+    K-Core: 0.003000s, 0.76 MB
+    Betweenness (Exact): 14.720000s, 0.68 MB
+    Katz: 0.022000s, 0.68 MB
+    Eigenvector: 0.006000s, 0.68 MB
+
+er_10k_sparse:
+  Vertices: 10,000
+  Edges: 25,024
+  Density: 5.005301e-04
+  Avg Degree: 5.00
+  Algorithm Performance:
+    K-Core: 0.001000s, 0.57 MB
+    Betweenness (Exact): 10.072000s, 0.49 MB
+    Katz: 0.031000s, 0.49 MB
+    Eigenvector: 0.006000s, 0.49 MB
+
+er_500_dense:
+  Vertices: 500
+  Edges: 6,192
+  Density: 4.963527e-02
+  Avg Degree: 24.77
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.07 MB
+    Betweenness (Exact): 0.142000s, 0.06 MB
+    Katz: 0.002000s, 0.06 MB
+    Eigenvector: 0.000000s, 0.06 MB
+
+er_500_sparse:
+  Vertices: 500
+  Edges: 1,218
+  Density: 9.763527e-03
+  Avg Degree: 4.87
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.03 MB
+    Betweenness (Exact): 0.062000s, 0.03 MB
+    Katz: 0.000000s, 0.03 MB
+    Eigenvector: 0.000000s, 0.03 MB
+
+er_5k_dense:
+  Vertices: 5,000
+  Edges: 37,678
+  Density: 3.014843e-03
+  Avg Degree: 15.07
+  Algorithm Performance:
+    K-Core: 0.001000s, 0.48 MB
+    Betweenness (Exact): 4.453000s, 0.44 MB
+    Katz: 0.013000s, 0.44 MB
+    Eigenvector: 0.003000s, 0.44 MB
+
+er_5k_sparse:
+  Vertices: 5,000
+  Edges: 12,635
+  Density: 1.011002e-03
+  Avg Degree: 5.05
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.29 MB
+    Betweenness (Exact): 2.454000s, 0.25 MB
+    Katz: 0.009000s, 0.25 MB
+    Eigenvector: 0.002000s, 0.25 MB
+
+ba_1k_m3:
+  Vertices: 1,000
+  Edges: 2,991
+  Density: 5.987988e-03
+  Avg Degree: 5.98
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.06 MB
+    Betweenness (Exact): 0.107000s, 0.05 MB
+    Katz: 0.001000s, 0.05 MB
+    Eigenvector: 0.000000s, 0.05 MB
+
+ba_1k_m5:
+  Vertices: 1,000
+  Edges: 4,975
+  Density: 9.959960e-03
+  Avg Degree: 9.95
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.08 MB
+    Betweenness (Exact): 0.213000s, 0.07 MB
+    Katz: 0.002000s, 0.07 MB
+    Eigenvector: 0.000000s, 0.07 MB
+
+ws_1k_k10_p03:
+  Vertices: 1,000
+  Edges: 5,000
+  Density: 1.001001e-02
+  Avg Degree: 10.00
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.08 MB
+    Betweenness (Exact): 0.212000s, 0.07 MB
+    Katz: 0.006000s, 0.07 MB
+    Eigenvector: 0.002000s, 0.07 MB
+
+ws_1k_k6_p01:
+  Vertices: 1,000
+  Edges: 3,000
+  Density: 6.006006e-03
+  Avg Degree: 6.00
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.06 MB
+    Betweenness (Exact): 0.128000s, 0.05 MB
+    Katz: 0.007000s, 0.05 MB
+    Eigenvector: 0.008000s, 0.05 MB
+
+ba_5k_m3:
+  Vertices: 5,000
+  Edges: 14,991
+  Density: 1.199520e-03
+  Avg Degree: 6.00
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.31 MB
+    Betweenness (Exact): 2.608000s, 0.27 MB
+    Katz: 0.013000s, 0.27 MB
+    Eigenvector: 0.005000s, 0.27 MB
+
+ba_5k_m5:
+  Vertices: 5,000
+  Edges: 24,975
+  Density: 1.998400e-03
+  Avg Degree: 9.99
+  Algorithm Performance:
+    K-Core: 0.001000s, 0.38 MB
+    Betweenness (Exact): 3.148000s, 0.34 MB
+    Katz: 0.017000s, 0.34 MB
+    Eigenvector: 0.007000s, 0.34 MB
+
+ba_10k_m3:
+  Vertices: 10,000
+  Edges: 29,991
+  Density: 5.998800e-04
+  Avg Degree: 6.00
+  Algorithm Performance:
+    K-Core: 0.002000s, 0.61 MB
+    Betweenness (Exact): 10.583000s, 0.53 MB
+    Katz: 0.035000s, 0.53 MB
+    Eigenvector: 0.019000s, 0.53 MB
+
+ws_5k_k6_p01:
+  Vertices: 5,000
+  Edges: 15,000
+  Density: 1.200240e-03
+  Avg Degree: 6.00
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.31 MB
+    Betweenness (Exact): 2.231000s, 0.27 MB
+    Katz: 0.030000s, 0.27 MB
+    Eigenvector: 0.016000s, 0.27 MB
+
+cliques_10x15:
+  Vertices: 150
+  Edges: 1,070
+  Density: 9.574944e-02
+  Avg Degree: 14.27
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.01 MB
+
+cliques_20x10:
+  Vertices: 200
+  Edges: 950
+  Density: 4.773869e-02
+  Avg Degree: 9.50
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.01 MB
+
+cliques_5x20:
+  Vertices: 100
+  Edges: 960
+  Density: 1.939394e-01
+  Avg Degree: 19.20
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.01 MB
+
+plc_1k_m3_p01:
+  Vertices: 1,000
+  Edges: 2,991
+  Density: 5.987988e-03
+  Avg Degree: 5.98
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.06 MB
+
+plc_5k_m4_p02:
+  Vertices: 5,000
+  Edges: 19,983
+  Density: 1.598960e-03
+  Avg Degree: 7.99
+  Algorithm Performance:
+    K-Core: 0.000000s, 0.34 MB
+
+cit-DBLP:
+  Vertices: 12,592
+  Edges: 49,621
+  Density: 6.259513e-04
+  Avg Degree: 7.88
+  Algorithm Performance:
+    Betweenness (Exact): 17.071000s, 0.76 MB
+    Katz: 0.033000s, 0.76 MB
+    Eigenvector: 0.008000s, 0.76 MB
+
+cit-HepTh:
+  Vertices: 27,769
+  Edges: 352,285
+  Density: 9.137330e-04
+  Avg Degree: 25.37
+  Algorithm Performance:
+    Betweenness (Exact): 186.544000s, 3.54 MB
+    Katz: 0.351000s, 3.54 MB
+    Eigenvector: 0.125000s, 3.54 MB
+
+citeseer:
+  Vertices: 3,264
+  Edges: 4,536
+  Density: 8.517964e-04
+  Avg Degree: 2.78
+  Algorithm Performance:
+    Betweenness (Exact): 0.323000s, 0.13 MB
+    Katz: 0.003000s, 0.13 MB
+    Eigenvector: 0.003000s, 0.13 MB
+
+cora:
+  Vertices: 2,708
+  Edges: 5,278
+  Density: 1.440000e-03
+  Avg Degree: 3.90
+  Algorithm Performance:
+    Betweenness (Exact): 0.450000s, 0.12 MB
+    Katz: 0.007000s, 0.12 MB
+    Eigenvector: 0.003000s, 0.12 MB
+
+====================================================================================================
+END OF REPORT
+====================================================================================================

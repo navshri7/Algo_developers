@@ -92,6 +92,14 @@ def load_all_results():
         df['Category'] = 'Frontier'
         results['HITS (Authority)'] = df
     
+    # PageRank
+    pagerank_csv = Path("results/centrality/pagerank/summary.csv")
+    if pagerank_csv.exists():
+        df = pd.read_csv(pagerank_csv)
+        df['Algorithm'] = 'PageRank'
+        df['Category'] = 'Frontier'
+        results['PageRank'] = df
+    
     if not results:
         return None
     
@@ -152,6 +160,11 @@ def analyze_node_rankings(output_dir):
         hits_auth_file = Path(f"results/hits/{dataset}_authority_detailed.txt")
         if hits_auth_file.exists():
             top_nodes['HITS (Auth)'] = extract_top_nodes(hits_auth_file, 20)
+        
+        # PageRank
+        pagerank_file = Path(f"results/centrality/pagerank/{dataset}_pagerank_detailed.txt")
+        if pagerank_file.exists():
+            top_nodes['PageRank'] = extract_top_nodes(pagerank_file, 20)
         
         if not top_nodes:
             ax.text(0.5, 0.5, f'{dataset}\n(No data)', ha='center', va='center')
@@ -548,28 +561,41 @@ def generate_comprehensive_report(df, output_dir):
     print(f"  ✓ Saved: comprehensive_analysis.txt")
 
 def print_top_20_comparison(output_dir):
-    """Save top 20 nodes for each algorithm side-by-side (REAL GRAPHS ONLY) to file"""
+    """Visualize, print, and save top 20 nodes for each algorithm side-by-side (REAL GRAPHS ONLY)"""
     report_file = output_dir / 'top_20_nodes_comparison.txt'
+    
+    # Real graphs only - for foundational vs frontier comparison
+    graphs = [
+        ('data/converted_datasets/cit-DBLP.txt', 'cit-DBLP'),
+        ('data/converted_datasets/cit-HepTh.txt', 'cit-HepTh'),
+        ('data/converted_datasets/citeseer.txt', 'CiteSeer'),
+        ('data/converted_datasets/cora.txt', 'Cora'),
+    ]
+    
+    # Create visualization figure
+    fig, axes = plt.subplots(2, 2, figsize=(20, 16))
+    axes = axes.flatten()
     
     with open(report_file, 'w') as f:
         f.write("\n" + "=" * 150 + "\n")
         f.write("TOP 20 NODES BY EACH ALGORITHM - FOUNDATIONAL vs FRONTIER (REAL GRAPHS)\n")
         f.write("=" * 150 + "\n\n")
         
-        # Real graphs only - for foundational vs frontier comparison
-        graphs = [
-            ('data/converted_datasets/cit-DBLP.txt', 'cit-DBLP'),
-            ('data/converted_datasets/cit-HepTh.txt', 'cit-HepTh'),
-            ('data/converted_datasets/citeseer.txt', 'CiteSeer'),
-            ('data/converted_datasets/cora.txt', 'Cora'),
-        ]
-        
-        for graph_file, graph_name in graphs:
+        for idx, (graph_file, graph_name) in enumerate(graphs):
+            if idx >= len(axes):
+                break
+                
             if not Path(graph_file).exists():
                 continue
             
+            ax = axes[idx]
             f.write(f"\n{graph_name}\n")
             f.write("-" * 150 + "\n\n")
+            
+            # Print to console
+            print(f"\n{'='*100}")
+            print(f"{graph_name.upper()} - TOP 20 NODES COMPARISON")
+            print(f"{'='*100}\n")
             
             graph_base = Path(graph_file).stem
             
@@ -585,26 +611,25 @@ def print_top_20_comparison(output_dir):
                 ('Eigenvector', 'results/centrality/eigenvector', None),
                 ('HITS (Hub)', 'results/hits', '_hub'),
                 ('HITS (Auth)', 'results/hits', '_authority'),
-                ('PageRank', 'results/centrality/pagerank'),
-        ]
-    
+                ('PageRank', 'results/centrality/pagerank', None),
+            ]
+            
             for algo_name, result_dir, suffix in algorithms:
                 if suffix:
                     result_file = Path(result_dir) / f"{graph_base}{suffix}_detailed.txt"
                 else:
                     if algo_name == 'PageRank':
-                result_file = Path(result_dir) / f"{graph_base}_pagerank_detailed.txt"
-            else:
-                result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
+                        result_file = Path(result_dir) / f"{graph_base}_pagerank_detailed.txt"
+                    else:
+                        result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
                 
                 if result_file.exists():
                     rankings = extract_top_nodes_with_values(result_file, 20)
                     all_top_20[algo_name] = rankings
                 else:
                     all_top_20[algo_name] = []
-    
         
-            # Write side-by-side table
+            # Write side-by-side table to file
             max_rows = max(len(v) for v in all_top_20.values()) if all_top_20.values() else 0
             
             # Header
@@ -613,6 +638,8 @@ def print_top_20_comparison(output_dir):
                 header += f"{algo_name:25} | "
             f.write(header + "\n")
             f.write("-" * 150 + "\n")
+            print(header)
+            print("-" * 150)
             
             # Rows
             for row_idx in range(max_rows):
@@ -624,8 +651,34 @@ def print_top_20_comparison(output_dir):
                     else:
                         row_str += f"{'':25} | "
                 f.write(row_str + "\n")
+                print(row_str)
             
             f.write("\n")
+            print()
+            
+            # Create visualization: Node overlap heatmap
+            if all_top_20:
+                algo_names = list(all_top_20.keys())
+                overlap_matrix = np.zeros((len(algo_names), len(algo_names)))
+                
+                for i, algo1 in enumerate(algo_names):
+                    nodes1 = set(node_id for node_id, _ in all_top_20[algo1])
+                    for j, algo2 in enumerate(algo_names):
+                        nodes2 = set(node_id for node_id, _ in all_top_20[algo2])
+                        overlap = len(nodes1 & nodes2)
+                        overlap_matrix[i, j] = overlap
+                
+                sns.heatmap(overlap_matrix, annot=True, fmt='.0f', cmap='YlOrRd',
+                           xticklabels=algo_names, yticklabels=algo_names, ax=ax,
+                           cbar_kws={'label': 'Overlap (Top 20)'})
+                ax.set_title(f'{graph_name} - Top 20 Node Overlap', fontsize=11, fontweight='bold')
+                plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
+    
+    plt.tight_layout()
+    viz_file = output_dir / 'top_20_nodes_comparison_visualization.png'
+    plt.savefig(viz_file, dpi=300, bbox_inches='tight')
+    print(f"  ✓ Saved visualization: top_20_nodes_comparison_visualization.png")
+    plt.close()
     
     print(f"  ✓ Saved: top_20_nodes_comparison.txt")
 
@@ -720,6 +773,7 @@ def main():
     print("  - runtime_characteristics.png (Performance comparison)")
     print("  - comprehensive_analysis.txt (Detailed findings and recommendations)")
     print("  - top_20_nodes_comparison.txt (Top 20 nodes side-by-side comparison)")
+    print("  - top_20_nodes_comparison_visualization.png (Visualization of top 20 node overlaps)")
     print()
 
 if __name__ == "__main__":

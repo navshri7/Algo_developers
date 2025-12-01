@@ -1,0 +1,30 @@
+Dataset: verify_known_structure (APPROXIMATE)
+Vertices: 20
+Edges: 35
+Samples Used: 20 (100.00%)
+Max Betweenness: 99.000000
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by Betweenness Centrality ===
+Rank	Vertex_ID	Betweenness
+1	11	99.000000
+2	10	90.000000
+3	15	75.500000
+4	6	70.000000
+5	16	66.000000
+6	7	36.000000
+7	8	36.000000
+8	13	6.500000
+9	14	3.000000
+10	1	0.000000
+11	2	0.000000
+12	3	0.000000
+13	4	0.000000
+14	5	0.000000
+15	9	0.000000
+16	12	0.000000
+17	17	0.000000
+18	18	0.000000
+19	19	0.000000
+20	20	0.000000

@@ -1,0 +1,15 @@
+Dataset: verify_path_5
+Vertices: 5
+Edges: 4
+Max Katz Centrality: 1.000000
+Alpha Parameter: 0.495833
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by Katz Centrality ===
+Rank	Vertex_ID	Katz_Centrality
+1	3	1.000000
+2	2	0.890123
+3	4	0.890123
+4	1	0.558647
+5	5	0.558647

@@ -139,6 +139,40 @@ void write_hits_csv(const string &filepath,
     fout.close();
 }
 
+void write_hits_hub_csv(const string &filepath,
+                        const vector<ll> &index_to_node,
+                        const vector<double> &hubs) {
+    ofstream fout(filepath);
+    if (!fout.is_open()) {
+        cerr << "Error: cannot open output file: " << filepath << endl;
+        exit(1);
+    }
+    fout << "Node,Hub\n";
+    int n = (int)index_to_node.size();
+    for (int i = 0; i < n; ++i) {
+        fout << index_to_node[i] << "," << fixed << setprecision(10)
+             << hubs[i] << "\n";
+    }
+    fout.close();
+}
+
+void write_hits_authority_csv(const string &filepath,
+                              const vector<ll> &index_to_node,
+                              const vector<double> &auths) {
+    ofstream fout(filepath);
+    if (!fout.is_open()) {
+        cerr << "Error: cannot open output file: " << filepath << endl;
+        exit(1);
+    }
+    fout << "Node,Authority\n";
+    int n = (int)index_to_node.size();
+    for (int i = 0; i < n; ++i) {
+        fout << index_to_node[i] << "," << fixed << setprecision(10)
+             << auths[i] << "\n";
+    }
+    fout.close();
+}
+
 void writeDetailedResults(const string &filename,
                           const vector<ll> &index_to_node,
                           const vector<double> &hubs,
@@ -195,6 +229,94 @@ void writeDetailedResults(const string &filename,
     fout.close();
 }
 
+void writeDetailedHubResults(const string &filename,
+                             const vector<ll> &index_to_node,
+                             const vector<double> &hubs,
+                             double runtime_sec,
+                             double memory_mb,
+                             int num_edges,
+                             int iterations_taken,
+                             double epsilon,
+                             int max_iter) {
+    ofstream fout(filename);
+    if (!fout.is_open()) {
+        cerr << "Error: Cannot create " << filename << endl;
+        exit(1);
+    }
+    
+    fout << "HITS Hub Score Analysis Results\n";
+    fout << "===============================\n\n";
+    fout << "Graph Statistics:\n";
+    fout << "  Nodes: " << index_to_node.size() << "\n";
+    fout << "  Edges: " << num_edges << "\n";
+    fout << "  Runtime: " << fixed << setprecision(3) << runtime_sec << " seconds\n";
+    fout << "  Peak Memory: " << fixed << setprecision(2) << memory_mb << " MB\n";
+    fout << "  Runtime per Node: " << fixed << setprecision(6) << (runtime_sec / index_to_node.size()) << " ms\n";
+    fout << "  Runtime per Edge: " << fixed << setprecision(6) << (runtime_sec / num_edges) << " ms\n\n";
+    
+    fout << "Convergence Parameters:\n";
+    fout << "  Epsilon: " << fixed << setprecision(10) << epsilon << "\n";
+    fout << "  Max Iterations: " << max_iter << "\n";
+    fout << "  Iterations Taken: " << iterations_taken << "\n\n";
+    
+    fout << "Top 10 by Hub Score:\n";
+    vector<pair<double, ll>> sorted_hubs;
+    for (int i = 0; i < (int)index_to_node.size(); i++)
+        sorted_hubs.push_back({hubs[i], index_to_node[i]});
+    sort(sorted_hubs.rbegin(), sorted_hubs.rend());
+    
+    for (int i = 0; i < min(10, (int)sorted_hubs.size()); i++) {
+        fout << "  " << (i+1) << ". Node " << sorted_hubs[i].second 
+             << ": " << fixed << setprecision(10) << sorted_hubs[i].first << "\n";
+    }
+    
+    fout.close();
+}
+
+void writeDetailedAuthorityResults(const string &filename,
+                                   const vector<ll> &index_to_node,
+                                   const vector<double> &auths,
+                                   double runtime_sec,
+                                   double memory_mb,
+                                   int num_edges,
+                                   int iterations_taken,
+                                   double epsilon,
+                                   int max_iter) {
+    ofstream fout(filename);
+    if (!fout.is_open()) {
+        cerr << "Error: Cannot create " << filename << endl;
+        exit(1);
+    }
+    
+    fout << "HITS Authority Score Analysis Results\n";
+    fout << "=====================================\n\n";
+    fout << "Graph Statistics:\n";
+    fout << "  Nodes: " << index_to_node.size() << "\n";
+    fout << "  Edges: " << num_edges << "\n";
+    fout << "  Runtime: " << fixed << setprecision(3) << runtime_sec << " seconds\n";
+    fout << "  Peak Memory: " << fixed << setprecision(2) << memory_mb << " MB\n";
+    fout << "  Runtime per Node: " << fixed << setprecision(6) << (runtime_sec / index_to_node.size()) << " ms\n";
+    fout << "  Runtime per Edge: " << fixed << setprecision(6) << (runtime_sec / num_edges) << " ms\n\n";
+    
+    fout << "Convergence Parameters:\n";
+    fout << "  Epsilon: " << fixed << setprecision(10) << epsilon << "\n";
+    fout << "  Max Iterations: " << max_iter << "\n";
+    fout << "  Iterations Taken: " << iterations_taken << "\n\n";
+    
+    fout << "Top 10 by Authority Score:\n";
+    vector<pair<double, ll>> sorted_auths;
+    for (int i = 0; i < (int)index_to_node.size(); i++)
+        sorted_auths.push_back({auths[i], index_to_node[i]});
+    sort(sorted_auths.rbegin(), sorted_auths.rend());
+    
+    for (int i = 0; i < min(10, (int)sorted_auths.size()); i++) {
+        fout << "  " << (i+1) << ". Node " << sorted_auths[i].second 
+             << ": " << fixed << setprecision(10) << sorted_auths[i].first << "\n";
+    }
+    
+    fout.close();
+}
+
 int main(int argc, char* argv[]) {
     if (argc < 3) {
         cerr << "Usage: " << argv[0] << " <input_file> <output_dir> [epsilon] [max_iter]\n";
@@ -238,15 +360,25 @@ int main(int argc, char* argv[]) {
     if (dot_pos != string::npos) basename = basename.substr(0, dot_pos);
     
     string csv_file = outputDir + "/" + basename + ".csv";
+    string hub_csv_file = outputDir + "/" + basename + "_hub.csv";
+    string authority_csv_file = outputDir + "/" + basename + "_authority.csv";
     string detailed_file = outputDir + "/" + basename + "_detailed.txt";
+    string hub_detailed_file = outputDir + "/" + basename + "_hub_detailed.txt";
+    string authority_detailed_file = outputDir + "/" + basename + "_authority_detailed.txt";
     
     write_hits_csv(csv_file, index_to_node, hubs, auths);
+    write_hits_hub_csv(hub_csv_file, index_to_node, hubs);
+    write_hits_authority_csv(authority_csv_file, index_to_node, auths);
     
     auto end_time = chrono::high_resolution_clock::now();
     double runtime_sec = chrono::duration<double>(end_time - start_time).count();
     
     writeDetailedResults(detailed_file, index_to_node, hubs, auths, runtime_sec, 
                         mem.peak_memory_mb, num_edges, iterations_taken, epsilon, max_iter);
+    writeDetailedHubResults(hub_detailed_file, index_to_node, hubs, runtime_sec,
+                           mem.peak_memory_mb, num_edges, iterations_taken, epsilon, max_iter);
+    writeDetailedAuthorityResults(authority_detailed_file, index_to_node, auths, runtime_sec,
+                                 mem.peak_memory_mb, num_edges, iterations_taken, epsilon, max_iter);
     
     cerr << "HITS computed successfully for " << n << " nodes.\n";
     cerr << "Edges: " << num_edges << "\n";
