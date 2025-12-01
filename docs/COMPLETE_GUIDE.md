@@ -5,7 +5,7 @@
 A comprehensive framework for analyzing and comparing graph algorithms across foundational (classical) and frontier (modern) approaches:
 
 - **Foundational**: K-Core Decomposition, Betweenness Centrality
-- **Frontier**: Katz Centrality, Eigenvector Centrality
+- **Frontier**: Katz Centrality, Eigenvector Centrality, PageRank Centrality
 
 ## Quick Start
 
@@ -85,6 +85,15 @@ bin/                     # Compiled binaries
 - **Output**: Eigenvector value (0-1, normalized)
 - **Parameter**: Eigenvalue (network connectivity)
 
+### PageRank Centrality
+- **Complexity**: O(V·E·iterations)
+- **Type**: Frontier
+- **Detects**: Global importance via random walk probabilities
+- **Best for**: Directed graphs, citation networks, web ranking
+- **Output**: PageRank score (0–1, normalized)
+- **Parameter**: Damping factor α = 0.85
+- **Notes**: Implemented in `src/algorithms/pagerank_centrality.cpp` and integrated into experiments + analysis.
+
 ## Running Experiments
 
 ### All Experiments
@@ -100,7 +109,7 @@ bash src/scripts/experiments_kcore.sh
 # Betweenness
 bash src/scripts/experiments_betweenness.sh
 
-# Katz & Eigenvector
+# Katz, Eigenvector & PageRank
 bash src/scripts/experiments_centrality.sh
 ```
 
@@ -177,6 +186,9 @@ results/
 │   └── eigenvector/              # Eigenvector centrality
 │       ├── summary.csv
 │       └── *_detailed.txt
+│   └── pagerank/                 # PageRank centrality
+│       ├── summary_pagerank.csv
+│       └── *_pagerank_detailed.txt
 ├── algorithm_comparison/         # Cross-algorithm analysis
 │   ├── node_ranking_overlap.png
 │   ├── runtime_characteristics.png
@@ -207,6 +219,7 @@ g++ -std=c++17 -O3 -o bin/betweenness_exact src/algorithms/betweenness_exact.cpp
 g++ -std=c++17 -O3 -o bin/betweenness_approx src/algorithms/betweenness_approx.cpp
 g++ -std=c++17 -O3 -o bin/katz_centrality src/algorithms/katz_centrality.cpp
 g++ -std=c++17 -O3 -o bin/eigenvector_centrality src/algorithms/eigenvector_centrality.cpp
+g++ -std=c++17 -O3 -o bin/pagerank_centrality src/algorithms/pagerank_centrality.cpp
 ```
 
 ## Output Files
@@ -235,6 +248,7 @@ Rank    Node    Value
 | Betweenness | O(V·E) | O(V+E) | Poor | Yes |
 | Katz | O(V·E·i) | O(V+E) | Good | Yes |
 | Eigenvector | O(V·E·i) | O(V+E) | Good | Yes |
+| PageRank | O(V·E·i) | O(V+E) | Good | Yes |
 
 ## What Each Algorithm Detects
 
@@ -262,6 +276,12 @@ Rank    Node    Value
 - **Network influence**: Spectral properties
 - **Example**: Collaboration networks - prestigious researchers
 
+### PageRank
+- **Global influence**: Probability of landing at a node via random walk
+- **Stability**: Dampens dominance of high-degree nodes
+- **Directed importance**: Works especially well for citation/web graphs
+- **Example**: Ranking academic papers, web pages (Google PageRank)
+
 ## Comparison: Foundational vs Frontier
 
 ### Foundational Algorithms
@@ -277,6 +297,7 @@ Rank    Node    Value
 ✓ More flexible modeling  
 ✓ Parameter-tunable  
 ✗ Iterative computation overhead  
+**Includes**: Katz Centrality, Eigenvector Centrality, PageRank Centrality
 
 ## Recommendations by Use Case
 
@@ -293,7 +314,7 @@ Rank    Node    Value
 - Linear time complexity
 
 ### Citation Networks
-1. Eigenvector or Katz Centrality (primary)
+1. Eigenvector, PageRank or Katz Centrality (primary)
 2. Betweenness for bottlenecks (secondary)
 3. K-Core for communities (tertiary)
 
