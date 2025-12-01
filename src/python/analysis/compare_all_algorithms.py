@@ -11,6 +11,7 @@ import numpy as np
 from pathlib import Path
 from scipy.stats import spearmanr, kendalltau, pearsonr
 import warnings
+import re
 warnings.filterwarnings('ignore')
 
 # Set style
@@ -20,8 +21,8 @@ plt.rcParams['font.size'] = 10
 
 # Algorithm classification
 FOUNDATIONAL = ['K-Core', 'Betweenness (Exact)', 'Degree Centrality', 'Bridging Centrality']
-FRONTIER = ['Katz', 'Eigenvector', 'HITS']
-CITATION_SPECIFIC = ['Degree Centrality', 'Bridging Centrality', 'HITS']
+FRONTIER = ['Katz', 'Eigenvector', 'HITS (Hub)', 'HITS (Authority)']
+CITATION_SPECIFIC = ['Degree Centrality', 'Bridging Centrality', 'HITS (Hub)', 'HITS (Authority)']
 
 def load_all_results():
     """Load results from all algorithms"""
@@ -75,13 +76,21 @@ def load_all_results():
         df['Category'] = 'Frontier'
         results['Eigenvector'] = df
     
-    # HITS
-    hits_csv = Path("results/hits/summary.csv")
-    if hits_csv.exists():
-        df = pd.read_csv(hits_csv)
-        df['Algorithm'] = 'HITS'
+    # HITS (Hub)
+    hits_hub_csv = Path("results/hits/summary_hub.csv")
+    if hits_hub_csv.exists():
+        df = pd.read_csv(hits_hub_csv)
+        df['Algorithm'] = 'HITS (Hub)'
         df['Category'] = 'Frontier'
-        results['HITS'] = df
+        results['HITS (Hub)'] = df
+    
+    # HITS (Authority)
+    hits_auth_csv = Path("results/hits/summary_authority.csv")
+    if hits_auth_csv.exists():
+        df = pd.read_csv(hits_auth_csv)
+        df['Algorithm'] = 'HITS (Authority)'
+        df['Category'] = 'Frontier'
+        results['HITS (Authority)'] = df
     
     if not results:
         return None
@@ -95,6 +104,7 @@ def analyze_node_rankings(output_dir):
     
     # Get top nodes for each algorithm on a real dataset
     datasets_to_check = ['cit-DBLP', 'cit-HepTh', 'citeseer', 'cora']
+    overlap_report = []
     
     for idx, dataset in enumerate(datasets_to_check):
         if idx >= len(axes):
@@ -106,37 +116,42 @@ def analyze_node_rankings(output_dir):
         # K-Core
         kcore_file = Path(f"results/synthetic/{dataset}_detailed.txt")
         if kcore_file.exists():
-            top_nodes['K-Core'] = extract_top_nodes(kcore_file, 10)
+            top_nodes['K-Core'] = extract_top_nodes(kcore_file, 20)
         
         # Betweenness
         bet_file = Path(f"results/betweenness/exact/{dataset}_detailed.txt")
         if bet_file.exists():
-            top_nodes['Betweenness'] = extract_top_nodes(bet_file, 10)
+            top_nodes['Betweenness'] = extract_top_nodes(bet_file, 20)
         
         # Degree Centrality
         deg_file = Path(f"results/degree_centrality/{dataset}_detailed.txt")
         if deg_file.exists():
-            top_nodes['Degree'] = extract_top_nodes(deg_file, 10)
+            top_nodes['Degree'] = extract_top_nodes(deg_file, 20)
         
         # Bridging Centrality
         brid_file = Path(f"results/bridging_centrality/{dataset}_detailed.txt")
         if brid_file.exists():
-            top_nodes['Bridging'] = extract_top_nodes(brid_file, 10)
+            top_nodes['Bridging'] = extract_top_nodes(brid_file, 20)
         
         # Katz
         katz_file = Path(f"results/centrality/katz/{dataset}_detailed.txt")
         if katz_file.exists():
-            top_nodes['Katz'] = extract_top_nodes(katz_file, 10)
+            top_nodes['Katz'] = extract_top_nodes(katz_file, 20)
         
         # Eigenvector
         eigen_file = Path(f"results/centrality/eigenvector/{dataset}_detailed.txt")
         if eigen_file.exists():
-            top_nodes['Eigenvector'] = extract_top_nodes(eigen_file, 10)
+            top_nodes['Eigenvector'] = extract_top_nodes(eigen_file, 20)
         
-        # HITS
-        hits_file = Path(f"results/hits/{dataset}_detailed.txt")
-        if hits_file.exists():
-            top_nodes['HITS'] = extract_top_nodes(hits_file, 10)
+        # HITS (Hub)
+        hits_hub_file = Path(f"results/hits/{dataset}_hub_detailed.txt")
+        if hits_hub_file.exists():
+            top_nodes['HITS (Hub)'] = extract_top_nodes(hits_hub_file, 20)
+        
+        # HITS (Authority)
+        hits_auth_file = Path(f"results/hits/{dataset}_authority_detailed.txt")
+        if hits_auth_file.exists():
+            top_nodes['HITS (Auth)'] = extract_top_nodes(hits_auth_file, 20)
         
         if not top_nodes:
             ax.text(0.5, 0.5, f'{dataset}\n(No data)', ha='center', va='center')
@@ -159,13 +174,77 @@ def analyze_node_rankings(output_dir):
         # Plot heatmap
         sns.heatmap(overlap_matrix, annot=True, fmt='.0f', cmap='YlOrRd',
                    xticklabels=algos, yticklabels=algos, ax=ax,
-                   cbar_kws={'label': 'Overlap (Top 10)'})
-        ax.set_title(f'{dataset} - Top 10 Node Overlap', fontsize=12, fontweight='bold')
+                   cbar_kws={'label': 'Overlap (Top 20)'})
+        ax.set_title(f'{dataset} - Top 20 Node Overlap', fontsize=12, fontweight='bold')
+        
+        # Store overlap data for report
+        overlap_report.append({
+            'dataset': dataset,
+            'algos': algos,
+            'matrix': overlap_matrix,
+            'top_nodes': top_nodes
+        })
     
     plt.tight_layout()
     plt.savefig(output_dir / 'node_ranking_overlap.png', dpi=300, bbox_inches='tight')
     print(f"  ✓ Saved: node_ranking_overlap.png")
     plt.close()
+    
+    # Save overlap report to file
+    save_overlap_report(output_dir, overlap_report)
+
+def save_overlap_report(output_dir, overlap_report):
+    """Save node ranking overlap analysis to file"""
+    report_file = output_dir / 'node_ranking_overlap_report.txt'
+    
+    with open(report_file, 'w') as f:
+        f.write("=" * 120 + "\n")
+        f.write("TOP 20 NODE RANKING OVERLAP ANALYSIS\n")
+        f.write("=" * 120 + "\n\n")
+        
+        for report_data in overlap_report:
+            dataset = report_data['dataset']
+            algos = report_data['algos']
+            matrix = report_data['matrix']
+            top_nodes = report_data['top_nodes']
+            
+            f.write(f"\n{dataset.upper()}\n")
+            f.write("-" * 120 + "\n\n")
+            
+            # Overlap matrix
+            f.write("OVERLAP MATRIX (Top 20 nodes):\n")
+            f.write("-" * 120 + "\n")
+            
+            # Header
+            f.write(f"{'Algorithm':<25}")
+            for algo in algos:
+                f.write(f"{algo:<20}")
+            f.write("\n")
+            f.write("-" * 120 + "\n")
+            
+            # Rows
+            for i, algo1 in enumerate(algos):
+                f.write(f"{algo1:<25}")
+                for j, algo2 in enumerate(algos):
+                    f.write(f"{int(matrix[i, j]):<20}")
+                f.write("\n")
+            
+            f.write("\n")
+            
+            # Top 20 nodes for each algorithm
+            f.write("TOP 20 NODES BY ALGORITHM:\n")
+            f.write("-" * 120 + "\n\n")
+            
+            for algo in algos:
+                f.write(f"{algo}:\n")
+                nodes = top_nodes[algo]
+                for rank, node_id in enumerate(nodes, 1):
+                    f.write(f"  {rank:2d}. Node {node_id}\n")
+                f.write("\n")
+            
+            f.write("\n")
+    
+    print(f"  ✓ Saved: node_ranking_overlap_report.txt")
 
 def extract_top_nodes(filepath, k=10):
     """Extract top k nodes from detailed results file"""
@@ -179,6 +258,7 @@ def extract_top_nodes(filepath, k=10):
                     in_section = True
                     continue
                 if in_section and line.strip() and not line.startswith("==="):
+                    # Try tab-separated format first (betweenness, etc.)
                     parts = line.strip().split('\t')
                     if len(parts) >= 2 and parts[0].isdigit():
                         try:
@@ -189,6 +269,19 @@ def extract_top_nodes(filepath, k=10):
                                 break
                         except (ValueError, IndexError):
                             continue
+                    else:
+                        # Try space-separated format with "Node" prefix (degree centrality)
+                        # Format: "  1. Node 62: 709"
+                        match = re.search(r'Node\s+(\d+)', line)
+                        if match:
+                            try:
+                                node_id = int(match.group(1))
+                                nodes.append(node_id)
+                                count += 1
+                                if count >= k:
+                                    break
+                            except (ValueError, IndexError):
+                                continue
     except:
         pass
     
@@ -454,74 +547,82 @@ def generate_comprehensive_report(df, output_dir):
     
     print(f"  ✓ Saved: comprehensive_analysis.txt")
 
-def print_top_10_comparison():
-    """Print top 10 nodes for each algorithm side-by-side (REAL GRAPHS ONLY)"""
-    print("\n" + "=" * 120)
-    print("TOP 10 NODES BY EACH ALGORITHM - FOUNDATIONAL vs FRONTIER (REAL GRAPHS)")
-    print("=" * 120)
-    print()
+def print_top_20_comparison(output_dir):
+    """Save top 20 nodes for each algorithm side-by-side (REAL GRAPHS ONLY) to file"""
+    report_file = output_dir / 'top_20_nodes_comparison.txt'
     
-    # Real graphs only - for foundational vs frontier comparison
-    graphs = [
-        ('data/converted_datasets/cit-DBLP.txt', 'cit-DBLP'),
-        ('data/converted_datasets/cit-HepTh.txt', 'cit-HepTh'),
-        ('data/converted_datasets/citeseer.txt', 'CiteSeer'),
-        ('data/converted_datasets/cora.txt', 'Cora'),
-    ]
-    
-    for graph_file, graph_name in graphs:
-        if not Path(graph_file).exists():
-            continue
+    with open(report_file, 'w') as f:
+        f.write("\n" + "=" * 150 + "\n")
+        f.write("TOP 20 NODES BY EACH ALGORITHM - FOUNDATIONAL vs FRONTIER (REAL GRAPHS)\n")
+        f.write("=" * 150 + "\n\n")
         
-        print(f"\n{graph_name}")
-        print("-" * 120)
-        
-        graph_base = Path(graph_file).stem
-        
-        # Load top 10 from each algorithm
-        all_top_10 = {}
-        
-        algorithms = [
-            ('K-Core', 'results/synthetic'),
-            ('Betweenness', 'results/betweenness/exact'),
-            ('Degree', 'results/degree_centrality'),
-            ('Bridging', 'results/bridging_centrality'),
-            ('Katz', 'results/centrality/katz'),
-            ('Eigenvector', 'results/centrality/eigenvector'),
-            ('HITS', 'results/hits'),
+        # Real graphs only - for foundational vs frontier comparison
+        graphs = [
+            ('data/converted_datasets/cit-DBLP.txt', 'cit-DBLP'),
+            ('data/converted_datasets/cit-HepTh.txt', 'cit-HepTh'),
+            ('data/converted_datasets/citeseer.txt', 'CiteSeer'),
+            ('data/converted_datasets/cora.txt', 'Cora'),
         ]
         
-        for algo_name, result_dir in algorithms:
-            result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
+        for graph_file, graph_name in graphs:
+            if not Path(graph_file).exists():
+                continue
             
-            if result_file.exists():
-                rankings = extract_top_nodes_with_values(result_file, 10)
-                all_top_10[algo_name] = rankings
-            else:
-                all_top_10[algo_name] = []
-        
-        # Print side-by-side
-        max_rows = max(len(v) for v in all_top_10.values()) if all_top_10.values() else 0
-        
-        # Header
-        header = ""
-        for algo_name in all_top_10.keys():
-            header += f"{algo_name:20} | "
-        print(header)
-        print("-" * 120)
-        
-        # Rows
-        for row_idx in range(max_rows):
-            row_str = ""
-            for algo_name in all_top_10.keys():
-                if row_idx < len(all_top_10[algo_name]):
-                    node_id, value = all_top_10[algo_name][row_idx]
-                    row_str += f"N{node_id:2d}({value:7.4f}) | "
+            f.write(f"\n{graph_name}\n")
+            f.write("-" * 150 + "\n\n")
+            
+            graph_base = Path(graph_file).stem
+            
+            # Load top 20 from each algorithm
+            all_top_20 = {}
+            
+            algorithms = [
+                ('K-Core', 'results/synthetic', None),
+                ('Betweenness', 'results/betweenness/exact', None),
+                ('Degree', 'results/degree_centrality', None),
+                ('Bridging', 'results/bridging_centrality', None),
+                ('Katz', 'results/centrality/katz', None),
+                ('Eigenvector', 'results/centrality/eigenvector', None),
+                ('HITS (Hub)', 'results/hits', '_hub'),
+                ('HITS (Auth)', 'results/hits', '_authority'),
+            ]
+            
+            for algo_name, result_dir, suffix in algorithms:
+                if suffix:
+                    result_file = Path(result_dir) / f"{graph_base}{suffix}_detailed.txt"
                 else:
-                    row_str += f"{'':20} | "
-            print(row_str)
-        
-        print()
+                    result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
+                
+                if result_file.exists():
+                    rankings = extract_top_nodes_with_values(result_file, 20)
+                    all_top_20[algo_name] = rankings
+                else:
+                    all_top_20[algo_name] = []
+            
+            # Write side-by-side table
+            max_rows = max(len(v) for v in all_top_20.values()) if all_top_20.values() else 0
+            
+            # Header
+            header = ""
+            for algo_name in all_top_20.keys():
+                header += f"{algo_name:25} | "
+            f.write(header + "\n")
+            f.write("-" * 150 + "\n")
+            
+            # Rows
+            for row_idx in range(max_rows):
+                row_str = ""
+                for algo_name in all_top_20.keys():
+                    if row_idx < len(all_top_20[algo_name]):
+                        node_id, value = all_top_20[algo_name][row_idx]
+                        row_str += f"N{node_id:4d}({value:9.6f}) | "
+                    else:
+                        row_str += f"{'':25} | "
+                f.write(row_str + "\n")
+            
+            f.write("\n")
+    
+    print(f"  ✓ Saved: top_20_nodes_comparison.txt")
 
 def extract_top_nodes_with_values(filepath, k=10):
     """Extract top k nodes with their values from detailed results file"""
@@ -535,6 +636,7 @@ def extract_top_nodes_with_values(filepath, k=10):
                     in_section = True
                     continue
                 if in_section and line.strip() and not line.startswith("==="):
+                    # Try tab-separated format first (betweenness, etc.)
                     parts = line.strip().split('\t')
                     if len(parts) >= 3 and parts[0].isdigit():
                         try:
@@ -546,6 +648,20 @@ def extract_top_nodes_with_values(filepath, k=10):
                                 break
                         except (ValueError, IndexError):
                             continue
+                    else:
+                        # Try space-separated format with "Node" prefix (degree centrality)
+                        # Format: "  1. Node 62: 709"
+                        match = re.search(r'Node\s+(\d+):\s*([\d.]+)', line)
+                        if match:
+                            try:
+                                node_id = int(match.group(1))
+                                value = float(match.group(2))
+                                nodes.append((node_id, value))
+                                count += 1
+                                if count >= k:
+                                    break
+                            except (ValueError, IndexError):
+                                continue
     except:
         pass
     
@@ -585,17 +701,20 @@ def main():
     
     print()
     
-    # Print final comparison
-    print_top_10_comparison()
+    # Save final comparison to file
+    print_top_20_comparison(viz_dir)
     
+    print()
     print("=" * 100)
     print("Analysis complete!")
     print("=" * 100)
     print(f"\nAll outputs saved to: {viz_dir.absolute()}")
     print("\nGenerated files:")
     print("  - node_ranking_overlap.png (Which nodes each algorithm ranks highest)")
+    print("  - node_ranking_overlap_report.txt (Detailed overlap analysis)")
     print("  - runtime_characteristics.png (Performance comparison)")
     print("  - comprehensive_analysis.txt (Detailed findings and recommendations)")
+    print("  - top_20_nodes_comparison.txt (Top 20 nodes side-by-side comparison)")
     print()
 
 if __name__ == "__main__":
