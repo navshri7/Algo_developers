@@ -20,7 +20,7 @@ plt.rcParams['font.size'] = 10
 
 # Algorithm classification
 FOUNDATIONAL = ['K-Core', 'Betweenness (Exact)', 'Degree Centrality', 'Bridging Centrality']
-FRONTIER = ['Katz', 'Eigenvector', 'HITS']
+FRONTIER = ['Katz', 'Eigenvector', 'HITS', 'PageRank']
 CITATION_SPECIFIC = ['Degree Centrality', 'Bridging Centrality', 'HITS']
 
 def load_all_results():
@@ -74,6 +74,14 @@ def load_all_results():
         df['Algorithm'] = 'Eigenvector'
         df['Category'] = 'Frontier'
         results['Eigenvector'] = df
+
+    # PageRank
+    pagerank_csv = Path("results/centrality/pagerank/summary_pagerank.csv")
+    if pagerank_csv.exists():
+        df = pd.read_csv(pagerank_csv)
+        df['Algorithm'] = 'PageRank'
+        df['Category'] = 'Frontier'
+        results['PageRank'] = df
     
     # HITS
     hits_csv = Path("results/hits/summary.csv")
@@ -132,6 +140,11 @@ def analyze_node_rankings(output_dir):
         eigen_file = Path(f"results/centrality/eigenvector/{dataset}_detailed.txt")
         if eigen_file.exists():
             top_nodes['Eigenvector'] = extract_top_nodes(eigen_file, 10)
+
+        # PageRank
+        pagerank_file = Path(f"results/centrality/pagerank/{dataset}_pagerank_detailed.txt")
+        if pagerank_file.exists():
+            top_nodes['PageRank'] = extract_top_nodes(pagerank_file, 10)
         
         # HITS
         hits_file = Path(f"results/hits/{dataset}_detailed.txt")
@@ -489,16 +502,21 @@ def print_top_10_comparison():
             ('Katz', 'results/centrality/katz'),
             ('Eigenvector', 'results/centrality/eigenvector'),
             ('HITS', 'results/hits'),
+            ('PageRank', 'results/centrality/pagerank'),
         ]
-        
+
         for algo_name, result_dir in algorithms:
-            result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
+            if algo_name == 'PageRank':
+                result_file = Path(result_dir) / f"{graph_base}_pagerank_detailed.txt"
+            else:
+                result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
             
             if result_file.exists():
                 rankings = extract_top_nodes_with_values(result_file, 10)
                 all_top_10[algo_name] = rankings
             else:
                 all_top_10[algo_name] = []
+
         
         # Print side-by-side
         max_rows = max(len(v) for v in all_top_10.values()) if all_top_10.values() else 0
