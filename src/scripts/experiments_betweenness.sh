@@ -18,6 +18,7 @@ echo ""
 mkdir -p results/betweenness/exact
 mkdir -p results/betweenness/approximate
 mkdir -p results/betweenness/comparison
+mkdir -p bin
 
 # Compile the C++ programs
 echo "Step 1: Compiling Betweenness implementations..."
