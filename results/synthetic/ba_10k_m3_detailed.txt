@@ -2,7 +2,7 @@ Dataset: ba_10k_m3
 Vertices: 10000
 Edges: 29991
 Max K-Core: 3
-Runtime (seconds): 0.001000
+Runtime (seconds): 0.002000
 Memory Usage (MB): 0.61
 
 === Core Distribution ===

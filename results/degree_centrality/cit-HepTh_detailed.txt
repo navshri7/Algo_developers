@@ -4,9 +4,9 @@ Degree Centrality Analysis Results
 Graph Statistics:
   Nodes: 27770
   Edges: 352286
-  Runtime: 0.077 seconds
-  Peak Memory: 4.87 MB
-  Runtime per Node: 0.000003 ms
+  Runtime: 0.099 seconds
+  Peak Memory: 4.91 MB
+  Runtime per Node: 0.000004 ms
   Runtime per Edge: 0.000000 ms
 
 Top 10 by Total Degree:

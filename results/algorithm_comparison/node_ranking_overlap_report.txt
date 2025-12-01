@@ -1,0 +1,712 @@
+========================================================================================================================
+TOP 20 NODE RANKING OVERLAP ANALYSIS
+========================================================================================================================
+
+
+CIT-DBLP
+------------------------------------------------------------------------------------------------------------------------
+
+OVERLAP MATRIX (Top 20 nodes):
+------------------------------------------------------------------------------------------------------------------------
+Algorithm                Betweenness         Degree              Bridging            Katz                Eigenvector         HITS (Hub)          HITS (Auth)         PageRank            
+------------------------------------------------------------------------------------------------------------------------
+Betweenness              20                  11                  5                   15                  15                  5                   10                  15                  
+Degree                   11                  11                  3                   11                  11                  5                   8                   11                  
+Bridging                 5                   3                   12                  3                   3                   3                   1                   8                   
+Katz                     15                  11                  3                   20                  19                  5                   10                  13                  
+Eigenvector              15                  11                  3                   19                  20                  5                   10                  13                  
+HITS (Hub)               5                   5                   3                   5                   5                   10                  3                   5                   
+HITS (Auth)              10                  8                   1                   10                  10                  3                   10                  9                   
+PageRank                 15                  11                  8                   13                  13                  5                   9                   20                  
+
+TOP 20 NODES BY ALGORITHM:
+------------------------------------------------------------------------------------------------------------------------
+
+Betweenness:
+   1. Node 62
+   2. Node 203
+   3. Node 1477
+   4. Node 10700
+   5. Node 439
+   6. Node 433
+   7. Node 700
+   8. Node 107
+   9. Node 58
+  10. Node 61
+  11. Node 630
+  12. Node 261
+  13. Node 2190
+  14. Node 138
+  15. Node 964
+  16. Node 119
+  17. Node 484
+  18. Node 839
+  19. Node 10786
+  20. Node 37
+
+Degree:
+   1. Node 62
+   2. Node 203
+   3. Node 439
+   4. Node 1477
+   5. Node 10700
+   6. Node 107
+   7. Node 630
+   8. Node 58
+   9. Node 700
+  10. Node 61
+  11. Node 62
+  12. Node 203
+  13. Node 439
+  14. Node 107
+  15. Node 1477
+  16. Node 58
+  17. Node 630
+  18. Node 61
+  19. Node 433
+  20. Node 700
+
+Bridging:
+   1. Node 1477
+   2. Node 8685
+   3. Node 10700
+   4. Node 8304
+   5. Node 2190
+   6. Node 10786
+   7. Node 203
+   8. Node 10581
+   9. Node 4730
+  10. Node 4380
+  11. Node 1477
+  12. Node 8304
+  13. Node 2190
+  14. Node 203
+  15. Node 10700
+  16. Node 8685
+  17. Node 4380
+  18. Node 4848
+  19. Node 4730
+  20. Node 2358
+
+Katz:
+   1. Node 62
+   2. Node 203
+   3. Node 107
+   4. Node 1477
+   5. Node 439
+   6. Node 630
+   7. Node 700
+   8. Node 58
+   9. Node 10700
+  10. Node 37
+  11. Node 119
+  12. Node 138
+  13. Node 61
+  14. Node 433
+  15. Node 703
+  16. Node 169
+  17. Node 87
+  18. Node 484
+  19. Node 125
+  20. Node 95
+
+Eigenvector:
+   1. Node 62
+   2. Node 203
+   3. Node 107
+   4. Node 1477
+   5. Node 700
+   6. Node 630
+   7. Node 37
+   8. Node 58
+   9. Node 439
+  10. Node 119
+  11. Node 138
+  12. Node 61
+  13. Node 169
+  14. Node 433
+  15. Node 10700
+  16. Node 170
+  17. Node 703
+  18. Node 87
+  19. Node 125
+  20. Node 484
+
+HITS (Hub):
+   1. Node 10700
+   2. Node 1477
+   3. Node 203
+   4. Node 700
+   5. Node 2756
+   6. Node 630
+   7. Node 4478
+   8. Node 1393
+   9. Node 2577
+  10. Node 1575
+
+HITS (Auth):
+   1. Node 62
+   2. Node 203
+   3. Node 107
+   4. Node 61
+   5. Node 37
+   6. Node 439
+   7. Node 630
+   8. Node 700
+   9. Node 119
+  10. Node 58
+
+PageRank:
+   1. Node 62
+   2. Node 203
+   3. Node 439
+   4. Node 10700
+   5. Node 1477
+   6. Node 10786
+   7. Node 107
+   8. Node 630
+   9. Node 433
+  10. Node 61
+  11. Node 700
+  12. Node 964
+  13. Node 8685
+  14. Node 58
+  15. Node 4380
+  16. Node 37
+  17. Node 2815
+  18. Node 10581
+  19. Node 4730
+  20. Node 138
+
+
+
+CIT-HEPTH
+------------------------------------------------------------------------------------------------------------------------
+
+OVERLAP MATRIX (Top 20 nodes):
+------------------------------------------------------------------------------------------------------------------------
+Algorithm                Betweenness         Degree              Bridging            Katz                Eigenvector         HITS (Hub)          HITS (Auth)         PageRank            
+------------------------------------------------------------------------------------------------------------------------
+Betweenness              20                  13                  10                  16                  14                  6                   10                  17                  
+Degree                   13                  13                  7                   13                  12                  6                   9                   13                  
+Bridging                 10                  7                   11                  9                   9                   2                   6                   10                  
+Katz                     16                  13                  9                   20                  17                  6                   10                  18                  
+Eigenvector              14                  12                  9                   17                  20                  5                   10                  15                  
+HITS (Hub)               6                   6                   2                   6                   5                   10                  3                   6                   
+HITS (Auth)              10                  9                   6                   10                  10                  3                   10                  10                  
+PageRank                 17                  13                  10                  18                  15                  6                   10                  20                  
+
+TOP 20 NODES BY ALGORITHM:
+------------------------------------------------------------------------------------------------------------------------
+
+Betweenness:
+   1. Node 22153
+   2. Node 14159
+   3. Node 19155
+   4. Node 26699
+   5. Node 25991
+   6. Node 16726
+   7. Node 22743
+   8. Node 14350
+   9. Node 26167
+  10. Node 15603
+  11. Node 22709
+  12. Node 651
+  13. Node 19400
+  14. Node 13240
+  15. Node 22116
+  16. Node 16907
+  17. Node 16838
+  18. Node 15156
+  19. Node 7079
+  20. Node 14724
+
+Degree:
+   1. Node 22153
+   2. Node 22743
+   3. Node 22709
+   4. Node 25991
+   5. Node 14159
+   6. Node 26699
+   7. Node 19155
+   8. Node 16726
+   9. Node 15603
+  10. Node 26167
+  11. Node 22153
+  12. Node 14159
+  13. Node 15603
+  14. Node 22743
+  15. Node 16726
+  16. Node 14350
+  17. Node 19155
+  18. Node 22709
+  19. Node 14724
+  20. Node 16838
+
+Bridging:
+   1. Node 14159
+   2. Node 22153
+   3. Node 13240
+   4. Node 16726
+   5. Node 19155
+   6. Node 15603
+   7. Node 19400
+   8. Node 16907
+   9. Node 14350
+  10. Node 25991
+  11. Node 22153
+  12. Node 14159
+  13. Node 16726
+  14. Node 13240
+  15. Node 19155
+  16. Node 8609
+  17. Node 25991
+  18. Node 15603
+  19. Node 19400
+  20. Node 16907
+
+Katz:
+   1. Node 22153
+   2. Node 22743
+   3. Node 22709
+   4. Node 25991
+   5. Node 16726
+   6. Node 15603
+   7. Node 19155
+   8. Node 14159
+   9. Node 16838
+  10. Node 19400
+  11. Node 14724
+  12. Node 26699
+  13. Node 14350
+  14. Node 16907
+  15. Node 17389
+  16. Node 22923
+  17. Node 26167
+  18. Node 22116
+  19. Node 17578
+  20. Node 17550
+
+Eigenvector:
+   1. Node 22153
+   2. Node 22743
+   3. Node 22709
+   4. Node 25991
+   5. Node 16726
+   6. Node 15603
+   7. Node 19155
+   8. Node 16838
+   9. Node 19400
+  10. Node 14724
+  11. Node 22923
+  12. Node 17389
+  13. Node 14159
+  14. Node 16907
+  15. Node 17578
+  16. Node 1642
+  17. Node 14350
+  18. Node 17225
+  19. Node 26699
+  20. Node 18733
+
+HITS (Hub):
+   1. Node 22153
+   2. Node 25991
+   3. Node 22743
+   4. Node 22709
+   5. Node 21761
+   6. Node 26699
+   7. Node 22653
+   8. Node 26167
+   9. Node 23655
+  10. Node 22403
+
+HITS (Auth):
+   1. Node 22153
+   2. Node 15603
+   3. Node 16726
+   4. Node 22743
+   5. Node 22709
+   6. Node 19155
+   7. Node 14724
+   8. Node 16838
+   9. Node 14159
+  10. Node 19400
+
+PageRank:
+   1. Node 22153
+   2. Node 22743
+   3. Node 14159
+   4. Node 22709
+   5. Node 26699
+   6. Node 25991
+   7. Node 19155
+   8. Node 26167
+   9. Node 14350
+  10. Node 16726
+  11. Node 15603
+  12. Node 22116
+  13. Node 16907
+  14. Node 16838
+  15. Node 19400
+  16. Node 14724
+  17. Node 17389
+  18. Node 13240
+  19. Node 10572
+  20. Node 17550
+
+
+
+CITESEER
+------------------------------------------------------------------------------------------------------------------------
+
+OVERLAP MATRIX (Top 20 nodes):
+------------------------------------------------------------------------------------------------------------------------
+Algorithm                Betweenness         Degree              Bridging            Katz                Eigenvector         HITS (Hub)          HITS (Auth)         PageRank            
+------------------------------------------------------------------------------------------------------------------------
+Betweenness              20                  6                   4                   2                   2                   2                   1                   6                   
+Degree                   6                   16                  8                   9                   8                   4                   5                   11                  
+Bridging                 4                   8                   15                  5                   5                   3                   2                   7                   
+Katz                     2                   9                   5                   20                  19                  8                   7                   6                   
+Eigenvector              2                   8                   5                   19                  20                  8                   8                   6                   
+HITS (Hub)               2                   4                   3                   8                   8                   10                  1                   4                   
+HITS (Auth)              1                   5                   2                   7                   8                   1                   10                  3                   
+PageRank                 6                   11                  7                   6                   6                   4                   3                   20                  
+
+TOP 20 NODES BY ALGORITHM:
+------------------------------------------------------------------------------------------------------------------------
+
+Betweenness:
+   1. Node 795
+   2. Node 2907
+   3. Node 870
+   4. Node 179
+   5. Node 867
+   6. Node 2201
+   7. Node 2230
+   8. Node 2668
+   9. Node 2092
+  10. Node 170
+  11. Node 1487
+  12. Node 2093
+  13. Node 1559
+  14. Node 623
+  15. Node 3222
+  16. Node 1488
+  17. Node 1284
+  18. Node 1850
+  19. Node 772
+  20. Node 854
+
+Degree:
+   1. Node 2907
+   2. Node 870
+   3. Node 2039
+   4. Node 181
+   5. Node 2041
+   6. Node 2092
+   7. Node 2686
+   8. Node 3222
+   9. Node 2366
+  10. Node 795
+  11. Node 181
+  12. Node 2907
+  13. Node 190
+  14. Node 2041
+  15. Node 1177
+  16. Node 2039
+  17. Node 291
+  18. Node 2218
+  19. Node 1352
+  20. Node 179
+
+Bridging:
+   1. Node 2907
+   2. Node 2092
+   3. Node 2220
+   4. Node 1969
+   5. Node 2686
+   6. Node 870
+   7. Node 558
+   8. Node 2039
+   9. Node 837
+  10. Node 2366
+  11. Node 2907
+  12. Node 2092
+  13. Node 870
+  14. Node 2220
+  15. Node 1352
+  16. Node 795
+  17. Node 2089
+  18. Node 1969
+  19. Node 848
+  20. Node 3060
+
+Katz:
+   1. Node 2907
+   2. Node 2039
+   3. Node 181
+   4. Node 3222
+   5. Node 2041
+   6. Node 2507
+   7. Node 2134
+   8. Node 1352
+   9. Node 1978
+  10. Node 2686
+  11. Node 3087
+  12. Node 3064
+  13. Node 2218
+  14. Node 3060
+  15. Node 3062
+  16. Node 2630
+  17. Node 2209
+  18. Node 190
+  19. Node 2517
+  20. Node 371
+
+Eigenvector:
+   1. Node 2907
+   2. Node 2039
+   3. Node 181
+   4. Node 2041
+   5. Node 3222
+   6. Node 2507
+   7. Node 2134
+   8. Node 1352
+   9. Node 3087
+  10. Node 1978
+  11. Node 3064
+  12. Node 2209
+  13. Node 2218
+  14. Node 3062
+  15. Node 3060
+  16. Node 2686
+  17. Node 2630
+  18. Node 1973
+  19. Node 2517
+  20. Node 371
+
+HITS (Hub):
+   1. Node 2907
+   2. Node 3222
+   3. Node 2039
+   4. Node 2686
+   5. Node 2507
+   6. Node 3087
+   7. Node 3064
+   8. Node 3062
+   9. Node 3063
+  10. Node 3102
+
+HITS (Auth):
+   1. Node 181
+   2. Node 1352
+   3. Node 1973
+   4. Node 1978
+   5. Node 2041
+   6. Node 2907
+   7. Node 196
+   8. Node 1474
+   9. Node 2218
+  10. Node 2134
+
+PageRank:
+   1. Node 2907
+   2. Node 870
+   3. Node 1219
+   4. Node 795
+   5. Node 802
+   6. Node 2092
+   7. Node 2039
+   8. Node 181
+   9. Node 1177
+  10. Node 2686
+  11. Node 1907
+  12. Node 2041
+  13. Node 2366
+  14. Node 3123
+  15. Node 2695
+  16. Node 1487
+  17. Node 3222
+  18. Node 858
+  19. Node 924
+  20. Node 205
+
+
+
+CORA
+------------------------------------------------------------------------------------------------------------------------
+
+OVERLAP MATRIX (Top 20 nodes):
+------------------------------------------------------------------------------------------------------------------------
+Algorithm                Betweenness         Degree              Bridging            Katz                Eigenvector         HITS (Hub)          HITS (Auth)         PageRank            
+------------------------------------------------------------------------------------------------------------------------
+Betweenness              20                  9                   4                   7                   2                   0                   2                   14                  
+Degree                   9                   11                  1                   5                   1                   0                   1                   11                  
+Bridging                 4                   1                   13                  3                   0                   0                   0                   4                   
+Katz                     7                   5                   3                   20                  14                  2                   8                   9                   
+Eigenvector              2                   1                   0                   14                  20                  2                   9                   3                   
+HITS (Hub)               0                   0                   0                   2                   2                   10                  0                   0                   
+HITS (Auth)              2                   1                   0                   8                   9                   0                   10                  3                   
+PageRank                 14                  11                  4                   9                   3                   0                   3                   20                  
+
+TOP 20 NODES BY ALGORITHM:
+------------------------------------------------------------------------------------------------------------------------
+
+Betweenness:
+   1. Node 1
+   2. Node 72
+   3. Node 85
+   4. Node 29
+   5. Node 122
+   6. Node 14
+   7. Node 28
+   8. Node 16
+   9. Node 73
+  10. Node 123
+  11. Node 151
+  12. Node 1741
+  13. Node 544
+  14. Node 380
+  15. Node 329
+  16. Node 88
+  17. Node 174
+  18. Node 43
+  19. Node 1910
+  20. Node 356
+
+Degree:
+   1. Node 1
+   2. Node 122
+   3. Node 29
+   4. Node 72
+   5. Node 16
+   6. Node 3
+   7. Node 85
+   8. Node 73
+   9. Node 28
+  10. Node 329
+  11. Node 1
+  12. Node 29
+  13. Node 122
+  14. Node 72
+  15. Node 16
+  16. Node 3
+  17. Node 85
+  18. Node 73
+  19. Node 28
+  20. Node 48
+
+Bridging:
+   1. Node 122
+   2. Node 209
+   3. Node 356
+   4. Node 123
+   5. Node 208
+   6. Node 202
+   7. Node 137
+   8. Node 375
+   9. Node 88
+  10. Node 237
+  11. Node 122
+  12. Node 123
+  13. Node 356
+  14. Node 208
+  15. Node 209
+  16. Node 375
+  17. Node 136
+  18. Node 118
+  19. Node 237
+  20. Node 334
+
+Katz:
+   1. Node 1
+   2. Node 122
+   3. Node 14
+   4. Node 29
+   5. Node 810
+   6. Node 72
+   7. Node 241
+   8. Node 823
+   9. Node 1218
+  10. Node 88
+  11. Node 32
+  12. Node 123
+  13. Node 3
+  14. Node 1345
+  15. Node 499
+  16. Node 644
+  17. Node 818
+  18. Node 525
+  19. Node 558
+  20. Node 907
+
+Eigenvector:
+   1. Node 1
+   2. Node 810
+   3. Node 823
+   4. Node 1218
+   5. Node 14
+   6. Node 32
+   7. Node 241
+   8. Node 1345
+   9. Node 818
+  10. Node 499
+  11. Node 907
+  12. Node 644
+  13. Node 558
+  14. Node 713
+  15. Node 489
+  16. Node 1563
+  17. Node 1503
+  18. Node 525
+  19. Node 738
+  20. Node 1306
+
+HITS (Hub):
+   1. Node 2703
+   2. Node 2656
+   3. Node 2607
+   4. Node 2682
+   5. Node 818
+   6. Node 2234
+   7. Node 1330
+   8. Node 2402
+   9. Node 2337
+  10. Node 1218
+
+HITS (Auth):
+   1. Node 1
+   2. Node 810
+   3. Node 823
+   4. Node 32
+   5. Node 1345
+   6. Node 267
+   7. Node 14
+   8. Node 241
+   9. Node 499
+  10. Node 489
+
+PageRank:
+   1. Node 1
+   2. Node 29
+   3. Node 72
+   4. Node 122
+   5. Node 16
+   6. Node 85
+   7. Node 3
+   8. Node 73
+   9. Node 329
+  10. Node 28
+  11. Node 48
+  12. Node 334
+  13. Node 380
+  14. Node 88
+  15. Node 123
+  16. Node 53
+  17. Node 14
+  18. Node 174
+  19. Node 223
+  20. Node 810
+
+

@@ -1,0 +1,19 @@
+Dataset: verify_star_9
+Vertices: 9
+Edges: 8
+Max PageRank Centrality (normalized): 1.000000
+Damping Factor: 0.850000
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by PageRank Centrality ===
+Rank	Vertex_ID	PageRank
+1	1	1.000000
+2	2	0.141827
+3	3	0.141827
+4	4	0.141827
+5	5	0.141827
+6	6	0.141827
+7	7	0.141827
+8	8	0.141827
+9	9	0.141827

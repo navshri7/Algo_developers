@@ -1,0 +1,15 @@
+Dataset: verify_path_5
+Vertices: 5
+Edges: 4
+Max PageRank Centrality (normalized): 1.000000
+Damping Factor: 0.850000
+Runtime (seconds): 0.000000
+Memory Usage (MB): 0.00
+
+=== Top 100 Vertices by PageRank Centrality ===
+Rank	Vertex_ID	PageRank
+1	4	1.000000
+2	2	1.000000
+3	3	0.971978
+4	1	0.546978
+5	5	0.546978

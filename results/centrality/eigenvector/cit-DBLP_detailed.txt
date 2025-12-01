@@ -3,7 +3,7 @@ Vertices: 12592
 Edges: 49621
 Max Eigenvector Centrality: 1.000000
 Largest Eigenvalue (Lambda): 42.818686
-Runtime (seconds): 0.023000
+Runtime (seconds): 0.034000
 Memory Usage (MB): 0.76
 
 === Top 100 Vertices by Eigenvector Centrality ===

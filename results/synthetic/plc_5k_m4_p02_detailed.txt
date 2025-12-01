@@ -1,14 +1,13 @@
 Dataset: plc_5k_m4_p02
 Vertices: 5000
-Edges: 19979
+Edges: 19980
 Max K-Core: 4
-Runtime (seconds): 0.000000
+Runtime (seconds): 0.001000
 Memory Usage (MB): 0.34
 
 === Core Distribution ===
 Core	Count	Percentage
-3	1	0.02%
-4	4999	99.98%
+4	5000	100.00%
 
 === Top 100 Vertices by Coreness ===
 Rank	Vertex_ID	Coreness

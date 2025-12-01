@@ -2,45 +2,45 @@ Degree Centrality Analysis Results
 ==================================
 
 Graph Statistics:
-  Nodes: 499
-  Edges: 1304
+  Nodes: 497
+  Edges: 1249
   Runtime: 0.001 seconds
-  Peak Memory: 3.25 MB
-  Runtime per Node: 0.000001 ms
+  Peak Memory: 3.29 MB
+  Runtime per Node: 0.000003 ms
   Runtime per Edge: 0.000001 ms
 
 Top 10 by Total Degree:
-  1. Node 312: 15
-  2. Node 330: 13
-  3. Node 465: 12
-  4. Node 341: 12
-  5. Node 271: 12
-  6. Node 481: 11
-  7. Node 361: 11
-  8. Node 225: 11
-  9. Node 113: 11
-  10. Node 467: 10
+  1. Node 395: 11
+  2. Node 323: 11
+  3. Node 267: 11
+  4. Node 243: 11
+  5. Node 4: 11
+  6. Node 483: 10
+  7. Node 394: 10
+  8. Node 371: 10
+  9. Node 312: 10
+  10. Node 224: 10
 
 Top 10 by In-Degree (Citations Received):
-  1. Node 113: 10
-  2. Node 90: 9
-  3. Node 66: 9
-  4. Node 158: 8
-  5. Node 143: 8
-  6. Node 142: 8
-  7. Node 105: 8
-  8. Node 79: 8
-  9. Node 71: 8
-  10. Node 49: 8
+  1. Node 4: 11
+  2. Node 36: 10
+  3. Node 49: 9
+  4. Node 47: 9
+  5. Node 30: 9
+  6. Node 211: 8
+  7. Node 199: 8
+  8. Node 129: 8
+  9. Node 124: 8
+  10. Node 40: 8
 
 Top 10 by Out-Degree (Citations Made):
-  1. Node 465: 12
-  2. Node 481: 11
-  3. Node 330: 11
-  4. Node 467: 10
-  5. Node 484: 9
-  6. Node 459: 9
-  7. Node 361: 9
-  8. Node 498: 8
-  9. Node 494: 8
-  10. Node 491: 8
+  1. Node 499: 9
+  2. Node 483: 9
+  3. Node 395: 9
+  4. Node 394: 9
+  5. Node 493: 8
+  6. Node 485: 8
+  7. Node 482: 8
+  8. Node 427: 8
+  9. Node 397: 8
+  10. Node 371: 8

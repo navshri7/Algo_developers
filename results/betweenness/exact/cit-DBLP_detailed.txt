@@ -2,7 +2,7 @@ Dataset: cit-DBLP
 Vertices: 12592
 Edges: 49621
 Max Betweenness: 11391541.943472
-Runtime (seconds): 15.948000
+Runtime (seconds): 15.851000
 Memory Usage (MB): 0.76
 
 === Top 100 Vertices by Betweenness Centrality ===

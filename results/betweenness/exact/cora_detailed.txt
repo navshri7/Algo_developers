@@ -2,7 +2,7 @@ Dataset: cora
 Vertices: 2708
 Edges: 5278
 Max Betweenness: 851504.958547
-Runtime (seconds): 0.738000
+Runtime (seconds): 0.557000
 Memory Usage (MB): 0.12
 
 === Top 100 Vertices by Betweenness Centrality ===

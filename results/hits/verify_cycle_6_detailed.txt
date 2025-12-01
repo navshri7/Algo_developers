@@ -4,10 +4,10 @@ HITS Algorithm Analysis Results
 Graph Statistics:
   Nodes: 6
   Edges: 7
-  Runtime: 0.000 seconds
-  Peak Memory: 3.23 MB
-  Runtime per Node: 0.000054 ms
-  Runtime per Edge: 0.000046 ms
+  Runtime: 0.001 seconds
+  Peak Memory: 2.98 MB
+  Runtime per Node: 0.000098 ms
+  Runtime per Edge: 0.000084 ms
 
 Convergence Parameters:
   Epsilon: 0.0000010000

@@ -31,8 +31,8 @@ FRONTIER ALGORITHMS (Modern Network Science):
 K-Core:
   Runtime:
     - Min: 0.000000s
-    - Max: 0.003000s
-    - Mean: 0.000278s
+    - Max: 0.004000s
+    - Mean: 0.000322s
     - Median: 0.000000s
   Memory:
     - Min: 0.00 MB
@@ -43,19 +43,19 @@ Betweenness (Exact):
   Runtime:
     - Min: 0.000000s
     - Max: 298.931000s
-    - Mean: 10.724845s
-    - Median: 0.344000s
+    - Mean: 9.542243s
+    - Median: 0.333500s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
-    - Mean: 0.33 MB
+    - Mean: 0.32 MB
 
 Katz:
   Runtime:
     - Min: 0.000000s
-    - Max: 0.488000s
-    - Mean: 0.030000s
-    - Median: 0.009500s
+    - Max: 0.562000s
+    - Mean: 0.034684s
+    - Median: 0.010000s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
@@ -64,8 +64,8 @@ Katz:
 Eigenvector:
   Runtime:
     - Min: 0.000000s
-    - Max: 0.172000s
-    - Mean: 0.010411s
+    - Max: 0.243000s
+    - Mean: 0.012213s
     - Median: 0.003000s
   Memory:
     - Min: 0.00 MB
