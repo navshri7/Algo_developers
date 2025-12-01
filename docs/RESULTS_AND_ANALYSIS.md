@@ -12,7 +12,7 @@ This comprehensive analysis evaluates **10 centrality algorithms** (9 unique alg
 - **Real-world networks**: 150 experiments (cit-DBLP, cit-HepTh, citeseer, cora)
 - **Synthetic graphs**: 1,517 experiments (Erdős-Rényi, Barabási-Albert, Watts-Strogatz, Cliques, etc.)
 - **Graph size range**: 5 to 27,770 vertices, 4 to 352,286 edges
-- **Density range**: 2.55×10⁻⁴ to 1.0 (sparse to complete graphs)
+- **Density range**: 2.55×10⁻⁴ to 1.0 (sparse to colmplete graphs)
 
 ---
 

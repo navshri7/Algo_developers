@@ -2,7 +2,7 @@ Dataset: cit-DBLP
 Vertices: 12592
 Edges: 49621
 Max K-Core: 12
-Runtime (seconds): 0.004000
+Runtime (seconds): 0.000000
 Memory Usage (MB): 0.86
 
 === Core Distribution ===

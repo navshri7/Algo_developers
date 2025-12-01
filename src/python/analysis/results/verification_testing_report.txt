@@ -1,0 +1,227 @@
+================================================================================
+VERIFICATION TESTING REPORT: ALL ALGORITHMS
+================================================================================
+
+This report verifies correctness of all algorithms on graphs with known expected results.
+Each graph tests different aspects of algorithm behavior.
+
+
+================================================================================
+Graph: Complete Graph K7 (verify_complete_7)
+================================================================================
+Nodes: 7, Edges: 21
+
+KCORE:
+  No data found
+
+DEGREE:
+  No data found
+
+BETWEENNESS:
+  No data found
+
+BRIDGING:
+  No data found
+
+KATZ:
+  No data found
+
+EIGENVECTOR:
+  No data found
+
+HITS_HUB:
+  No data found
+
+HITS_AUTH:
+  No data found
+
+PAGERANK:
+  No data found
+
+
+================================================================================
+Graph: Cycle Graph C6 (verify_cycle_6)
+================================================================================
+Nodes: 6, Edges: 6
+
+KCORE:
+  No data found
+
+DEGREE:
+  No data found
+
+BETWEENNESS:
+  No data found
+
+BRIDGING:
+  No data found
+
+KATZ:
+  No data found
+
+EIGENVECTOR:
+  No data found
+
+HITS_HUB:
+  No data found
+
+HITS_AUTH:
+  No data found
+
+PAGERANK:
+  No data found
+
+
+================================================================================
+Graph: Star Graph (verify_star_9)
+================================================================================
+Nodes: 9, Edges: 8
+
+KCORE:
+  No data found
+
+DEGREE:
+  No data found
+
+BETWEENNESS:
+  No data found
+
+BRIDGING:
+  No data found
+
+KATZ:
+  No data found
+
+EIGENVECTOR:
+  No data found
+
+HITS_HUB:
+  No data found
+
+HITS_AUTH:
+  No data found
+
+PAGERANK:
+  No data found
+
+
+================================================================================
+Graph: Path Graph P5 (verify_path_5)
+================================================================================
+Nodes: 5, Edges: 4
+
+KCORE:
+  No data found
+
+DEGREE:
+  No data found
+
+BETWEENNESS:
+  No data found
+
+BRIDGING:
+  No data found
+
+KATZ:
+  No data found
+
+EIGENVECTOR:
+  No data found
+
+HITS_HUB:
+  No data found
+
+HITS_AUTH:
+  No data found
+
+PAGERANK:
+  No data found
+
+
+================================================================================
+Graph: Known K-Core Structure (verify_known_structure)
+================================================================================
+Nodes: 20, Edges: 35
+
+KCORE:
+  No data found
+
+DEGREE:
+  No data found
+
+BETWEENNESS:
+  No data found
+
+BRIDGING:
+  No data found
+
+KATZ:
+  No data found
+
+EIGENVECTOR:
+  No data found
+
+HITS_HUB:
+  No data found
+
+HITS_AUTH:
+  No data found
+
+PAGERANK:
+  No data found
+
+
+================================================================================
+SUMMARY
+================================================================================
+
+Total verification graphs: 5
+Total algorithm tests: 40
+Total issues found: 45
+
+ISSUES FOUND:
+  - verify_complete_7: KCORE: No results found
+  - verify_complete_7: DEGREE: No results found
+  - verify_complete_7: BETWEENNESS: No results found
+  - verify_complete_7: BRIDGING: No results found
+  - verify_complete_7: KATZ: No results found
+  - verify_complete_7: EIGENVECTOR: No results found
+  - verify_complete_7: HITS_HUB: No results found
+  - verify_complete_7: HITS_AUTH: No results found
+  - verify_complete_7: PAGERANK: No results found
+  - verify_cycle_6: KCORE: No results found
+  - verify_cycle_6: DEGREE: No results found
+  - verify_cycle_6: BETWEENNESS: No results found
+  - verify_cycle_6: BRIDGING: No results found
+  - verify_cycle_6: KATZ: No results found
+  - verify_cycle_6: EIGENVECTOR: No results found
+  - verify_cycle_6: HITS_HUB: No results found
+  - verify_cycle_6: HITS_AUTH: No results found
+  - verify_cycle_6: PAGERANK: No results found
+  - verify_star_9: KCORE: No results found
+  - verify_star_9: DEGREE: No results found
+  - verify_star_9: BETWEENNESS: No results found
+  - verify_star_9: BRIDGING: No results found
+  - verify_star_9: KATZ: No results found
+  - verify_star_9: EIGENVECTOR: No results found
+  - verify_star_9: HITS_HUB: No results found
+  - verify_star_9: HITS_AUTH: No results found
+  - verify_star_9: PAGERANK: No results found
+  - verify_path_5: KCORE: No results found
+  - verify_path_5: DEGREE: No results found
+  - verify_path_5: BETWEENNESS: No results found
+  - verify_path_5: BRIDGING: No results found
+  - verify_path_5: KATZ: No results found
+  - verify_path_5: EIGENVECTOR: No results found
+  - verify_path_5: HITS_HUB: No results found
+  - verify_path_5: HITS_AUTH: No results found
+  - verify_path_5: PAGERANK: No results found
+  - verify_known_structure: KCORE: No results found
+  - verify_known_structure: DEGREE: No results found
+  - verify_known_structure: BETWEENNESS: No results found
+  - verify_known_structure: BRIDGING: No results found
+  - verify_known_structure: KATZ: No results found
+  - verify_known_structure: EIGENVECTOR: No results found
+  - verify_known_structure: HITS_HUB: No results found
+  - verify_known_structure: HITS_AUTH: No results found
+  - verify_known_structure: PAGERANK: No results found
