@@ -2,45 +2,45 @@ Degree Centrality Analysis Results
 ==================================
 
 Graph Statistics:
-  Nodes: 9926
-  Edges: 25114
-  Runtime: 0.011 seconds
-  Peak Memory: 3.72 MB
-  Runtime per Node: 0.000001 ms
-  Runtime per Edge: 0.000000 ms
+  Nodes: 9937
+  Edges: 25211
+  Runtime: 0.017 seconds
+  Peak Memory: 3.74 MB
+  Runtime per Node: 0.000002 ms
+  Runtime per Edge: 0.000001 ms
 
 Top 10 by Total Degree:
-  1. Node 3278: 18
-  2. Node 9941: 17
-  3. Node 8880: 17
-  4. Node 6794: 16
-  5. Node 5958: 16
-  6. Node 5535: 15
-  7. Node 9636: 14
-  8. Node 8016: 14
-  9. Node 5002: 14
-  10. Node 2182: 14
+  1. Node 9250: 17
+  2. Node 2389: 16
+  3. Node 1510: 16
+  4. Node 9617: 15
+  5. Node 5127: 15
+  6. Node 4397: 15
+  7. Node 8530: 14
+  8. Node 8366: 14
+  9. Node 6897: 14
+  10. Node 4719: 14
 
 Top 10 by In-Degree (Citations Received):
-  1. Node 3278: 12
-  2. Node 2373: 12
-  3. Node 779: 12
-  4. Node 492: 12
-  5. Node 467: 12
-  6. Node 241: 12
-  7. Node 144: 12
-  8. Node 85: 12
-  9. Node 3262: 11
-  10. Node 2968: 11
+  1. Node 1510: 15
+  2. Node 2389: 13
+  3. Node 1958: 13
+  4. Node 1386: 12
+  5. Node 910: 12
+  6. Node 861: 12
+  7. Node 471: 12
+  8. Node 395: 12
+  9. Node 103: 12
+  10. Node 3723: 11
 
 Top 10 by Out-Degree (Citations Made):
-  1. Node 9941: 17
-  2. Node 9636: 14
-  3. Node 8880: 13
-  4. Node 9532: 12
-  5. Node 8616: 12
-  6. Node 8016: 12
-  7. Node 7810: 12
-  8. Node 9760: 11
-  9. Node 9757: 11
-  10. Node 9502: 11
+  1. Node 9250: 16
+  2. Node 9617: 14
+  3. Node 8710: 13
+  4. Node 9980: 12
+  5. Node 9888: 12
+  6. Node 9784: 12
+  7. Node 9723: 12
+  8. Node 9665: 12
+  9. Node 9546: 12
+  10. Node 8676: 12

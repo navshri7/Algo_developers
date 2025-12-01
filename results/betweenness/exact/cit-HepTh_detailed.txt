@@ -2,7 +2,7 @@ Dataset: cit-HepTh
 Vertices: 27769
 Edges: 352285
 Max Betweenness: 31528431.196295
-Runtime (seconds): 340.138000
+Runtime (seconds): 286.297000
 Memory Usage (MB): 3.54
 
 === Top 100 Vertices by Betweenness Centrality ===

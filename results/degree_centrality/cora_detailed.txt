@@ -5,7 +5,7 @@ Graph Statistics:
   Nodes: 2709
   Edges: 5279
   Runtime: 0.004 seconds
-  Peak Memory: 3.41 MB
+  Peak Memory: 3.35 MB
   Runtime per Node: 0.000001 ms
   Runtime per Edge: 0.000001 ms
 

@@ -2,7 +2,7 @@ Dataset: citeseer
 Vertices: 3264
 Edges: 4536
 Max Betweenness: 399409.261127
-Runtime (seconds): 0.609000
+Runtime (seconds): 0.487000
 Memory Usage (MB): 0.13
 
 === Top 100 Vertices by Betweenness Centrality ===

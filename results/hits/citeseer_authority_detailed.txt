@@ -4,10 +4,10 @@ HITS Authority Score Analysis Results
 Graph Statistics:
   Nodes: 3265
   Edges: 4537
-  Runtime: 0.007 seconds
-  Peak Memory: 3.65 MB
-  Runtime per Node: 0.000002 ms
-  Runtime per Edge: 0.000002 ms
+  Runtime: 0.021 seconds
+  Peak Memory: 3.83 MB
+  Runtime per Node: 0.000007 ms
+  Runtime per Edge: 0.000005 ms
 
 Convergence Parameters:
   Epsilon: 0.0000010000

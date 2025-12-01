@@ -4,58 +4,58 @@ BETWEENNESS CENTRALITY: EXACT vs APPROXIMATE COMPARISON
 
 1. OVERALL STATISTICS
 --------------------------------------------------------------------------------
-Total experiments: 552
-  - Exact: 276
-  - Approximate: 276
+Total experiments: 676
+  - Exact: 338
+  - Approximate: 338
 
 2. RUNTIME COMPARISON
 --------------------------------------------------------------------------------
 
 Exact Algorithm:
   Runtime range: 0.000000s to 340.138000s
-  Average runtime: 10.095634s
-  Median runtime: 0.391000s
-  Std deviation: 39.490926s
+  Average runtime: 10.518754s
+  Median runtime: 0.423000s
+  Std deviation: 40.566760s
 
 Approximate Algorithm:
   Runtime range: 0.000000s to 33.387000s
-  Average runtime: 1.049554s
-  Median runtime: 0.135500s
-  Std deviation: 3.819430s
+  Average runtime: 1.077068s
+  Median runtime: 0.151000s
+  Std deviation: 3.840696s
 
 Speedup Analysis (Exact / Approximate):
-  Average speedup: 5.13x
-  Min speedup: 0.78x
-  Max speedup: 10.31x
+  Average speedup: 5.09x
+  Min speedup: 0.81x
+  Max speedup: 10.56x
 
   Speedup by dataset:
     ba_10k_m3: 9.27x
-    ba_1k_m3: 1.79x
-    ba_1k_m5: 1.75x
-    ba_5k_m3: 8.24x
-    ba_5k_m5: 6.99x
-    cit-DBLP: 9.95x
-    cit-HepTh: 10.31x
-    citeseer: 4.91x
-    cora: 5.11x
-    er_1000_dense: 2.14x
-    er_1000_sparse: 2.02x
-    er_100_dense: 0.78x
-    er_100_sparse: 1.05x
-    er_10k_dense: 9.52x
-    er_10k_sparse: 9.04x
-    er_500_dense: 1.25x
-    er_500_sparse: 1.09x
-    er_5k_dense: 7.66x
-    er_5k_sparse: 7.76x
+    ba_1k_m3: 1.68x
+    ba_1k_m5: 1.67x
+    ba_5k_m3: 8.21x
+    ba_5k_m5: 7.16x
+    cit-DBLP: 9.93x
+    cit-HepTh: 10.56x
+    citeseer: 4.41x
+    cora: 4.91x
+    er_1000_dense: 2.00x
+    er_1000_sparse: 1.86x
+    er_100_dense: 0.81x
+    er_100_sparse: 1.00x
+    er_10k_dense: 9.65x
+    er_10k_sparse: 9.12x
+    er_500_dense: 1.14x
+    er_500_sparse: 1.11x
+    er_5k_dense: 7.95x
+    er_5k_sparse: 7.61x
     verify_complete_7: nanx
     verify_cycle_6: nanx
     verify_known_structure: nanx
     verify_path_5: nanx
     verify_star_9: nanx
-    ws_1k_k10_p03: 2.20x
-    ws_1k_k6_p01: 2.06x
-    ws_5k_k6_p01: 7.93x
+    ws_1k_k10_p03: 2.07x
+    ws_1k_k6_p01: 1.96x
+    ws_5k_k6_p01: 7.84x
 
 3. MEMORY USAGE COMPARISON
 --------------------------------------------------------------------------------
@@ -75,25 +75,25 @@ Approximate Algorithm:
 
 Exact Algorithm:
   Max BC range: 0.000000 to 31528431.196295
-  Average max BC: 1692115.255456
-  Median max BC: 44582.466672
+  Average max BC: 1703666.257104
+  Median max BC: 45555.459699
 
 Approximate Algorithm:
   Max BC range: 0.000000 to 31834191.675042
-  Average max BC: 1701714.728641
-  Median max BC: 44952.518121
+  Average max BC: 1714423.258983
+  Median max BC: 46680.262226
 
 5. SAMPLING INFORMATION (Approximate Only)
 --------------------------------------------------------------------------------
 Sample size range: 5.0 to 2776.0
-Average samples: 564
+Average samples: 565
 Sample percentage range: 10.00% to 100.00%
 
 6. CORRELATION ANALYSIS
 --------------------------------------------------------------------------------
-Vertices vs Runtime: 0.5940
-Edges vs Runtime: 0.7228
-Density vs Runtime: -0.0819
+Vertices vs Runtime: 0.5986
+Edges vs Runtime: 0.7261
+Density vs Runtime: -0.0829
 
 ================================================================================
 END OF REPORT

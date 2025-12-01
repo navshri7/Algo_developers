@@ -4,24 +4,24 @@ HITS Authority Score Analysis Results
 Graph Statistics:
   Nodes: 5001
   Edges: 14992
-  Runtime: 0.022 seconds
-  Peak Memory: 4.25 MB
-  Runtime per Node: 0.000004 ms
-  Runtime per Edge: 0.000001 ms
+  Runtime: 0.035 seconds
+  Peak Memory: 4.21 MB
+  Runtime per Node: 0.000007 ms
+  Runtime per Edge: 0.000002 ms
 
 Convergence Parameters:
   Epsilon: 0.0000010000
   Max Iterations: 1000
-  Iterations Taken: 25
+  Iterations Taken: 35
 
 Top 10 by Authority Score:
-  1. Node 1: 0.9703709592
-  2. Node 9: 0.0858251224
-  3. Node 15: 0.0713863213
-  4. Node 6: 0.0698379327
-  5. Node 3: 0.0584767586
-  6. Node 7: 0.0559780414
-  7. Node 2: 0.0551078348
-  8. Node 19: 0.0521221303
-  9. Node 58: 0.0495222749
-  10. Node 5: 0.0474797912
+  1. Node 6: 0.9106580628
+  2. Node 9: 0.3132129449
+  3. Node 1: 0.1287817357
+  4. Node 7: 0.0792911004
+  5. Node 5: 0.0701235993
+  6. Node 22: 0.0614805152
+  7. Node 26: 0.0608963044
+  8. Node 3: 0.0606375454
+  9. Node 14: 0.0571548784
+  10. Node 15: 0.0562633221

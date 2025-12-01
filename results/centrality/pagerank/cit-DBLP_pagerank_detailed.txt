@@ -3,7 +3,7 @@ Vertices: 12592
 Edges: 49621
 Max PageRank Centrality (normalized): 1.000000
 Damping Factor: 0.850000
-Runtime (seconds): 0.064000
+Runtime (seconds): 0.047000
 Memory Usage (MB): 0.76
 
 === Top 100 Vertices by PageRank Centrality ===

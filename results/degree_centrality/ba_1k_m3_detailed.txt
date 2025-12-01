@@ -10,28 +10,28 @@ Graph Statistics:
   Runtime per Edge: 0.000001 ms
 
 Top 10 by Total Degree:
-  1. Node 1: 115
-  2. Node 4: 71
-  3. Node 5: 70
-  4. Node 15: 67
-  5. Node 6: 60
-  6. Node 17: 52
-  7. Node 14: 51
-  8. Node 12: 45
-  9. Node 22: 40
-  10. Node 19: 38
+  1. Node 1: 94
+  2. Node 11: 74
+  3. Node 6: 62
+  4. Node 9: 56
+  5. Node 16: 55
+  6. Node 15: 47
+  7. Node 2: 46
+  8. Node 7: 44
+  9. Node 10: 43
+  10. Node 5: 41
 
 Top 10 by In-Degree (Citations Received):
-  1. Node 1: 115
-  2. Node 4: 70
-  3. Node 5: 67
-  4. Node 15: 64
-  5. Node 6: 57
-  6. Node 17: 49
-  7. Node 14: 48
-  8. Node 12: 42
-  9. Node 22: 37
-  10. Node 19: 35
+  1. Node 1: 94
+  2. Node 11: 71
+  3. Node 6: 59
+  4. Node 9: 53
+  5. Node 16: 52
+  6. Node 2: 45
+  7. Node 15: 44
+  8. Node 7: 41
+  9. Node 10: 40
+  10. Node 5: 38
 
 Top 10 by Out-Degree (Citations Made):
   1. Node 1000: 3

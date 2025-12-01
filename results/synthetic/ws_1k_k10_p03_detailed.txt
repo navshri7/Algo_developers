@@ -8,8 +8,8 @@ Memory Usage (MB): 0.08
 === Core Distribution ===
 Core	Count	Percentage
 5	1	0.10%
-6	4	0.40%
-7	995	99.50%
+6	6	0.60%
+7	993	99.30%
 
 === Top 100 Vertices by Coreness ===
 Rank	Vertex_ID	Coreness

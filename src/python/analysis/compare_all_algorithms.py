@@ -139,12 +139,16 @@ def analyze_node_rankings(output_dir):
         # Degree Centrality
         deg_file = Path(f"results/degree_centrality/{dataset}_detailed.txt")
         if deg_file.exists():
-            top_nodes['Degree'] = extract_top_nodes(deg_file, 20)
+            extracted = extract_top_nodes(deg_file, 20)
+            if extracted:  # Only add if we actually extracted nodes
+                top_nodes['Degree'] = extracted
         
         # Bridging Centrality
         brid_file = Path(f"results/bridging_centrality/{dataset}_detailed.txt")
         if brid_file.exists():
-            top_nodes['Bridging'] = extract_top_nodes(brid_file, 20)
+            extracted = extract_top_nodes(brid_file, 20)
+            if extracted:  # Only add if we actually extracted nodes
+                top_nodes['Bridging'] = extracted
         
         # Katz
         katz_file = Path(f"results/centrality/katz/{dataset}_detailed.txt")
@@ -159,12 +163,16 @@ def analyze_node_rankings(output_dir):
         # HITS (Hub)
         hits_hub_file = Path(f"results/hits/{dataset}_hub_detailed.txt")
         if hits_hub_file.exists():
-            top_nodes['HITS (Hub)'] = extract_top_nodes(hits_hub_file, 20)
+            extracted = extract_top_nodes(hits_hub_file, 20)
+            if extracted:  # Only add if we actually extracted nodes
+                top_nodes['HITS (Hub)'] = extracted
         
         # HITS (Authority)
         hits_auth_file = Path(f"results/hits/{dataset}_authority_detailed.txt")
         if hits_auth_file.exists():
-            top_nodes['HITS (Auth)'] = extract_top_nodes(hits_auth_file, 20)
+            extracted = extract_top_nodes(hits_auth_file, 20)
+            if extracted:  # Only add if we actually extracted nodes
+                top_nodes['HITS (Auth)'] = extracted
         
         # PageRank
         pagerank_file = Path(f"results/centrality/pagerank/{dataset}_pagerank_detailed.txt")
@@ -277,13 +285,49 @@ def extract_top_nodes(filepath, k=10):
             for i, line in enumerate(lines):
                 line_stripped = line.strip()
                 
-                # Look for section start (like "=== Top 100 Vertices by Coreness ===")
-                if "Top" in line and "Vertices" in line:
-                    in_section = True
-                    skip_next = True  # Next line will be header
-                    continue
+                # Look for section start - handle multiple formats:
+                # "=== Top 100 Vertices by Coreness ===" (K-Core)
+                # "Top 10 by Total Degree:" (Degree - use this one)
+                # "Top 10 by Bridging Centrality:" (Bridging - use this one)
+                # "Top 10 by Hub Score:" (HITS Hub)
+                # "Top 10 by Authority Score:" (HITS Auth)
+                if not in_section and "Top" in line:
+                    if "Vertices" in line:
+                        # K-Core format with header row
+                        in_section = True
+                        skip_next = True
+                        continue
+                    elif "Total Degree" in line:
+                        # Degree - use Total Degree section
+                        in_section = True
+                        skip_next = False
+                        continue
+                    elif "Bridging Centrality" in line:
+                        # Bridging - use Bridging Centrality section (not Betweenness or Coefficient)
+                        in_section = True
+                        skip_next = False
+                        continue
+                    elif "Hub Score" in line:
+                        # HITS Hub
+                        in_section = True
+                        skip_next = False
+                        continue
+                    elif "Authority Score" in line:
+                        # HITS Authority
+                        in_section = True
+                        skip_next = False
+                        continue
+                    elif "Rank" in line and "Vertex" in line:
+                        # Betweenness format
+                        in_section = True
+                        skip_next = False
+                        continue
                 
-                # Skip header line
+                # Stop if we hit another "Top" section (for files with multiple sections)
+                if in_section and line_stripped.startswith("Top"):
+                    break
+                
+                # Skip header line (only for K-Core format)
                 if skip_next:
                     skip_next = False
                     continue
@@ -295,28 +339,35 @@ def extract_top_nodes(filepath, k=10):
                         in_section = False
                         continue
                     
-                    # Try tab-separated format (betweenness, k-core, etc.)
+                    # Skip empty lines or section headers
+                    if not line_stripped or ("Rank" in line_stripped and not line_stripped[0].isdigit()):
+                        continue
+                    
+                    # Try tab-separated format first (betweenness, k-core, etc.)
+                    # Format: "1	62	11391541.943472"
                     parts = line_stripped.split('\t')
                     if len(parts) >= 2 and parts[0].isdigit():
                         try:
                             node_id = int(parts[1])
-                            nodes.append(node_id)
-                            count += 1
-                            if count >= k:
-                                break
-                        except (ValueError, IndexError):
-                            continue
-                    else:
-                        # Try space-separated format with "Node" prefix (degree centrality)
-                        # Format: "  1. Node 62: 709"
-                        match = re.search(r'Node\s+(\d+)', line)
-                        if match:
-                            try:
-                                node_id = int(match.group(1))
+                            if node_id not in nodes:  # Avoid duplicates
                                 nodes.append(node_id)
                                 count += 1
                                 if count >= k:
                                     break
+                        except (ValueError, IndexError):
+                            continue
+                    else:
+                        # Try space-separated format with "Node" prefix
+                        # Format: "  1. Node 62: 709" or "1. Node 62: 709"
+                        match = re.search(r'Node\s+(\d+)', line)
+                        if match:
+                            try:
+                                node_id = int(match.group(1))
+                                if node_id not in nodes:  # Avoid duplicates
+                                    nodes.append(node_id)
+                                    count += 1
+                                    if count >= k:
+                                        break
                             except (ValueError, IndexError):
                                 continue
     except Exception as e:

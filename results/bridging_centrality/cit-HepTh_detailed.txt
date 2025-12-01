@@ -4,10 +4,10 @@ Bridging Centrality Analysis Results
 Graph Statistics:
   Nodes: 27770
   Edges: 352286
-  Runtime: 217.637 seconds
-  Peak Memory: 16.92 MB
-  Runtime per Node: 0.007837 ms
-  Runtime per Edge: 0.000618 ms
+  Runtime: 316.684 seconds
+  Peak Memory: 16.59 MB
+  Runtime per Node: 0.011404 ms
+  Runtime per Edge: 0.000899 ms
 
 Top 10 by Bridging Centrality:
   1. Node 14159: 0.0014626814

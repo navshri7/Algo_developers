@@ -2,26 +2,26 @@ HITS Hub Score Analysis Results
 ===============================
 
 Graph Statistics:
-  Nodes: 4978
-  Edges: 12575
-  Runtime: 0.056 seconds
-  Peak Memory: 4.21 MB
-  Runtime per Node: 0.000011 ms
-  Runtime per Edge: 0.000004 ms
+  Nodes: 4969
+  Edges: 12406
+  Runtime: 0.043 seconds
+  Peak Memory: 4.06 MB
+  Runtime per Node: 0.000009 ms
+  Runtime per Edge: 0.000003 ms
 
 Convergence Parameters:
   Epsilon: 0.0000010000
   Max Iterations: 1000
-  Iterations Taken: 144
+  Iterations Taken: 52
 
 Top 10 by Hub Score:
-  1. Node 4572: 0.3448548655
-  2. Node 3787: 0.1589155737
-  3. Node 3559: 0.1136191700
-  4. Node 3450: 0.1092944291
-  5. Node 2296: 0.1009606204
-  6. Node 1363: 0.0973494108
-  7. Node 3340: 0.0960806584
-  8. Node 4801: 0.0942351138
-  9. Node 3462: 0.0891533866
-  10. Node 3984: 0.0853667416
+  1. Node 4175: 0.0897818425
+  2. Node 3934: 0.0854647908
+  3. Node 4594: 0.0830258176
+  4. Node 3148: 0.0827652533
+  5. Node 2667: 0.0797772375
+  6. Node 4089: 0.0737648500
+  7. Node 4401: 0.0725784182
+  8. Node 4185: 0.0719269174
+  9. Node 3978: 0.0716095874
+  10. Node 4973: 0.0713907138

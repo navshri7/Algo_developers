@@ -32,7 +32,7 @@ K-Core:
   Runtime:
     - Min: 0.000000s
     - Max: 0.004000s
-    - Mean: 0.000338s
+    - Mean: 0.000351s
     - Median: 0.000000s
   Memory:
     - Min: 0.00 MB
@@ -43,8 +43,8 @@ Betweenness (Exact):
   Runtime:
     - Min: 0.000000s
     - Max: 340.138000s
-    - Mean: 10.095634s
-    - Median: 0.391000s
+    - Mean: 10.518754s
+    - Median: 0.423000s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
@@ -54,8 +54,8 @@ Katz:
   Runtime:
     - Min: 0.000000s
     - Max: 0.853000s
-    - Mean: 0.041369s
-    - Median: 0.011000s
+    - Mean: 0.042642s
+    - Median: 0.012000s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
@@ -65,8 +65,8 @@ Eigenvector:
   Runtime:
     - Min: 0.000000s
     - Max: 0.243000s
-    - Mean: 0.013636s
-    - Median: 0.003000s
+    - Mean: 0.014115s
+    - Median: 0.004000s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
@@ -76,7 +76,7 @@ PageRank:
   Runtime:
     - Min: 0.000000s
     - Max: 0.341000s
-    - Mean: 0.015366s
+    - Mean: 0.014987s
     - Median: 0.004000s
   Memory:
     - Min: 0.00 MB

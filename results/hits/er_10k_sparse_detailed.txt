@@ -2,38 +2,38 @@ HITS Algorithm Analysis Results
 ===============================
 
 Graph Statistics:
-  Nodes: 9926
-  Edges: 25114
-  Runtime: 0.117 seconds
-  Peak Memory: 5.03 MB
-  Runtime per Node: 0.000012 ms
-  Runtime per Edge: 0.000005 ms
+  Nodes: 9937
+  Edges: 25211
+  Runtime: 0.163 seconds
+  Peak Memory: 5.08 MB
+  Runtime per Node: 0.000016 ms
+  Runtime per Edge: 0.000006 ms
 
 Convergence Parameters:
   Epsilon: 0.0000010000
   Max Iterations: 1000
-  Iterations Taken: 167
+  Iterations Taken: 185
 
 Top 10 by Hub Score:
-  1. Node 9941: 0.3087072471
-  2. Node 9636: 0.1329924014
-  3. Node 6681: 0.1252563490
-  4. Node 7820: 0.0993628740
-  5. Node 7804: 0.0907498170
-  6. Node 7810: 0.0893056077
-  7. Node 3958: 0.0705881513
-  8. Node 8419: 0.0674270907
-  9. Node 5634: 0.0669825663
-  10. Node 9532: 0.0668521774
+  1. Node 9349: 0.1945278562
+  2. Node 8589: 0.1839636760
+  3. Node 7030: 0.1647178459
+  4. Node 9861: 0.1583439242
+  5. Node 9777: 0.1409719944
+  6. Node 7181: 0.1376727793
+  7. Node 9842: 0.1373892964
+  8. Node 7175: 0.1319471942
+  9. Node 7255: 0.1315624813
+  10. Node 3388: 0.1144030155
 
 Top 10 by Authority Score:
-  1. Node 707: 0.1800528261
-  2. Node 144: 0.1220310535
-  3. Node 241: 0.1096294398
-  4. Node 1087: 0.1096029983
-  5. Node 85: 0.1076830920
-  6. Node 2872: 0.1040427013
-  7. Node 3278: 0.1015140582
-  8. Node 79: 0.0946819801
-  9. Node 1456: 0.0914939339
-  10. Node 3201: 0.0887500148
+  1. Node 1510: 0.4299068688
+  2. Node 103: 0.0909672122
+  3. Node 1728: 0.0820587547
+  4. Node 510: 0.0777152296
+  5. Node 3652: 0.0722513121
+  6. Node 152: 0.0705206508
+  7. Node 606: 0.0702087801
+  8. Node 861: 0.0698408373
+  9. Node 140: 0.0693811850
+  10. Node 696: 0.0683965220

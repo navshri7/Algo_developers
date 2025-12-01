@@ -5,9 +5,9 @@ Graph Statistics:
   Nodes: 8
   Edges: 22
   Runtime: 0.000 seconds
-  Peak Memory: 3.28 MB
-  Runtime per Node: 0.000030 ms
-  Runtime per Edge: 0.000011 ms
+  Peak Memory: 3.29 MB
+  Runtime per Node: 0.000044 ms
+  Runtime per Edge: 0.000016 ms
 
 Top 10 by Total Degree:
   1. Node 7: 7

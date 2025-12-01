@@ -2,7 +2,7 @@ Dataset: ba_5k_m5
 Vertices: 5000
 Edges: 24975
 Max K-Core: 5
-Runtime (seconds): 0.000000
+Runtime (seconds): 0.001000
 Memory Usage (MB): 0.38
 
 === Core Distribution ===

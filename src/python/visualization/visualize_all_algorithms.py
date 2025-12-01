@@ -13,6 +13,7 @@ import numpy as np
 from pathlib import Path
 import networkx as nx
 from matplotlib.animation import FuncAnimation, PillowWriter
+import re
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -113,15 +114,57 @@ def parse_detailed_results(filepath):
     rankings = {}
     try:
         with open(filepath, 'r') as f:
+            lines = f.readlines()
             in_section = False
-            for line in f:
-                # Look for section headers - be more flexible
-                if "Top" in line or ("Rank" in line and ("Vertex" in line or "Node" in line)):
-                    in_section = True
+            skip_next = False
+            rank_counter = 1
+            
+            for line in lines:
+                line_stripped = line.strip()
+                
+                # Look for section start - handle multiple formats:
+                # "=== Top 100 Vertices by Coreness ===" (K-Core)
+                # "Top 10 by Total Degree:" (Degree)
+                # "Top 10 by Bridging Centrality:" (Bridging)
+                # "Top 10 by Hub Score:" (HITS Hub)
+                # "Top 10 by Authority Score:" (HITS Auth)
+                if not in_section and "Top" in line:
+                    if "Vertices" in line:
+                        # K-Core format with header row
+                        in_section = True
+                        skip_next = True
+                        rank_counter = 1
+                        continue
+                    elif any(keyword in line for keyword in ["Total Degree", "Bridging Centrality", "Hub Score", "Authority Score", "Rank", "Betweenness"]):
+                        # Other formats - no header row, data starts immediately
+                        in_section = True
+                        skip_next = False
+                        rank_counter = 1
+                        continue
+                
+                # Stop if we hit another "Top" section (for files with multiple sections)
+                if in_section and line_stripped.startswith("Top"):
+                    break
+                
+                # Skip header line (only for K-Core format)
+                if skip_next:
+                    skip_next = False
                     continue
-                if in_section and line.strip() and not line.startswith("==="):
+                
+                # Parse data lines
+                if in_section and line_stripped:
+                    # Skip separator lines
+                    if line_stripped.startswith("==="):
+                        in_section = False
+                        continue
+                    
+                    # Skip empty lines or section headers
+                    if not line_stripped or ("Rank" in line_stripped and not line_stripped[0].isdigit() and "Node" not in line_stripped):
+                        continue
+                    
                     # Try tab-separated format first (betweenness, k-core, etc.)
-                    parts = line.strip().split('\t')
+                    # Format: "1	62	11391541.943472"
+                    parts = line_stripped.split('\t')
                     if len(parts) >= 3 and parts[0].isdigit():
                         try:
                             rank = int(parts[0])
@@ -138,6 +181,18 @@ def parse_detailed_results(filepath):
                             rankings[node_id] = (rank, 0.0)  # Default value
                         except (ValueError, IndexError):
                             continue
+                    else:
+                        # Try space-separated format with "Node" prefix
+                        # Format: "  1. Node 62: 709" or "1. Node 62: 709"
+                        match = re.search(r'(\d+)\.\s*Node\s+(\d+):\s*([\d.]+)', line)
+                        if match:
+                            try:
+                                rank = int(match.group(1))
+                                node_id = int(match.group(2)) - 1  # Convert to 0-indexed
+                                value = float(match.group(3))
+                                rankings[node_id] = (rank, value)
+                            except (ValueError, IndexError):
+                                continue
     except Exception as e:
         pass
     
@@ -179,9 +234,14 @@ def visualize_all_algorithms_comparison(output_dir):
             # Find result file
             if algo_key == 'pagerank':
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            elif algo_info.get('file_suffix'):
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}{algo_info['file_suffix']}_detailed.txt"
             else:
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
-
+            
+            # Special handling for K-Core - check both synthetic and real_datasets
+            if algo_key == 'kcore' and not result_file.exists():
+                result_file = Path('results/real_datasets') / f"{graph_base}_detailed.txt"
             
             if not result_file.exists():
                 ax.text(0.5, 0.5, f"{algo_info['name']}\n(No results)", 
@@ -265,7 +325,10 @@ def create_animated_comparison(output_dir):
         # Preload all data
         all_rankings = {}
         for algo_key, algo_info in ALGORITHMS.items():
-            if algo_info.get('file_suffix'):
+            # Construct file path based on algorithm
+            if algo_key == 'pagerank':
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            elif algo_info.get('file_suffix'):
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}{algo_info['file_suffix']}_detailed.txt"
             else:
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
@@ -278,10 +341,12 @@ def create_animated_comparison(output_dir):
                 rankings = parse_detailed_results(str(result_file))
                 all_rankings[algo_key] = rankings
                 if not rankings:
-                    print(f"  Warning: {algo_info['name']} file exists but no rankings extracted from {result_file}")
+                    print(f"  ⚠ {algo_info['name']}: File exists but no rankings extracted from {result_file}")
+                else:
+                    print(f"  ✓ {algo_info['name']}: Loaded {len(rankings)} nodes from {result_file.name}")
             else:
                 all_rankings[algo_key] = {}
-                print(f"  Warning: {algo_info['name']} file not found: {result_file}")
+                print(f"  ⚠ {algo_info['name']}: File not found: {result_file}")
 
         
         def animate(frame):
@@ -369,8 +434,15 @@ def create_algorithm_ranking_heatmap(output_dir):
         for algo_key, algo_info in ALGORITHMS.items():
             if algo_key == 'pagerank':
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            elif algo_info.get('file_suffix'):
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}{algo_info['file_suffix']}_detailed.txt"
             else:
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+            
+            # Special handling for K-Core - check both synthetic and real_datasets
+            if algo_key == 'kcore' and not result_file.exists():
+                result_file = Path('results/real_datasets') / f"{graph_base}_detailed.txt"
+            
             if result_file.exists():
                 all_rankings[algo_key] = parse_detailed_results(str(result_file))
 
@@ -434,8 +506,14 @@ def create_top_nodes_comparison(output_dir):
             ax = axes[algo_idx]
             if algo_key == 'pagerank':
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            elif algo_info.get('file_suffix'):
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}{algo_info['file_suffix']}_detailed.txt"
             else:
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+            
+            # Special handling for K-Core - check both synthetic and real_datasets
+            if algo_key == 'kcore' and not result_file.exists():
+                result_file = Path('results/real_datasets') / f"{graph_base}_detailed.txt"
 
             
             if not result_file.exists():

@@ -5,9 +5,9 @@ Graph Statistics:
   Nodes: 8
   Edges: 22
   Runtime: 0.001 seconds
-  Peak Memory: 3.21 MB
-  Runtime per Node: 0.000082 ms
-  Runtime per Edge: 0.000030 ms
+  Peak Memory: 3.20 MB
+  Runtime per Node: 0.000110 ms
+  Runtime per Edge: 0.000040 ms
 
 Convergence Parameters:
   Epsilon: 0.0000010000

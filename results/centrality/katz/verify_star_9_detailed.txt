@@ -3,7 +3,7 @@ Vertices: 9
 Edges: 8
 Max Katz Centrality: -nan
 Alpha Parameter: 0.478125
-Runtime (seconds): 0.001000
+Runtime (seconds): 0.000000
 Memory Usage (MB): 0.00
 
 === Top 100 Vertices by Katz Centrality ===

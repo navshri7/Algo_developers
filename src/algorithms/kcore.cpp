@@ -192,6 +192,22 @@ void writeCSVSummary(const string& csvFile, const string& datasetName,
     out.close();
 }
 
+void writeNodeCSV(const string& csvFile, const string& datasetName,
+                  const vector<int>& coreness) {
+    ofstream out(csvFile);
+    if (!out) {
+        cerr << "Error: Cannot create CSV file " << csvFile << "\n";
+        return;
+    }
+    
+    out << "Node,CoreNumber\n";
+    for (int i = 0; i < (int)coreness.size(); i++) {
+        out << (i + 1) << "," << coreness[i] << "\n";
+    }
+    
+    out.close();
+}
+
 int main(int argc, char* argv[]) {
     if (argc < 3) {
         cerr << "Usage: " << argv[0] << " <input_file> <output_dir> [dataset_name]\n";
@@ -279,11 +295,13 @@ int main(int argc, char* argv[]) {
     // Write results
     string detailedOutput = outputDir + "/" + datasetName + "_detailed.txt";
     string csvOutput = outputDir + "/summary.csv";
+    string nodeCSVOutput = outputDir + "/" + datasetName + ".csv";
     
     writeDetailedResults(detailedOutput, datasetName, n, edgeCount, maxCore, 
                         dist, computeTime, memoryUsage, coreness);
     writeCSVSummary(csvOutput, datasetName, n, edgeCount, maxCore, 
                    computeTime, memoryUsage, avgDegree, density);
+    writeNodeCSV(nodeCSVOutput, datasetName, coreness);
     
     cout << "\nResults written to:\n";
     cout << "  - " << detailedOutput << "\n";

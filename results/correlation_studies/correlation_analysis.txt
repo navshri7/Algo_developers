@@ -33,10 +33,12 @@ CORA
 
 STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (Total)            : ρ =  0.8520
   Degree (In)               <-> HITS (Auth)               : ρ =  0.8296
 
 MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (Out)              : ρ =  0.5325
   Degree (In)               <-> Degree (Total)            : ρ =  0.5737
   Degree (In)               <-> Bridging Centrality       : ρ =  0.5146
   Degree (Out)              <-> Degree (Total)            : ρ =  0.4558
@@ -48,6 +50,11 @@ MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 
 WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (In)               : ρ =  0.3646
+  K-Core                    <-> Bridging Centrality       : ρ =  0.3781
+  K-Core                    <-> Bridging Coeff            : ρ =  0.2078
+  K-Core                    <-> HITS (Hub)                : ρ =  0.3980
+  K-Core                    <-> HITS (Auth)               : ρ =  0.3834
   Degree (In)               <-> Degree (Out)              : ρ = -0.3655
   Degree (In)               <-> Bridging Coeff            : ρ = -0.2355
   Degree (In)               <-> HITS (Hub)                : ρ = -0.1730
@@ -67,13 +74,15 @@ CITESEER
 
 STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 ----------------------------------------------------------------------------------------------------
-  (None found)
+  K-Core                    <-> Degree (Total)            : ρ =  0.8657
 
 MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 ----------------------------------------------------------------------------------------------------
-  K-Core                    <-> Degree (Out)              : ρ =  0.5446
-  K-Core                    <-> Degree (Total)            : ρ =  0.5139
-  K-Core                    <-> HITS (Hub)                : ρ =  0.5906
+  K-Core                    <-> Degree (In)               : ρ =  0.4648
+  K-Core                    <-> Degree (Out)              : ρ =  0.4733
+  K-Core                    <-> Bridging Centrality       : ρ =  0.4600
+  K-Core                    <-> HITS (Hub)                : ρ =  0.5002
+  K-Core                    <-> HITS (Auth)               : ρ =  0.4707
   Degree (In)               <-> Degree (Total)            : ρ =  0.5379
   Degree (In)               <-> HITS (Auth)               : ρ =  0.5808
   Degree (Out)              <-> Degree (Total)            : ρ =  0.5460
@@ -89,10 +98,7 @@ MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 
 WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
 ----------------------------------------------------------------------------------------------------
-  K-Core                    <-> Degree (In)               : ρ = -0.0784
-  K-Core                    <-> Bridging Centrality       : ρ =  0.2767
-  K-Core                    <-> Bridging Coeff            : ρ =  0.2492
-  K-Core                    <-> HITS (Auth)               : ρ =  0.2967
+  K-Core                    <-> Bridging Coeff            : ρ =  0.3636
   Degree (In)               <-> Degree (Out)              : ρ = -0.2993
   Degree (In)               <-> Bridging Centrality       : ρ =  0.3656
   Degree (In)               <-> Bridging Coeff            : ρ = -0.2124
@@ -109,6 +115,11 @@ CIT-HEPTH
 
 STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (In)               : ρ =  0.7175
+  K-Core                    <-> Degree (Out)              : ρ =  0.7609
+  K-Core                    <-> Degree (Total)            : ρ =  0.9638
+  K-Core                    <-> HITS (Hub)                : ρ =  0.8034
+  K-Core                    <-> HITS (Auth)               : ρ =  0.7861
   Degree (In)               <-> Degree (Total)            : ρ =  0.7607
   Degree (In)               <-> HITS (Auth)               : ρ =  0.8383
   Degree (Out)              <-> Degree (Total)            : ρ =  0.7748
@@ -118,9 +129,7 @@ STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 
 MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 ----------------------------------------------------------------------------------------------------
-  K-Core                    <-> Degree (Total)            : ρ =  0.4952
-  K-Core                    <-> HITS (Hub)                : ρ =  0.6428
-  K-Core                    <-> HITS (Auth)               : ρ =  0.6248
+  K-Core                    <-> Bridging Centrality       : ρ =  0.6014
   Degree (In)               <-> Bridging Centrality       : ρ =  0.6386
   Degree (Out)              <-> Bridging Centrality       : ρ =  0.5939
   Degree (Out)              <-> HITS (Auth)               : ρ =  0.4145
@@ -131,10 +140,7 @@ MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 
 WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
 ----------------------------------------------------------------------------------------------------
-  K-Core                    <-> Degree (In)               : ρ =  0.2625
-  K-Core                    <-> Degree (Out)              : ρ =  0.0760
-  K-Core                    <-> Bridging Centrality       : ρ =  0.3481
-  K-Core                    <-> Bridging Coeff            : ρ =  0.2878
+  K-Core                    <-> Bridging Coeff            : ρ = -0.0138
   Degree (In)               <-> Degree (Out)              : ρ =  0.2788
   Degree (In)               <-> Bridging Coeff            : ρ =  0.0335
   Degree (In)               <-> HITS (Hub)                : ρ =  0.3751
@@ -150,6 +156,12 @@ CIT-DBLP
 
 STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (In)               : ρ =  0.8858
+  K-Core                    <-> Degree (Out)              : ρ =  0.8463
+  K-Core                    <-> Degree (Total)            : ρ =  0.9869
+  K-Core                    <-> Bridging Centrality       : ρ =  0.8409
+  K-Core                    <-> HITS (Hub)                : ρ =  0.7336
+  K-Core                    <-> HITS (Auth)               : ρ =  0.8169
   Degree (In)               <-> Degree (Total)            : ρ =  0.9043
   Degree (In)               <-> Bridging Centrality       : ρ =  0.9015
   Degree (In)               <-> HITS (Auth)               : ρ =  0.9037
@@ -163,6 +175,7 @@ STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 
 MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Bridging Coeff            : ρ =  0.4078
   Degree (In)               <-> Degree (Out)              : ρ =  0.6271
   Degree (In)               <-> HITS (Hub)                : ρ =  0.5652
   Degree (Out)              <-> Bridging Coeff            : ρ =  0.4392
@@ -186,7 +199,7 @@ Analyzing whether correlation patterns are consistent across datasets...
 
 CONSISTENTLY STRONG CORRELATIONS (across all datasets):
 ----------------------------------------------------------------------------------------------------
-  (None found - correlations vary by dataset)
+  K-Core                    <-> Degree (Total)           
 
 
 INTERPRETATION & RECOMMENDATIONS:
