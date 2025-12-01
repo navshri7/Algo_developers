@@ -76,6 +76,20 @@ python3 src/python/analysis/correlation_studies.py
 
 echo ""
 echo "======================================================================"
+echo "Running Comprehensive Algorithm Comparison..."
+echo "======================================================================"
+echo ""
+python3 src/python/analysis/compare_all_algorithms.py
+
+echo ""
+echo "======================================================================"
+echo "Running Comprehensive Runtime & Memory Analysis..."
+echo "======================================================================"
+echo ""
+python3 src/python/analysis/comprehensive_runtime_memory_analysis.py
+
+echo ""
+echo "======================================================================"
 echo "✓ All experiments and analyses completed!"
 echo "======================================================================"
 echo ""
@@ -84,6 +98,7 @@ echo "  📊 Experiments:        results/synthetic/, results/real_datasets/"
 echo "  🎨 Visualizations:     results/node_visualizations/"
 echo "  📈 Algorithm Compare:  results/algorithm_comparison/"
 echo "  🔗 Correlations:       results/correlation_studies/"
+echo "  ⚡ Runtime/Memory:    results/comprehensive_runtime_memory/"
 echo ""
 echo "Key outputs:"
 echo "  1. Correlation heatmaps showing algorithm relationships"

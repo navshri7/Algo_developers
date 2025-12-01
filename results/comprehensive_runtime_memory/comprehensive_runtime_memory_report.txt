@@ -1,0 +1,298 @@
+========================================================================================================================
+COMPREHENSIVE RUNTIME AND MEMORY ANALYSIS: ALL 9 ALGORITHMS
+========================================================================================================================
+
+ALGORITHMS ANALYZED:
+------------------------------------------------------------------------------------------------------------------------
+1. K-Core (Foundational)
+2. Betweenness (Exact) (Foundational)
+3. Betweenness (Approximate) (Foundational)
+4. Degree Centrality (Foundational)
+5. Bridging Centrality (Foundational)
+6. Katz (Frontier)
+7. Eigenvector (Frontier)
+8. HITS (Hub) (Frontier)
+9. HITS (Authority) (Frontier)
+10. PageRank (Frontier)
+
+1. OVERALL STATISTICS
+------------------------------------------------------------------------------------------------------------------------
+Total experiments: 1667
+  - Real datasets: 150
+  - Synthetic graphs: 1517
+Graph size range:
+  - Vertices: 5 to 27,770
+  - Edges: 4 to 352,286
+  - Density: 2.549242e-04 to 1.000000e+00
+
+2. RUNTIME ANALYSIS BY ALGORITHM
+------------------------------------------------------------------------------------------------------------------------
+
+K-Core:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.004000s
+    - Mean: 0.000338s
+    - Median: 0.000000s
+    - Std Dev: 0.000674s
+  Scaling:
+    - Correlation with Vertices: 0.6933
+    - Correlation with Edges: 0.7176
+
+Betweenness (Exact):
+  Runtime:
+    - Min: 0.000000s
+    - Max: 340.138000s
+    - Mean: 10.095634s
+    - Median: 0.391000s
+    - Std Dev: 39.490926s
+  Scaling:
+    - Correlation with Vertices: 0.9824
+    - Correlation with Edges: 0.9649
+
+Betweenness (Approximate):
+  Runtime:
+    - Min: 0.000000s
+    - Max: 33.387000s
+    - Mean: 1.049554s
+    - Median: 0.135500s
+    - Std Dev: 3.819430s
+  Scaling:
+    - Correlation with Vertices: 0.9664
+    - Correlation with Edges: 0.9604
+
+Degree Centrality:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.084000s
+    - Mean: 0.008852s
+    - Median: 0.003000s
+    - Std Dev: 0.016592s
+  Scaling:
+    - Correlation with Vertices: 0.9632
+    - Correlation with Edges: 0.9819
+
+Bridging Centrality:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 217.637000s
+    - Mean: 12.491704s
+    - Median: 0.279000s
+    - Std Dev: 41.763400s
+  Scaling:
+    - Correlation with Vertices: 0.9922
+    - Correlation with Edges: 0.9610
+
+Katz:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.853000s
+    - Mean: 0.041369s
+    - Median: 0.011000s
+    - Std Dev: 0.095682s
+  Scaling:
+    - Correlation with Vertices: 0.9304
+    - Correlation with Edges: 0.9094
+
+Eigenvector:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.243000s
+    - Mean: 0.013636s
+    - Median: 0.003000s
+    - Std Dev: 0.031863s
+  Scaling:
+    - Correlation with Vertices: 0.8895
+    - Correlation with Edges: 0.8081
+
+HITS (Hub):
+  Runtime:
+    - Min: 0.001000s
+    - Max: 0.221000s
+    - Mean: 0.029481s
+    - Median: 0.009000s
+    - Std Dev: 0.047639s
+  Scaling:
+    - Correlation with Vertices: 0.9519
+    - Correlation with Edges: 0.9465
+
+HITS (Authority):
+  Runtime:
+    - Min: 0.001000s
+    - Max: 0.221000s
+    - Mean: 0.029481s
+    - Median: 0.009000s
+    - Std Dev: 0.047639s
+  Scaling:
+    - Correlation with Vertices: 0.9519
+    - Correlation with Edges: 0.9465
+
+PageRank:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.341000s
+    - Mean: 0.015366s
+    - Median: 0.004000s
+    - Std Dev: 0.048001s
+  Scaling:
+    - Correlation with Vertices: 0.9546
+    - Correlation with Edges: 0.8700
+
+3. MEMORY ANALYSIS BY ALGORITHM
+------------------------------------------------------------------------------------------------------------------------
+
+K-Core:
+  Memory:
+    - Min: 0.00 MB
+    - Max: 0.77 MB
+    - Mean: 0.21 MB
+    - Median: 0.08 MB
+    - Std Dev: 0.24 MB
+  Scaling:
+    - Correlation with Vertices: 0.9763
+    - Correlation with Edges: 0.9872
+
+Betweenness (Exact):
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.32 MB
+    - Median: 0.12 MB
+    - Std Dev: 0.60 MB
+  Scaling:
+    - Correlation with Vertices: 0.9798
+    - Correlation with Edges: 0.9788
+
+Betweenness (Approximate):
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.32 MB
+    - Median: 0.12 MB
+    - Std Dev: 0.60 MB
+  Scaling:
+    - Correlation with Vertices: 0.9798
+    - Correlation with Edges: 0.9788
+
+Degree Centrality:
+  Memory:
+    - Min: 3.08 MB
+    - Max: 4.84 MB
+    - Mean: 3.46 MB
+    - Median: 3.38 MB
+    - Std Dev: 0.34 MB
+  Scaling:
+    - Correlation with Vertices: 0.8668
+    - Correlation with Edges: 0.7818
+
+Bridging Centrality:
+  Memory:
+    - Min: 3.17 MB
+    - Max: 16.92 MB
+    - Mean: 4.76 MB
+    - Median: 3.61 MB
+    - Std Dev: 2.76 MB
+  Scaling:
+    - Correlation with Vertices: 0.9831
+    - Correlation with Edges: 0.9433
+
+Katz:
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.33 MB
+    - Median: 0.12 MB
+    - Std Dev: 0.63 MB
+  Scaling:
+    - Correlation with Vertices: 0.9803
+    - Correlation with Edges: 0.9778
+
+Eigenvector:
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.33 MB
+    - Median: 0.12 MB
+    - Std Dev: 0.63 MB
+  Scaling:
+    - Correlation with Vertices: 0.9803
+    - Correlation with Edges: 0.9778
+
+HITS (Hub):
+  Memory:
+    - Min: 3.13 MB
+    - Max: 15.95 MB
+    - Mean: 4.39 MB
+    - Median: 3.50 MB
+    - Std Dev: 2.47 MB
+  Scaling:
+    - Correlation with Vertices: 0.9696
+    - Correlation with Edges: 0.9618
+
+HITS (Authority):
+  Memory:
+    - Min: 3.13 MB
+    - Max: 15.95 MB
+    - Mean: 4.39 MB
+    - Median: 3.50 MB
+    - Std Dev: 2.47 MB
+  Scaling:
+    - Correlation with Vertices: 0.9696
+    - Correlation with Edges: 0.9618
+
+PageRank:
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.33 MB
+    - Median: 0.12 MB
+    - Std Dev: 0.63 MB
+  Scaling:
+    - Correlation with Vertices: 0.9804
+    - Correlation with Edges: 0.9780
+
+4. REAL vs SYNTHETIC GRAPH COMPARISON
+------------------------------------------------------------------------------------------------------------------------
+
+Real Graphs:
+  Average Runtime: 16.346207s
+  Average Memory: 1.73 MB
+  Average Vertices: 11597
+  Average Edges: 102219
+
+Synthetic Graphs:
+  Average Runtime: 0.643886s
+  Average Memory: 0.43 MB
+  Average Vertices: 3268
+  Average Edges: 13175
+
+5. ALGORITHM RANKINGS
+------------------------------------------------------------------------------------------------------------------------
+
+Fastest Algorithms (by average runtime):
+  1. K-Core: 0.000338s
+  2. Degree Centrality: 0.008852s
+  3. Eigenvector: 0.013636s
+  4. PageRank: 0.015366s
+  5. HITS (Hub): 0.029481s
+  6. HITS (Authority): 0.029481s
+  7. Katz: 0.041369s
+  8. Betweenness (Approximate): 1.049554s
+  9. Betweenness (Exact): 10.095634s
+  10. Bridging Centrality: 12.491704s
+
+Most Memory Efficient Algorithms:
+  1. K-Core: 0.21 MB
+  2. Betweenness (Approximate): 0.32 MB
+  3. Betweenness (Exact): 0.32 MB
+  4. Eigenvector: 0.33 MB
+  5. Katz: 0.33 MB
+  6. PageRank: 0.33 MB
+  7. Degree Centrality: 3.46 MB
+  8. HITS (Authority): 4.39 MB
+  9. HITS (Hub): 4.39 MB
+  10. Bridging Centrality: 4.76 MB
+
+========================================================================================================================
+END OF REPORT
+========================================================================================================================

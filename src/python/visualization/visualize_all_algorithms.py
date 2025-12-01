@@ -21,37 +21,70 @@ sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (16, 12)
 plt.rcParams['font.size'] = 9
 
-# Algorithm metadata
+# Algorithm metadata - ALL 9 ALGORITHMS
 ALGORITHMS = {
     'kcore': {
         'name': 'K-Core',
         'color': 'YlOrRd',
         'result_dir': 'results/synthetic',
-        'category': 'Foundational'
+        'category': 'Foundational',
+        'file_suffix': None
     },
     'betweenness': {
         'name': 'Betweenness',
         'color': 'viridis',
         'result_dir': 'results/betweenness/exact',
-        'category': 'Foundational'
+        'category': 'Foundational',
+        'file_suffix': None
+    },
+    'degree': {
+        'name': 'Degree',
+        'color': 'Blues',
+        'result_dir': 'results/degree_centrality',
+        'category': 'Foundational',
+        'file_suffix': None
+    },
+    'bridging': {
+        'name': 'Bridging',
+        'color': 'Greens',
+        'result_dir': 'results/bridging_centrality',
+        'category': 'Foundational',
+        'file_suffix': None
     },
     'katz': {
         'name': 'Katz',
         'color': 'plasma',
         'result_dir': 'results/centrality/katz',
-        'category': 'Frontier'
+        'category': 'Frontier',
+        'file_suffix': None
     },
     'eigenvector': {
         'name': 'Eigenvector',
         'color': 'cool',
         'result_dir': 'results/centrality/eigenvector',
-        'category': 'Frontier'
+        'category': 'Frontier',
+        'file_suffix': None
+    },
+    'hits_hub': {
+        'name': 'HITS (Hub)',
+        'color': 'Reds',
+        'result_dir': 'results/hits',
+        'category': 'Frontier',
+        'file_suffix': '_hub'
+    },
+    'hits_auth': {
+        'name': 'HITS (Auth)',
+        'color': 'Oranges',
+        'result_dir': 'results/hits',
+        'category': 'Frontier',
+        'file_suffix': '_authority'
     },
     'pagerank': {
         'name': 'PageRank',
         'color': 'magma',
         'result_dir': 'results/centrality/pagerank',
-        'category': 'Frontier'
+        'category': 'Frontier',
+        'file_suffix': '_pagerank'
     }
 }
 
@@ -82,17 +115,27 @@ def parse_detailed_results(filepath):
         with open(filepath, 'r') as f:
             in_section = False
             for line in f:
-                if "Top" in line or "Rank" in line:
+                # Look for section headers - be more flexible
+                if "Top" in line or ("Rank" in line and ("Vertex" in line or "Node" in line)):
                     in_section = True
                     continue
                 if in_section and line.strip() and not line.startswith("==="):
+                    # Try tab-separated format first (betweenness, k-core, etc.)
                     parts = line.strip().split('\t')
                     if len(parts) >= 3 and parts[0].isdigit():
                         try:
                             rank = int(parts[0])
-                            node_id = int(parts[1]) - 1
+                            node_id = int(parts[1]) - 1  # Convert to 0-indexed
                             value = float(parts[2])
                             rankings[node_id] = (rank, value)
+                        except (ValueError, IndexError):
+                            continue
+                    elif len(parts) >= 2 and parts[0].isdigit():
+                        # Some files might only have rank and node_id
+                        try:
+                            rank = int(parts[0])
+                            node_id = int(parts[1]) - 1  # Convert to 0-indexed
+                            rankings[node_id] = (rank, 0.0)  # Default value
                         except (ValueError, IndexError):
                             continue
     except Exception as e:
@@ -213,8 +256,8 @@ def create_animated_comparison(output_dir):
         
         graph_base = Path(graph_file).stem
         
-        # Create animation showing all algorithms
-        fig, axes = plt.subplots(2, 3, figsize=(21, 16))
+        # Create animation showing all algorithms - use 3x3 grid for 9 algorithms
+        fig, axes = plt.subplots(3, 3, figsize=(24, 20))
         axes = axes.flatten()
         
         pos = nx.spring_layout(G, k=0.5, iterations=50, seed=42)
@@ -222,14 +265,23 @@ def create_animated_comparison(output_dir):
         # Preload all data
         all_rankings = {}
         for algo_key, algo_info in ALGORITHMS.items():
-            if algo_key == 'pagerank':
-                result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            if algo_info.get('file_suffix'):
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}{algo_info['file_suffix']}_detailed.txt"
             else:
                 result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+            
+            # Special handling for K-Core - check both synthetic and real_datasets
+            if algo_key == 'kcore' and not result_file.exists():
+                result_file = Path('results/real_datasets') / f"{graph_base}_detailed.txt"
+            
             if result_file.exists():
-                all_rankings[algo_key] = parse_detailed_results(str(result_file))
+                rankings = parse_detailed_results(str(result_file))
+                all_rankings[algo_key] = rankings
+                if not rankings:
+                    print(f"  Warning: {algo_info['name']} file exists but no rankings extracted from {result_file}")
             else:
                 all_rankings[algo_key] = {}
+                print(f"  Warning: {algo_info['name']} file not found: {result_file}")
 
         
         def animate(frame):

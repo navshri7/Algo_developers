@@ -89,6 +89,12 @@ ALGORITHM_METRICS = {
         'file_suffix': '_authority',
         'metric': 'Authority',
         'display': 'HITS (Auth)'
+    },
+    'PageRank': {
+        'dir': 'results/centrality/pagerank',
+        'file_suffix': '_pagerank',
+        'metric': 'PageRank',
+        'display': 'PageRank'
     }
 }
 
@@ -97,6 +103,49 @@ def load_algorithm_data(dataset_name):
     data = {}
     
     for algo_name, algo_info in ALGORITHM_METRICS.items():
+        # Special handling for K-Core - read from detailed.txt file
+        if algo_name == 'K-Core':
+            detailed_file = Path(algo_info['dir']) / f"{dataset_name}_detailed.txt"
+            # Also check real_datasets directory
+            if not detailed_file.exists():
+                detailed_file = Path('results/real_datasets') / f"{dataset_name}_detailed.txt"
+            if detailed_file.exists():
+                try:
+                    kcore_data = {}
+                    with open(detailed_file, 'r') as f:
+                        lines = f.readlines()
+                        in_section = False
+                        skip_next = False
+                        for line in lines:
+                            line_stripped = line.strip()
+                            # Look for section start
+                            if "Top" in line and "Vertices" in line:
+                                in_section = True
+                                skip_next = True  # Next line will be header
+                                continue
+                            # Skip header line
+                            if skip_next:
+                                skip_next = False
+                                continue
+                            # Parse data lines
+                            if in_section and line_stripped:
+                                if line_stripped.startswith("==="):
+                                    in_section = False
+                                    continue
+                                parts = line_stripped.split('\t')
+                                if len(parts) >= 3 and parts[0].isdigit():
+                                    try:
+                                        node_id = int(parts[1])  # 1-indexed in file
+                                        coreness = float(parts[2])
+                                        kcore_data[node_id] = coreness
+                                    except (ValueError, IndexError):
+                                        continue
+                    if kcore_data:
+                        data[algo_name] = pd.Series(kcore_data)
+                except Exception as e:
+                    pass
+            continue
+        
         # Handle file_suffix for algorithms with separate files (like HITS)
         if 'file_suffix' in algo_info:
             csv_file = Path(algo_info['dir']) / f"{dataset_name}{algo_info['file_suffix']}.csv"
@@ -295,7 +344,8 @@ def generate_correlation_report(output_dir):
         f.write("4. Bridging Centrality - Cross-community bridges\n")
         f.write("5. Katz Centrality - Influence propagation\n")
         f.write("6. Eigenvector Centrality - Hub importance\n")
-        f.write("7. HITS - Hub and authority scores\n\n")
+        f.write("7. HITS - Hub and authority scores\n")
+        f.write("8. PageRank - Random walk-based importance\n\n")
         
         f.write("CORRELATION METRICS USED:\n")
         f.write("-" * 100 + "\n")

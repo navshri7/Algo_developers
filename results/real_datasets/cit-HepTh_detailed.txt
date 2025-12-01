@@ -2,7 +2,7 @@ Dataset: cit-HepTh
 Vertices: 27769
 Edges: 352285
 Max K-Core: 37
-Runtime (seconds): 0.008000
+Runtime (seconds): 0.007000
 Memory Usage (MB): 3.76
 
 === Core Distribution ===

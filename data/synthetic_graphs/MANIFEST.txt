@@ -33,63 +33,63 @@ known_structure
 
 er_100_sparse
   Nodes: 100
-  Edges: 233
-  Avg Degree: 4.66
-  Density: 0.047071
+  Edges: 249
+  Avg Degree: 4.98
+  Density: 0.050303
 
 er_100_dense
   Nodes: 100
-  Edges: 992
-  Avg Degree: 19.84
-  Density: 0.200404
+  Edges: 981
+  Avg Degree: 19.62
+  Density: 0.198182
 
 er_500_sparse
   Nodes: 500
-  Edges: 1248
-  Avg Degree: 4.99
-  Density: 0.010004
+  Edges: 1245
+  Avg Degree: 4.98
+  Density: 0.009980
 
 er_500_dense
   Nodes: 500
-  Edges: 6207
-  Avg Degree: 24.83
-  Density: 0.049756
+  Edges: 6211
+  Avg Degree: 24.84
+  Density: 0.049788
 
 er_1000_sparse
   Nodes: 1000
-  Edges: 2501
-  Avg Degree: 5.00
-  Density: 0.005007
+  Edges: 2497
+  Avg Degree: 4.99
+  Density: 0.004999
 
 er_1000_dense
   Nodes: 1000
-  Edges: 10019
-  Avg Degree: 20.04
-  Density: 0.020058
+  Edges: 9936
+  Avg Degree: 19.87
+  Density: 0.019892
 
 er_5k_sparse
   Nodes: 5000
-  Edges: 12677
-  Avg Degree: 5.07
-  Density: 0.001014
+  Edges: 12574
+  Avg Degree: 5.03
+  Density: 0.001006
 
 er_5k_dense
   Nodes: 5000
-  Edges: 37087
-  Avg Degree: 14.83
-  Density: 0.002968
+  Edges: 37568
+  Avg Degree: 15.03
+  Density: 0.003006
 
 er_10k_sparse
   Nodes: 10000
-  Edges: 24717
-  Avg Degree: 4.94
-  Density: 0.000494
+  Edges: 25113
+  Avg Degree: 5.02
+  Density: 0.000502
 
 er_10k_dense
   Nodes: 10000
-  Edges: 49948
-  Avg Degree: 9.99
-  Density: 0.000999
+  Edges: 50091
+  Avg Degree: 10.02
+  Density: 0.001002
 
 ba_1k_m3
   Nodes: 1000
@@ -159,13 +159,13 @@ cliques_20x10
 
 plc_1k_m3_p01
   Nodes: 1000
-  Edges: 2990
+  Edges: 2991
   Avg Degree: 5.98
-  Density: 0.005986
+  Density: 0.005988
 
 plc_5k_m4_p02
   Nodes: 5000
-  Edges: 19980
+  Edges: 19981
   Avg Degree: 7.99
   Density: 0.001599
 

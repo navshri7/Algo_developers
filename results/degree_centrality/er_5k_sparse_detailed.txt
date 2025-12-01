@@ -2,45 +2,45 @@ Degree Centrality Analysis Results
 ==================================
 
 Graph Statistics:
-  Nodes: 4983
-  Edges: 12678
-  Runtime: 0.010 seconds
+  Nodes: 4978
+  Edges: 12575
+  Runtime: 0.011 seconds
   Peak Memory: 3.53 MB
   Runtime per Node: 0.000002 ms
   Runtime per Edge: 0.000001 ms
 
 Top 10 by Total Degree:
-  1. Node 3016: 17
-  2. Node 4745: 13
-  3. Node 4451: 13
-  4. Node 3867: 13
-  5. Node 3256: 13
-  6. Node 2188: 13
-  7. Node 931: 13
-  8. Node 191: 13
-  9. Node 4923: 12
-  10. Node 4767: 12
+  1. Node 3787: 16
+  2. Node 785: 16
+  3. Node 2804: 15
+  4. Node 281: 15
+  5. Node 2117: 14
+  6. Node 343: 14
+  7. Node 115: 14
+  8. Node 4572: 13
+  9. Node 3984: 13
+  10. Node 3310: 13
 
 Top 10 by In-Degree (Citations Received):
-  1. Node 191: 13
-  2. Node 550: 12
-  3. Node 356: 11
-  4. Node 127: 11
-  5. Node 1810: 10
-  6. Node 1457: 10
-  7. Node 1418: 10
-  8. Node 931: 10
-  9. Node 686: 10
-  10. Node 554: 10
+  1. Node 785: 14
+  2. Node 343: 14
+  3. Node 281: 14
+  4. Node 115: 13
+  5. Node 895: 11
+  6. Node 561: 11
+  7. Node 446: 11
+  8. Node 420: 11
+  9. Node 1300: 10
+  10. Node 1230: 10
 
 Top 10 by Out-Degree (Citations Made):
-  1. Node 4451: 13
-  2. Node 4923: 12
-  3. Node 4745: 12
-  4. Node 4949: 11
-  5. Node 4157: 11
-  6. Node 3867: 11
-  7. Node 4960: 10
-  8. Node 4858: 10
-  9. Node 4786: 10
-  10. Node 4767: 10
+  1. Node 3787: 14
+  2. Node 4572: 13
+  3. Node 3984: 12
+  4. Node 4963: 11
+  5. Node 4822: 11
+  6. Node 4609: 11
+  7. Node 4512: 11
+  8. Node 3979: 11
+  9. Node 4971: 10
+  10. Node 4898: 10

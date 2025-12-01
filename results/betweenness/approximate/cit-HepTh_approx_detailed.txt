@@ -3,7 +3,7 @@ Vertices: 27769
 Edges: 352285
 Samples Used: 2776 (10.00%)
 Max Betweenness: 31834191.675042
-Runtime (seconds): 18.223000
+Runtime (seconds): 33.387000
 Memory Usage (MB): 3.54
 
 === Top 100 Vertices by Betweenness Centrality ===

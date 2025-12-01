@@ -32,7 +32,7 @@ K-Core:
   Runtime:
     - Min: 0.000000s
     - Max: 0.004000s
-    - Mean: 0.000322s
+    - Mean: 0.000338s
     - Median: 0.000000s
   Memory:
     - Min: 0.00 MB
@@ -42,9 +42,9 @@ K-Core:
 Betweenness (Exact):
   Runtime:
     - Min: 0.000000s
-    - Max: 298.931000s
-    - Mean: 9.542243s
-    - Median: 0.333500s
+    - Max: 340.138000s
+    - Mean: 10.095634s
+    - Median: 0.391000s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
@@ -53,9 +53,9 @@ Betweenness (Exact):
 Katz:
   Runtime:
     - Min: 0.000000s
-    - Max: 0.562000s
-    - Mean: 0.034684s
-    - Median: 0.010000s
+    - Max: 0.853000s
+    - Mean: 0.041369s
+    - Median: 0.011000s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
@@ -65,8 +65,19 @@ Eigenvector:
   Runtime:
     - Min: 0.000000s
     - Max: 0.243000s
-    - Mean: 0.012213s
+    - Mean: 0.013636s
     - Median: 0.003000s
+  Memory:
+    - Min: 0.00 MB
+    - Max: 3.54 MB
+    - Mean: 0.33 MB
+
+PageRank:
+  Runtime:
+    - Min: 0.000000s
+    - Max: 0.341000s
+    - Mean: 0.015366s
+    - Median: 0.004000s
   Memory:
     - Min: 0.00 MB
     - Max: 3.54 MB
@@ -209,6 +220,7 @@ verify_complete_7:
     Betweenness (Exact): 0.000000s, 0.00 MB
     Katz: 0.000000s, 0.00 MB
     Eigenvector: 0.000000s, 0.00 MB
+    PageRank: 0.000000s, 0.00 MB
 
 verify_cycle_6:
   Vertices: 6
@@ -220,6 +232,7 @@ verify_cycle_6:
     Betweenness (Exact): 0.000000s, 0.00 MB
     Katz: 0.000000s, 0.00 MB
     Eigenvector: 0.000000s, 0.00 MB
+    PageRank: 0.000000s, 0.00 MB
 
 verify_known_structure:
   Vertices: 20
@@ -231,6 +244,7 @@ verify_known_structure:
     Betweenness (Exact): 0.000000s, 0.00 MB
     Katz: 0.000000s, 0.00 MB
     Eigenvector: 0.000000s, 0.00 MB
+    PageRank: 0.000000s, 0.00 MB
 
 verify_path_5:
   Vertices: 5
@@ -242,6 +256,7 @@ verify_path_5:
     Betweenness (Exact): 0.000000s, 0.00 MB
     Katz: 0.000000s, 0.00 MB
     Eigenvector: 0.000000s, 0.00 MB
+    PageRank: 0.000000s, 0.00 MB
 
 verify_star_9:
   Vertices: 9
@@ -253,6 +268,7 @@ verify_star_9:
     Betweenness (Exact): 0.000000s, 0.00 MB
     Katz: 0.001000s, 0.00 MB
     Eigenvector: 0.000000s, 0.00 MB
+    PageRank: 0.000000s, 0.00 MB
 
 er_1000_dense:
   Vertices: 1,000
@@ -264,6 +280,7 @@ er_1000_dense:
     Betweenness (Exact): 0.237000s, 0.11 MB
     Katz: 0.006000s, 0.11 MB
     Eigenvector: 0.001000s, 0.11 MB
+    PageRank: 0.001000s, 0.11 MB
 
 er_1000_sparse:
   Vertices: 1,000
@@ -275,6 +292,7 @@ er_1000_sparse:
     Betweenness (Exact): 0.168000s, 0.05 MB
     Katz: 0.004000s, 0.05 MB
     Eigenvector: 0.001000s, 0.05 MB
+    PageRank: 0.001000s, 0.05 MB
 
 er_100_dense:
   Vertices: 100
@@ -286,6 +304,7 @@ er_100_dense:
     Betweenness (Exact): 0.003000s, 0.01 MB
     Katz: 0.000000s, 0.01 MB
     Eigenvector: 0.000000s, 0.01 MB
+    PageRank: 0.000000s, 0.01 MB
 
 er_100_sparse:
   Vertices: 100
@@ -297,6 +316,7 @@ er_100_sparse:
     Betweenness (Exact): 0.002000s, 0.00 MB
     Katz: 0.000000s, 0.00 MB
     Eigenvector: 0.000000s, 0.00 MB
+    PageRank: 0.000000s, 0.00 MB
 
 er_10k_dense:
   Vertices: 10,000
@@ -308,6 +328,7 @@ er_10k_dense:
     Betweenness (Exact): 14.720000s, 0.68 MB
     Katz: 0.022000s, 0.68 MB
     Eigenvector: 0.006000s, 0.68 MB
+    PageRank: 0.017000s, 0.69 MB
 
 er_10k_sparse:
   Vertices: 10,000
@@ -319,6 +340,7 @@ er_10k_sparse:
     Betweenness (Exact): 10.072000s, 0.49 MB
     Katz: 0.031000s, 0.49 MB
     Eigenvector: 0.006000s, 0.49 MB
+    PageRank: 0.021000s, 0.49 MB
 
 er_500_dense:
   Vertices: 500
@@ -330,6 +352,7 @@ er_500_dense:
     Betweenness (Exact): 0.142000s, 0.06 MB
     Katz: 0.002000s, 0.06 MB
     Eigenvector: 0.000000s, 0.06 MB
+    PageRank: 0.000000s, 0.06 MB
 
 er_500_sparse:
   Vertices: 500
@@ -341,6 +364,7 @@ er_500_sparse:
     Betweenness (Exact): 0.062000s, 0.03 MB
     Katz: 0.000000s, 0.03 MB
     Eigenvector: 0.000000s, 0.03 MB
+    PageRank: 0.000000s, 0.02 MB
 
 er_5k_dense:
   Vertices: 5,000
@@ -352,6 +376,7 @@ er_5k_dense:
     Betweenness (Exact): 4.453000s, 0.44 MB
     Katz: 0.013000s, 0.44 MB
     Eigenvector: 0.003000s, 0.44 MB
+    PageRank: 0.007000s, 0.44 MB
 
 er_5k_sparse:
   Vertices: 5,000
@@ -363,6 +388,7 @@ er_5k_sparse:
     Betweenness (Exact): 2.454000s, 0.25 MB
     Katz: 0.009000s, 0.25 MB
     Eigenvector: 0.002000s, 0.25 MB
+    PageRank: 0.011000s, 0.25 MB
 
 ba_1k_m3:
   Vertices: 1,000
@@ -374,6 +400,7 @@ ba_1k_m3:
     Betweenness (Exact): 0.107000s, 0.05 MB
     Katz: 0.001000s, 0.05 MB
     Eigenvector: 0.000000s, 0.05 MB
+    PageRank: 0.001000s, 0.05 MB
 
 ba_1k_m5:
   Vertices: 1,000
@@ -385,6 +412,7 @@ ba_1k_m5:
     Betweenness (Exact): 0.213000s, 0.07 MB
     Katz: 0.002000s, 0.07 MB
     Eigenvector: 0.000000s, 0.07 MB
+    PageRank: 0.002000s, 0.07 MB
 
 ws_1k_k10_p03:
   Vertices: 1,000
@@ -396,6 +424,7 @@ ws_1k_k10_p03:
     Betweenness (Exact): 0.212000s, 0.07 MB
     Katz: 0.006000s, 0.07 MB
     Eigenvector: 0.002000s, 0.07 MB
+    PageRank: 0.001000s, 0.07 MB
 
 ws_1k_k6_p01:
   Vertices: 1,000
@@ -407,6 +436,7 @@ ws_1k_k6_p01:
     Betweenness (Exact): 0.128000s, 0.05 MB
     Katz: 0.007000s, 0.05 MB
     Eigenvector: 0.008000s, 0.05 MB
+    PageRank: 0.002000s, 0.05 MB
 
 ba_5k_m3:
   Vertices: 5,000
@@ -418,6 +448,7 @@ ba_5k_m3:
     Betweenness (Exact): 2.608000s, 0.27 MB
     Katz: 0.013000s, 0.27 MB
     Eigenvector: 0.005000s, 0.27 MB
+    PageRank: 0.006000s, 0.27 MB
 
 ba_5k_m5:
   Vertices: 5,000
@@ -429,6 +460,7 @@ ba_5k_m5:
     Betweenness (Exact): 3.148000s, 0.34 MB
     Katz: 0.017000s, 0.34 MB
     Eigenvector: 0.007000s, 0.34 MB
+    PageRank: 0.006000s, 0.34 MB
 
 ba_10k_m3:
   Vertices: 10,000
@@ -440,6 +472,7 @@ ba_10k_m3:
     Betweenness (Exact): 10.583000s, 0.53 MB
     Katz: 0.035000s, 0.53 MB
     Eigenvector: 0.019000s, 0.53 MB
+    PageRank: 0.016000s, 0.53 MB
 
 ws_5k_k6_p01:
   Vertices: 5,000
@@ -451,6 +484,7 @@ ws_5k_k6_p01:
     Betweenness (Exact): 2.231000s, 0.27 MB
     Katz: 0.030000s, 0.27 MB
     Eigenvector: 0.016000s, 0.27 MB
+    PageRank: 0.005000s, 0.27 MB
 
 cliques_10x15:
   Vertices: 150
@@ -501,6 +535,7 @@ cit-DBLP:
     Betweenness (Exact): 17.071000s, 0.76 MB
     Katz: 0.033000s, 0.76 MB
     Eigenvector: 0.008000s, 0.76 MB
+    PageRank: 0.056000s, 0.76 MB
 
 cit-HepTh:
   Vertices: 27,769
@@ -511,6 +546,7 @@ cit-HepTh:
     Betweenness (Exact): 186.544000s, 3.54 MB
     Katz: 0.351000s, 3.54 MB
     Eigenvector: 0.125000s, 3.54 MB
+    PageRank: 0.239000s, 3.54 MB
 
 citeseer:
   Vertices: 3,264
@@ -521,6 +557,7 @@ citeseer:
     Betweenness (Exact): 0.323000s, 0.13 MB
     Katz: 0.003000s, 0.13 MB
     Eigenvector: 0.003000s, 0.13 MB
+    PageRank: 0.008000s, 0.13 MB
 
 cora:
   Vertices: 2,708
@@ -531,6 +568,7 @@ cora:
     Betweenness (Exact): 0.450000s, 0.12 MB
     Katz: 0.007000s, 0.12 MB
     Eigenvector: 0.003000s, 0.12 MB
+    PageRank: 0.004000s, 0.12 MB
 
 ====================================================================================================
 END OF REPORT

@@ -93,7 +93,7 @@ def load_all_results():
         results['HITS (Authority)'] = df
     
     # PageRank
-    pagerank_csv = Path("results/centrality/pagerank/summary.csv")
+    pagerank_csv = Path("results/centrality/pagerank/summary_pagerank.csv")
     if pagerank_csv.exists():
         df = pd.read_csv(pagerank_csv)
         df['Algorithm'] = 'PageRank'
@@ -111,6 +111,7 @@ def analyze_node_rankings(output_dir):
     axes = axes.flatten()
     
     # Get top nodes for each algorithm on a real dataset
+    # Check which datasets actually have K-Core results
     datasets_to_check = ['cit-DBLP', 'cit-HepTh', 'citeseer', 'cora']
     overlap_report = []
     
@@ -121,10 +122,14 @@ def analyze_node_rankings(output_dir):
         ax = axes[idx]
         top_nodes = {}
         
-        # K-Core
+        # K-Core - check both synthetic and real_datasets directories
         kcore_file = Path(f"results/synthetic/{dataset}_detailed.txt")
+        if not kcore_file.exists():
+            kcore_file = Path(f"results/real_datasets/{dataset}_detailed.txt")
         if kcore_file.exists():
-            top_nodes['K-Core'] = extract_top_nodes(kcore_file, 20)
+            extracted = extract_top_nodes(kcore_file, 20)
+            if extracted:  # Only add if we actually extracted nodes
+                top_nodes['K-Core'] = extracted
         
         # Betweenness
         bet_file = Path(f"results/betweenness/exact/{dataset}_detailed.txt")
@@ -264,15 +269,34 @@ def extract_top_nodes(filepath, k=10):
     nodes = []
     try:
         with open(filepath, 'r') as f:
+            lines = f.readlines()
             in_section = False
+            skip_next = False
             count = 0
-            for line in f:
-                if "Top" in line or "Rank" in line:
+            
+            for i, line in enumerate(lines):
+                line_stripped = line.strip()
+                
+                # Look for section start (like "=== Top 100 Vertices by Coreness ===")
+                if "Top" in line and "Vertices" in line:
                     in_section = True
+                    skip_next = True  # Next line will be header
                     continue
-                if in_section and line.strip() and not line.startswith("==="):
-                    # Try tab-separated format first (betweenness, etc.)
-                    parts = line.strip().split('\t')
+                
+                # Skip header line
+                if skip_next:
+                    skip_next = False
+                    continue
+                
+                # Parse data lines
+                if in_section and line_stripped:
+                    # Skip separator lines
+                    if line_stripped.startswith("==="):
+                        in_section = False
+                        continue
+                    
+                    # Try tab-separated format (betweenness, k-core, etc.)
+                    parts = line_stripped.split('\t')
                     if len(parts) >= 2 and parts[0].isdigit():
                         try:
                             node_id = int(parts[1])
@@ -295,8 +319,8 @@ def extract_top_nodes(filepath, k=10):
                                     break
                             except (ValueError, IndexError):
                                 continue
-    except:
-        pass
+    except Exception as e:
+        pass  # Silently fail
     
     return nodes
 

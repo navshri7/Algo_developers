@@ -1,6 +1,6 @@
 Dataset: plc_5k_m4_p02
 Vertices: 5000
-Edges: 19980
+Edges: 19981
 Max K-Core: 4
 Runtime (seconds): 0.001000
 Memory Usage (MB): 0.34

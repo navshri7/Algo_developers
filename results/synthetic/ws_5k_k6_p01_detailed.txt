@@ -2,13 +2,13 @@ Dataset: ws_5k_k6_p01
 Vertices: 5000
 Edges: 15000
 Max K-Core: 4
-Runtime (seconds): 0.000000
+Runtime (seconds): 0.001000
 Memory Usage (MB): 0.31
 
 === Core Distribution ===
 Core	Count	Percentage
-3	1	0.02%
-4	4999	99.98%
+3	3	0.06%
+4	4997	99.94%
 
 === Top 100 Vertices by Coreness ===
 Rank	Vertex_ID	Coreness

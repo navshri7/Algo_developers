@@ -16,6 +16,7 @@ ALGORITHMS ANALYZED:
 5. Katz Centrality - Influence propagation
 6. Eigenvector Centrality - Hub importance
 7. HITS - Hub and authority scores
+8. PageRank - Random walk-based importance
 
 CORRELATION METRICS USED:
 ----------------------------------------------------------------------------------------------------
@@ -70,6 +71,9 @@ STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 
 MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (Out)              : ρ =  0.5446
+  K-Core                    <-> Degree (Total)            : ρ =  0.5139
+  K-Core                    <-> HITS (Hub)                : ρ =  0.5906
   Degree (In)               <-> Degree (Total)            : ρ =  0.5379
   Degree (In)               <-> HITS (Auth)               : ρ =  0.5808
   Degree (Out)              <-> Degree (Total)            : ρ =  0.5460
@@ -85,6 +89,10 @@ MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 
 WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (In)               : ρ = -0.0784
+  K-Core                    <-> Bridging Centrality       : ρ =  0.2767
+  K-Core                    <-> Bridging Coeff            : ρ =  0.2492
+  K-Core                    <-> HITS (Auth)               : ρ =  0.2967
   Degree (In)               <-> Degree (Out)              : ρ = -0.2993
   Degree (In)               <-> Bridging Centrality       : ρ =  0.3656
   Degree (In)               <-> Bridging Coeff            : ρ = -0.2124
@@ -110,6 +118,9 @@ STRONG CORRELATIONS (ρ > 0.7 - Similar importance notions):
 
 MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (Total)            : ρ =  0.4952
+  K-Core                    <-> HITS (Hub)                : ρ =  0.6428
+  K-Core                    <-> HITS (Auth)               : ρ =  0.6248
   Degree (In)               <-> Bridging Centrality       : ρ =  0.6386
   Degree (Out)              <-> Bridging Centrality       : ρ =  0.5939
   Degree (Out)              <-> HITS (Auth)               : ρ =  0.4145
@@ -120,6 +131,10 @@ MODERATE CORRELATIONS (0.4 < ρ ≤ 0.7 - Partially related):
 
 WEAK/NO CORRELATIONS (ρ ≤ 0.4 - Complementary measures):
 ----------------------------------------------------------------------------------------------------
+  K-Core                    <-> Degree (In)               : ρ =  0.2625
+  K-Core                    <-> Degree (Out)              : ρ =  0.0760
+  K-Core                    <-> Bridging Centrality       : ρ =  0.3481
+  K-Core                    <-> Bridging Coeff            : ρ =  0.2878
   Degree (In)               <-> Degree (Out)              : ρ =  0.2788
   Degree (In)               <-> Bridging Coeff            : ρ =  0.0335
   Degree (In)               <-> HITS (Hub)                : ρ =  0.3751
