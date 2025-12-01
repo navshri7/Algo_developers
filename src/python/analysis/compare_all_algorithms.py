@@ -19,8 +19,9 @@ plt.rcParams['figure.figsize'] = (16, 12)
 plt.rcParams['font.size'] = 10
 
 # Algorithm classification
-FOUNDATIONAL = ['K-Core', 'Betweenness (Exact)']
-FRONTIER = ['Katz', 'Eigenvector']
+FOUNDATIONAL = ['K-Core', 'Betweenness (Exact)', 'Degree Centrality', 'Bridging Centrality']
+FRONTIER = ['Katz', 'Eigenvector', 'HITS']
+CITATION_SPECIFIC = ['Degree Centrality', 'Bridging Centrality', 'HITS']
 
 def load_all_results():
     """Load results from all algorithms"""
@@ -42,6 +43,22 @@ def load_all_results():
         df['Category'] = 'Foundational'
         results['Betweenness (Exact)'] = df
     
+    # Degree Centrality
+    deg_csv = Path("results/degree_centrality/summary.csv")
+    if deg_csv.exists():
+        df = pd.read_csv(deg_csv)
+        df['Algorithm'] = 'Degree Centrality'
+        df['Category'] = 'Foundational'
+        results['Degree Centrality'] = df
+    
+    # Bridging Centrality
+    brid_csv = Path("results/bridging_centrality/summary.csv")
+    if brid_csv.exists():
+        df = pd.read_csv(brid_csv)
+        df['Algorithm'] = 'Bridging Centrality'
+        df['Category'] = 'Foundational'
+        results['Bridging Centrality'] = df
+    
     # Katz
     katz_csv = Path("results/centrality/katz/summary.csv")
     if katz_csv.exists():
@@ -57,6 +74,14 @@ def load_all_results():
         df['Algorithm'] = 'Eigenvector'
         df['Category'] = 'Frontier'
         results['Eigenvector'] = df
+    
+    # HITS
+    hits_csv = Path("results/hits/summary.csv")
+    if hits_csv.exists():
+        df = pd.read_csv(hits_csv)
+        df['Algorithm'] = 'HITS'
+        df['Category'] = 'Frontier'
+        results['HITS'] = df
     
     if not results:
         return None
@@ -88,6 +113,16 @@ def analyze_node_rankings(output_dir):
         if bet_file.exists():
             top_nodes['Betweenness'] = extract_top_nodes(bet_file, 10)
         
+        # Degree Centrality
+        deg_file = Path(f"results/degree_centrality/{dataset}_detailed.txt")
+        if deg_file.exists():
+            top_nodes['Degree'] = extract_top_nodes(deg_file, 10)
+        
+        # Bridging Centrality
+        brid_file = Path(f"results/bridging_centrality/{dataset}_detailed.txt")
+        if brid_file.exists():
+            top_nodes['Bridging'] = extract_top_nodes(brid_file, 10)
+        
         # Katz
         katz_file = Path(f"results/centrality/katz/{dataset}_detailed.txt")
         if katz_file.exists():
@@ -97,6 +132,11 @@ def analyze_node_rankings(output_dir):
         eigen_file = Path(f"results/centrality/eigenvector/{dataset}_detailed.txt")
         if eigen_file.exists():
             top_nodes['Eigenvector'] = extract_top_nodes(eigen_file, 10)
+        
+        # HITS
+        hits_file = Path(f"results/hits/{dataset}_detailed.txt")
+        if hits_file.exists():
+            top_nodes['HITS'] = extract_top_nodes(hits_file, 10)
         
         if not top_nodes:
             ax.text(0.5, 0.5, f'{dataset}\n(No data)', ha='center', va='center')
@@ -444,8 +484,11 @@ def print_top_10_comparison():
         algorithms = [
             ('K-Core', 'results/synthetic'),
             ('Betweenness', 'results/betweenness/exact'),
+            ('Degree', 'results/degree_centrality'),
+            ('Bridging', 'results/bridging_centrality'),
             ('Katz', 'results/centrality/katz'),
             ('Eigenvector', 'results/centrality/eigenvector'),
+            ('HITS', 'results/hits'),
         ]
         
         for algo_name, result_dir in algorithms:

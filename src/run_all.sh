@@ -59,8 +59,14 @@ echo "----------------------------------------------------------------------"
 bash src/scripts/experiments_centrality.sh
 echo ""
 
-# Step 5: Generate Visualizations
-echo -e "${BLUE}Step 5: Generating Visualizations${NC}"
+# Step 5: Generate Summary Files
+echo -e "${BLUE}Step 5: Generating Summary Files${NC}"
+echo "----------------------------------------------------------------------"
+python3 src/python/analysis/generate_summaries.py
+echo ""
+
+# Step 6: Generate Visualizations
+echo -e "${BLUE}Step 6: Generating Visualizations${NC}"
 echo "----------------------------------------------------------------------"
 
 echo "K-Core analysis..."
@@ -68,6 +74,9 @@ python3 src/python/analysis/visualizations_kcore.py
 
 echo "Betweenness comparison..."
 python3 src/python/analysis/visualizations_betweenness.py
+
+echo "Citation algorithm visualizations..."
+python3 src/python/visualization/visualize_citation_algorithms.py
 
 echo "Node visualizations..."
 python3 src/python/visualization/visualize_nodes.py
@@ -83,6 +92,9 @@ echo ""
 echo "Results available in:"
 echo "  - results/synthetic/              (K-Core synthetic results)"
 echo "  - results/real_datasets/          (K-Core real dataset results)"
+echo "  - results/bridging_centrality/    (Bridging centrality results)"
+echo "  - results/degree_centrality/      (Degree centrality results)"
+echo "  - results/hits/                   (HITS algorithm results)"
 echo "  - results/betweenness/            (Betweenness results)"
 echo "  - results/centrality/             (Katz & Eigenvector results)"
 echo "  - results/algorithm_comparison/   (Comprehensive comparison)"

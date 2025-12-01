@@ -17,6 +17,9 @@ echo ""
 # Create directory structure
 mkdir -p results/synthetic
 mkdir -p results/real_datasets
+mkdir -p results/bridging_centrality
+mkdir -p results/degree_centrality
+mkdir -p results/hits
 mkdir -p data/synthetic_graphs
 mkdir -p data/converted_datasets
 
@@ -27,6 +30,30 @@ if [ $? -eq 0 ]; then
     echo "  ✓ Compilation successful"
 else
     echo "  ✗ Compilation failed"
+    exit 1
+fi
+
+g++ -std=c++17 -O3 -o bin/bridging_centrality src/algorithms/bridging_centrality.cpp
+if [ $? -eq 0 ]; then
+    echo "  ✓ Bridging Centrality compilation successful"
+else
+    echo "  ✗ Bridging Centrality compilation failed"
+    exit 1
+fi
+
+g++ -std=c++17 -O3 -o bin/degree_centrality src/algorithms/degree_centrality.cpp
+if [ $? -eq 0 ]; then
+    echo "  ✓ Degree Centrality compilation successful"
+else
+    echo "  ✗ Degree Centrality compilation failed"
+    exit 1
+fi
+
+g++ -std=c++17 -O3 -o bin/hits src/algorithms/hits.cpp
+if [ $? -eq 0 ]; then
+    echo "  ✓ HITS compilation successful"
+else
+    echo "  ✗ HITS compilation failed"
     exit 1
 fi
 echo ""
@@ -144,18 +171,158 @@ else
     echo ""
 fi
 
+# ============================================================================
+# BRIDGING CENTRALITY - Synthetic Graphs
+# ============================================================================
+echo "Step 6: Running Bridging Centrality on synthetic graphs..."
+echo "----------------------------------------------------------------------"
+
+echo "6.1 Verification Graphs:"
+for graph in data/synthetic_graphs/verify_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        echo "  Running: $basename"
+        bin/bridging_centrality "$graph" "results/bridging_centrality"
+    fi
+done
+echo ""
+
+echo "6.2 Small Test Graphs (100-1000 nodes):"
+for graph in data/synthetic_graphs/er_*_*.txt data/synthetic_graphs/ba_1k_*.txt data/synthetic_graphs/ws_1k_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        echo "  Running: $basename"
+        bin/bridging_centrality "$graph" "results/bridging_centrality"
+    fi
+done
+echo ""
+
+echo "6.3 Medium Test Graphs (5000-10000 nodes):"
+for graph in data/synthetic_graphs/er_5k_*.txt data/synthetic_graphs/er_10k_*.txt data/synthetic_graphs/ba_5k_*.txt data/synthetic_graphs/ba_10k_*.txt data/synthetic_graphs/ws_5k_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        echo "  Running: $basename"
+        bin/bridging_centrality "$graph" "results/bridging_centrality"
+    fi
+done
+echo ""
+
+# ============================================================================
+# BRIDGING CENTRALITY - Real Datasets
+# ============================================================================
+echo "Step 7: Running Bridging Centrality on real datasets..."
+echo "----------------------------------------------------------------------"
+
+for dataset in "cit-DBLP" "cit-HepTh" "citeseer" "cora"; do
+    if [ -f "data/converted_datasets/${dataset}.txt" ]; then
+        echo "  Running: $dataset"
+        bin/bridging_centrality "data/converted_datasets/${dataset}.txt" "results/bridging_centrality"
+    fi
+done
+echo ""
+
+# ============================================================================
+# DEGREE CENTRALITY - Synthetic Graphs
+# ============================================================================
+echo "Step 8: Running Degree Centrality on synthetic graphs..."
+echo "----------------------------------------------------------------------"
+
+echo "8.1 Verification Graphs:"
+for graph in data/synthetic_graphs/verify_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        bin/degree_centrality "$graph" "results/degree_centrality"
+    fi
+done
+echo ""
+
+echo "8.2 Small Test Graphs (100-1000 nodes):"
+for graph in data/synthetic_graphs/er_*_*.txt data/synthetic_graphs/ba_1k_*.txt data/synthetic_graphs/ws_1k_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        bin/degree_centrality "$graph" "results/degree_centrality"
+    fi
+done
+echo ""
+
+echo "8.3 Medium Test Graphs (5000-10000 nodes):"
+for graph in data/synthetic_graphs/er_5k_*.txt data/synthetic_graphs/er_10k_*.txt data/synthetic_graphs/ba_5k_*.txt data/synthetic_graphs/ba_10k_*.txt data/synthetic_graphs/ws_5k_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        bin/degree_centrality "$graph" "results/degree_centrality"
+    fi
+done
+echo ""
+
+# ============================================================================
+# DEGREE CENTRALITY - Real Datasets
+# ============================================================================
+echo "Step 9: Running Degree Centrality on real datasets..."
+echo "----------------------------------------------------------------------"
+
+for dataset in "cit-DBLP" "cit-HepTh" "citeseer" "cora"; do
+    if [ -f "data/converted_datasets/${dataset}.txt" ]; then
+        echo "  Running: $dataset"
+        bin/degree_centrality "data/converted_datasets/${dataset}.txt" "results/degree_centrality"
+    fi
+done
+echo ""
+
+# ============================================================================
+# HITS - Synthetic Graphs
+# ============================================================================
+echo "Step 10: Running HITS on synthetic graphs..."
+echo "----------------------------------------------------------------------"
+
+echo "10.1 Verification Graphs:"
+for graph in data/synthetic_graphs/verify_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        bin/hits "$graph" "results/hits"
+    fi
+done
+echo ""
+
+echo "10.2 Small Test Graphs (100-1000 nodes):"
+for graph in data/synthetic_graphs/er_*_*.txt data/synthetic_graphs/ba_1k_*.txt data/synthetic_graphs/ws_1k_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        bin/hits "$graph" "results/hits"
+    fi
+done
+echo ""
+
+echo "10.3 Medium Test Graphs (5000-10000 nodes):"
+for graph in data/synthetic_graphs/er_5k_*.txt data/synthetic_graphs/er_10k_*.txt data/synthetic_graphs/ba_5k_*.txt data/synthetic_graphs/ba_10k_*.txt data/synthetic_graphs/ws_5k_*.txt; do
+    if [ -f "$graph" ]; then
+        basename=$(basename "$graph" .txt)
+        bin/hits "$graph" "results/hits"
+    fi
+done
+echo ""
+
+# ============================================================================
+# HITS - Real Datasets
+# ============================================================================
+echo "Step 11: Running HITS on real datasets..."
+echo "----------------------------------------------------------------------"
+
+for dataset in "cit-DBLP" "cit-HepTh" "citeseer" "cora"; do
+    if [ -f "data/converted_datasets/${dataset}.txt" ]; then
+        echo "  Running: $dataset"
+        bin/hits "data/converted_datasets/${dataset}.txt" "results/hits"
+    fi
+done
+echo ""
+
 echo "======================================================================"
 echo "All experiments completed!"
 echo "======================================================================"
 echo ""
 echo "Results are available in:"
-echo "  - results/synthetic/        (synthetic graph results)"
-echo "  - results/real_datasets/    (real dataset results)"
-echo ""
-echo "Summary files:"
-echo "  - results/synthetic/summary.csv"
-echo "  - results/real_datasets/summary.csv"
-echo ""
-echo "Next step: Run visualization script to analyze results"
-echo "  python3 visualize_results.py"
+echo "  - results/synthetic/            (K-Core synthetic results)"
+echo "  - results/real_datasets/        (K-Core real dataset results)"
+echo "  - results/bridging_centrality/  (Bridging centrality results)"
+echo "  - results/degree_centrality/    (Degree centrality results)"
+echo "  - results/hits/                 (HITS algorithm results)"
 echo ""
