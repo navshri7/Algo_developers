@@ -46,6 +46,12 @@ ALGORITHMS = {
         'color': 'cool',
         'result_dir': 'results/centrality/eigenvector',
         'category': 'Frontier'
+    },
+    'pagerank': {
+        'name': 'PageRank',
+        'color': 'magma',
+        'result_dir': 'results/centrality/pagerank',
+        'category': 'Frontier'
     }
 }
 
@@ -110,8 +116,9 @@ def visualize_all_algorithms_comparison(output_dir):
         if not Path(graph_file).exists():
             continue
         
-        fig, axes = plt.subplots(2, 2, figsize=(18, 16))
+        fig, axes = plt.subplots(2, 3, figsize=(21, 16))
         axes = axes.flatten()
+
         
         G = load_graph_from_file(graph_file)
         if G is None:
@@ -127,7 +134,11 @@ def visualize_all_algorithms_comparison(output_dir):
             ax = axes[algo_idx]
             
             # Find result file
-            result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+            if algo_key == 'pagerank':
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            else:
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+
             
             if not result_file.exists():
                 ax.text(0.5, 0.5, f"{algo_info['name']}\n(No results)", 
@@ -202,8 +213,8 @@ def create_animated_comparison(output_dir):
         
         graph_base = Path(graph_file).stem
         
-        # Create animation showing all 4 algorithms
-        fig, axes = plt.subplots(2, 2, figsize=(18, 16))
+        # Create animation showing all algorithms
+        fig, axes = plt.subplots(2, 3, figsize=(21, 16))
         axes = axes.flatten()
         
         pos = nx.spring_layout(G, k=0.5, iterations=50, seed=42)
@@ -211,11 +222,15 @@ def create_animated_comparison(output_dir):
         # Preload all data
         all_rankings = {}
         for algo_key, algo_info in ALGORITHMS.items():
-            result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+            if algo_key == 'pagerank':
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            else:
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
             if result_file.exists():
                 all_rankings[algo_key] = parse_detailed_results(str(result_file))
             else:
                 all_rankings[algo_key] = {}
+
         
         def animate(frame):
             for ax in axes:
@@ -300,9 +315,13 @@ def create_algorithm_ranking_heatmap(output_dir):
         # Load rankings from all algorithms
         all_rankings = {}
         for algo_key, algo_info in ALGORITHMS.items():
-            result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+            if algo_key == 'pagerank':
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            else:
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
             if result_file.exists():
                 all_rankings[algo_key] = parse_detailed_results(str(result_file))
+
         
         if not all_rankings:
             continue
@@ -352,15 +371,20 @@ def create_top_nodes_comparison(output_dir):
         
         graph_base = Path(graph_file).stem
         
-        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+        fig, axes = plt.subplots(2, 3, figsize=(21, 12))
         axes = axes.flatten()
+
         
         for algo_idx, (algo_key, algo_info) in enumerate(ALGORITHMS.items()):
             if algo_idx >= len(axes):
                 break
             
             ax = axes[algo_idx]
-            result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+            if algo_key == 'pagerank':
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_pagerank_detailed.txt"
+            else:
+                result_file = Path(algo_info['result_dir']) / f"{graph_base}_detailed.txt"
+
             
             if not result_file.exists():
                 ax.text(0.5, 0.5, f"{algo_info['name']}\n(No data)", 
@@ -426,16 +450,21 @@ def print_top_10_all_algorithms():
             ('Betweenness', 'results/betweenness/exact'),
             ('Katz', 'results/centrality/katz'),
             ('Eigenvector', 'results/centrality/eigenvector'),
+            ('PageRank', 'results/centrality/pagerank'),
         ]
         
         for algo_name, result_dir in algorithms:
-            result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
+            if algo_name == 'PageRank':
+                result_file = Path(result_dir) / f"{graph_base}_pagerank_detailed.txt"
+            else:
+                result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
             
             if result_file.exists():
                 rankings = extract_top_nodes_with_values(result_file, 10)
                 all_top_10[algo_name] = rankings
             else:
                 all_top_10[algo_name] = []
+
         
         # Print side-by-side
         max_rows = max(len(v) for v in all_top_10.values()) if all_top_10.values() else 0

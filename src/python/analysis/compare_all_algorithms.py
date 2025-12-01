@@ -21,7 +21,7 @@ plt.rcParams['font.size'] = 10
 
 # Algorithm classification
 FOUNDATIONAL = ['K-Core', 'Betweenness (Exact)', 'Degree Centrality', 'Bridging Centrality']
-FRONTIER = ['Katz', 'Eigenvector', 'HITS (Hub)', 'HITS (Authority)']
+FRONTIER = ['Katz', 'Eigenvector', 'HITS (Hub)', 'HITS (Authority)', 'PageRank']
 CITATION_SPECIFIC = ['Degree Centrality', 'Bridging Centrality', 'HITS (Hub)', 'HITS (Authority)']
 
 def load_all_results():
@@ -585,20 +585,25 @@ def print_top_20_comparison(output_dir):
                 ('Eigenvector', 'results/centrality/eigenvector', None),
                 ('HITS (Hub)', 'results/hits', '_hub'),
                 ('HITS (Auth)', 'results/hits', '_authority'),
-            ]
-            
+                ('PageRank', 'results/centrality/pagerank'),
+        ]
+    
             for algo_name, result_dir, suffix in algorithms:
                 if suffix:
                     result_file = Path(result_dir) / f"{graph_base}{suffix}_detailed.txt"
                 else:
-                    result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
+                    if algo_name == 'PageRank':
+                result_file = Path(result_dir) / f"{graph_base}_pagerank_detailed.txt"
+            else:
+                result_file = Path(result_dir) / f"{graph_base}_detailed.txt"
                 
                 if result_file.exists():
                     rankings = extract_top_nodes_with_values(result_file, 20)
                     all_top_20[algo_name] = rankings
                 else:
                     all_top_20[algo_name] = []
-            
+    
+        
             # Write side-by-side table
             max_rows = max(len(v) for v in all_top_20.values()) if all_top_20.values() else 0
             
@@ -624,7 +629,7 @@ def print_top_20_comparison(output_dir):
     
     print(f"  ✓ Saved: top_20_nodes_comparison.txt")
 
-def extract_top_nodes_with_values(filepath, k=10):
+def extract_top_nodes_with_values(filepath, k=20):
     """Extract top k nodes with their values from detailed results file"""
     nodes = []
     try:

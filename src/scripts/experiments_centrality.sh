@@ -18,6 +18,8 @@ echo ""
 mkdir -p results/centrality/katz
 mkdir -p results/centrality/eigenvector
 mkdir -p results/centrality/comparison
+mkdir -p results/centrality/pagerank
+mkdir -p bin
 
 # Compile the C++ programs
 echo "Step 1: Compiling Centrality implementations..."
@@ -37,6 +39,15 @@ else
     exit 1
 fi
 echo ""
+g++ -std=c++17 -O3 -o bin/pagerank_centrality src/algorithms/pagerank_centrality.cpp
+if [ $? -eq 0 ]; then
+    echo "  ✓ PageRank centrality compilation successful"
+else
+    echo "  ✗ PageRank centrality compilation failed"
+    exit 1
+fi
+echo ""
+
 
 # Run experiments on synthetic graphs
 echo "Step 2: Running experiments on synthetic graphs..."
@@ -50,6 +61,7 @@ for graph in data/synthetic_graphs/verify_*.txt; do
         echo "  Running: $basename"
         bin/katz_centrality "$graph" "results/centrality/katz" "$basename"
         bin/eigenvector_centrality "$graph" "results/centrality/eigenvector" "$basename"
+        bin/pagerank_centrality "$graph" "results/centrality/pagerank" "$basename" 0.85
     fi
 done
 echo ""
@@ -62,6 +74,7 @@ for graph in data/synthetic_graphs/er_*_*.txt data/synthetic_graphs/ba_1k_*.txt 
         echo "  Running: $basename"
         bin/katz_centrality "$graph" "results/centrality/katz" "$basename"
         bin/eigenvector_centrality "$graph" "results/centrality/eigenvector" "$basename"
+        bin/pagerank_centrality "$graph" "results/centrality/pagerank" "$basename" 0.85
     fi
 done
 echo ""
@@ -74,6 +87,7 @@ for graph in data/synthetic_graphs/er_5k_*.txt data/synthetic_graphs/er_10k_*.tx
         echo "  Running: $basename"
         bin/katz_centrality "$graph" "results/centrality/katz" "$basename"
         bin/eigenvector_centrality "$graph" "results/centrality/eigenvector" "$basename"
+        bin/pagerank_centrality "$graph" "results/centrality/pagerank" "$basename" 0.85
     fi
 done
 echo ""
@@ -87,6 +101,7 @@ if [ -f "data/converted_datasets/cit-DBLP.txt" ]; then
     echo "3.1 Running on cit-DBLP..."
     bin/katz_centrality "data/converted_datasets/cit-DBLP.txt" "results/centrality/katz" "cit-DBLP"
     bin/eigenvector_centrality "data/converted_datasets/cit-DBLP.txt" "results/centrality/eigenvector" "cit-DBLP"
+    bin/pagerank_centrality "data/converted_datasets/cit-DBLP.txt" "results/centrality/pagerank" "cit-DBLP" 0.85
     echo ""
 else
     echo "3.1 Skipping cit-DBLP (not found)"
@@ -98,6 +113,7 @@ if [ -f "data/converted_datasets/cit-HepTh.txt" ]; then
     echo "3.2 Running on cit-HepTh..."
     bin/katz_centrality "data/converted_datasets/cit-HepTh.txt" "results/centrality/katz" "cit-HepTh"
     bin/eigenvector_centrality "data/converted_datasets/cit-HepTh.txt" "results/centrality/eigenvector" "cit-HepTh"
+    bin/pagerank_centrality "data/converted_datasets/cit-HepTh.txt" "results/centrality/pagerank" "cit-HepTh" 0.85
     echo ""
 else
     echo "3.2 Skipping cit-HepTh (not found)"
@@ -109,6 +125,7 @@ if [ -f "data/converted_datasets/citeseer.txt" ]; then
     echo "3.3 Running on CiteSeer..."
     bin/katz_centrality "data/converted_datasets/citeseer.txt" "results/centrality/katz" "citeseer"
     bin/eigenvector_centrality "data/converted_datasets/citeseer.txt" "results/centrality/eigenvector" "citeseer"
+    bin/pagerank_centrality "data/converted_datasets/citeseer.txt" "results/centrality/pagerank" "citeseer" 0.85
     echo ""
 else
     echo "3.3 Skipping CiteSeer (not found)"
@@ -120,6 +137,7 @@ if [ -f "data/converted_datasets/cora.txt" ]; then
     echo "3.4 Running on Cora..."
     bin/katz_centrality "data/converted_datasets/cora.txt" "results/centrality/katz" "cora"
     bin/eigenvector_centrality "data/converted_datasets/cora.txt" "results/centrality/eigenvector" "cora"
+    bin/pagerank_centrality "data/converted_datasets/cora.txt" "results/centrality/pagerank" "cora" 0.85
     echo ""
 else
     echo "3.4 Skipping Cora (not found)"
@@ -133,6 +151,7 @@ echo ""
 echo "Results are available in:"
 echo "  - results/centrality/katz/        (Katz centrality results)"
 echo "  - results/centrality/eigenvector/ (Eigenvector centrality results)"
+echo "  - results/centrality/pagerank/    (PageRank centrality results)"
 echo ""
 echo "Next step: Run comparison script to analyze results"
 echo "  python3 compare_all_algorithms.py"
